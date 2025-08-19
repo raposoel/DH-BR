@@ -1,0 +1,53 @@
+{
+  "id": "daggerheart-ptbr",
+  "title": "Daggerheart - Tradução para Português (Brasil)",
+  "description": "<p>Adiciona o idioma Português (Brasil) para o sistema de jogo Daggerheart. Sem Inventar, só traduzido.</p>",
+  "version": "1.0.1",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "daggerheart",
+        "type": "system",
+        "compatibility": {}
+      }
+    ],
+    "requires": [
+      {
+        "id": "babele",
+        "type": "module",
+        "manifest": "https://gitlab.com/riccisi/foundryvtt-babele/raw/master/module/module.json",
+        "compatibility": {}
+      }
+    ]
+  },
+  "authors": [
+    {
+      "name": "Mestre Digital",
+      "url": "https://www.youtube.com/c/MestreDigital",
+      "flags": {}
+    },
+    {
+      "name": "Corrigido por Raposo El",
+      "discord": "luizrealoficial",
+      "url": "https://github.com/Lsarga/DH-BR",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "scripts/babele.js"
+  ],
+  "languages": [
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ],
+  "url": "https://github.com/brunocalado/daggerheart-ptbr",
+  "manifest": "",
+  "download": ""
+}

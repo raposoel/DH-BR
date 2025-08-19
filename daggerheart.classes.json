@@ -1,0 +1,284 @@
+{
+	"label": "Classes",
+  "mapping": {
+    "description": "system.description"
+  },
+  
+	"entries": [
+		{
+			"id": "Bard",
+			"name": "Bardo",
+			"description": "Bardos são as pessoas mais carismáticas dos reinos. Membros desta classe são mestres do fascínio e se especializam em diversos tipos de performance, como a música, o humor e a contação de histórias. Bardos são ótimos em situações sociais, seja interagindo com um público ou com un indivíduo. Ainda que hajam membros dessa classe com egos inflados, há escolas e guildas onde bardos compartilham laços e conhecimento. Embora sejam os mais capazes de unir pessoas, um bardo de temperamento forte pode dividir um grupo com a mesma facilidade."
+		},
+		{
+			"id": "Ranger",
+			"name": "Caçador",
+			"description": "Caçadores são indivíduos altamente competentes que, a despeito de suas habilidades marciais, raramente emprestam seus talentos a exércitos. Dominando o corpo e com uma profunda compreensão do ambiente selvagem, caçadores são estrategistas perspicazes, perseguindo suas presas com astúcia e paciência. Muitos membros desta classe caçam e lutam ao lado de um companheiro animal com o qual forjaram um poderoso vínculo espiritual. Ao cultivar suas habilidades na natureza, caçadores se tornam peritos na perseguição, tão aptos a capturar oponentes com armadilhas quanto a enfrentá-los diretamente."
+		},
+		{
+			"id": "Druid",
+			"name": "Druida",
+			"description": "Ser um druida é mais que uma ocupação; é uma vocação para aqueles que almejam proteger a natureza e aprender com sua magia. Embora alguém possa subestimar um druida gentil que pratica o trabalho silencioso de cultivar vegetais, druidas que canalizam as forças indomáveis da natureza são uma visão aterrorizante. Muitos cultivam suas habilidades em grupos pequenos, frequentemente conectados por um local ou tradição em específico, mas alguns optam por trabalhar sozinhos. Com anos de estudo e dedicação, druidas podem aprender a se transformar em feras e alterar a natureza."
+		},
+		{
+			"id": "Sorcerer",
+			"name": "Feiticeiro",
+			"description": "Nem todos os usuários inatos de magia decidem aprimorar suas artes, mas aqueles que o fazem podem se tornar poderosos feiticeiros. Esse dom é passado de geração em geração, mesmo que a família o desconheça ou hesite em colocá-lo em prática. As habilidades de um feiticeiro variam de manipulação elemental às artes da ilusão, e podem ir ainda além. Muitos praticantes juntam-se em grupos organizados de acordo com seus talentos. Tornar-se um feiticeiro extraordinário não envolve se tornar mais poderoso, mas aprender a cultivar e controlar o poder que já está em seu âmago. Feitiçaria sem orientação ou disciplina adequada é uma força extremamente perigosa."
+		},
+		{
+			"id": "Guardian",
+			"name": "Guardião",
+			"description": "O guardião representa uma gama de profissões marciais e é mais ligado à sua bússola moral e resiliência inabalável do que aos seus métodos de combate. Ainda que muitos guadiões se juntem a grupos em prol de um país ou de uma causa, é mais provável que eles sigam aqueles poucos com quem realmente se importam, ignorando os demais. Guardiões são conhecidos por lutar e, acima de tudo, defender os seus com notável ferocidade, mesmo quando as chances estão contra eles. Pobres daqueles que causarem mal aos aliados de um guardião, pois membros desta classe respondem à altura."
+		},
+		{
+			"id": "Warrior",
+			"name": "Guerreiro",
+			"description": "Tornar-se um guerreiro requer anos, às vezes uma vida inteira, de treinamento e dedicação ao domínio das armas e da violência. Enquanto muitos que procuram lutar cultivam apenas a força, guerreiros entendem a importância de um corpo e uma mente ágeis, o que os coloca entre os combatentes mais cobiçados dos reinos. Frequentemente, guerreiros encontram emprego em um exército, bando de mercenários ou mesmo uma guarda real, mas seu potencial é desperdiçado em qualquer posição na qual não possam aprimorar e expandir suas habilidades. Guerreiros são conhecidos por terem uma arma favorita, portanto ficar entre um guerreiro e sua lâmina pode ser um erro gravíssimo."
+		},
+		{
+			"id": "Rogue",
+			"name": "Ladino",
+			"description": "Ladinos são malandros, tanto na atitude quanto na prática. Em geral conhecidos como ladrões e mentirosos, os melhores membros desta classe são anônimos para o resto do mundo. Com uma astúcia tão afiada quanto suas lâminas, ladinos manipulam socialmente os oponentes com a mesma facilidade com que arrombam fechaduras, escalam janelas ou atacam furtivamente. Mestres no ofício mágico, eles manipulam as sombras e o movimento, tendo uma ampla gama de ferramentas úteis e mortais em seu repertório. Ladinos costumam estabelecer guildas para encontrar futuros cúmplices, contratar serviços e cultivar suas técnicas secretas, comprovando que existe honra entre ladrões... para aqueles que sabem onde procurar."
+		},
+		{
+			"id": "Wizard",
+			"name": "Mago",
+			"description": "Sejam alunos de uma instituição, sejam autodidatas, magos adquirem e cultivam imenso poder mágico ao longo de anos de aprendizado com uma variedade de ferramentas como ervas, livros, pedras e poções. Alguns magos dedicam a vida a dominar uma escola de magia específica; outros estudam uma grande variedade de disciplinas. Muitos magos são figuras sábias e poderosas nas comunidades onde vivem, aconselhando governantes, fornecendo cura ou remédios e até mesmo liderando conselhos de guerra. Embora todos os magos trabalhem em prol do objetivo de angariar conhecimento mágico, eles frequentemente encontram os maiores conflitos entre seus iguais, visto que a aquisição, proteção e disseminação de segredos poderosos geram debates intensos que já resultaram em inumeráveis mortes."
+		},
+		{
+			"id": "Seraph",
+			"name": "Serafim",
+			"description": "Serafins são guerreiros divinos com poderes curativos imbuídos de um propósito sagrado. Há um grande número de deuses nos planos, e eles escolhem diversos tipos de serafim como seus campeões. O caráter de um serafim tradicionalmente está alinhado ao domínio ou aos objetivos de seu deus, como defender os fracos, vingança, proteger um território ou artefato, ou professar uma fé específica. Alguns serafins se aliam a um exército ou localidade, para satisfação dos governantes, mas outros fazem uma cruzada contra a vaidade do plano mortal. Ser aliado de um serafim é melhor que ser seu inimigo, pois são implacáveis cotra aqueles que ousam desafiar seu propósito."
+		},
+    {
+      "id": "Hold Them Off",
+      "name": "Segurem Eles",
+      "description": "Quando acerta um ataque com uma arma, você pode <b>gastar 3 de Esperança</b> para usar o mesmo teste contra dois adversários adicionais no alcance do ataque."
+    },
+    {
+      "id": "Attack Of Opportunity",
+      "name": "Ataque de Oportunidade",
+      "description": "Se um adversário Corpo a Corpo tentar sair desse alcance, faça um teste de reação usando um atributo à sua escolha contra a Dificuldade dele. Em um sucesso, escolha um efeito; em um sucesso crítico, escolha dois:<br>• Ele não pode sair de onde está.<br>• Você causa dano a ele igual ao dano de sua arma principal.<br>• Você se movimenta com ele."
+    },
+    {
+      "id": "Cloaked",
+      "name": "Oculto",
+      "description": "Sempre que estiver <i>Escondido</i>, em vez disso você fica <i>Oculto</i>. Além dos benefícios da condição <i>Escondido</i>; enquanto estiver <i>Oculto</i>, quando um adversário se movimentar para de onde normalmente veria você, ele não pode vê-lo se você estiver parado. Ao entrar ou se movimentar dentro da linha de visão de um adversário, ou ao atacar, você deixa de estar <i>Oculto</i>."
+    },
+    {
+      "id": "Sneak Attack",
+      "name": "Ataque Furtivo",
+      "description": "Quando acertar um ataque enquanto estiver <i>Oculto</i>, ou enquanto um aliado estiver Corpo a Corpo ao seu alvo, some um número de <b>d6</b> igual ao seu patamar à rolagem de dano."
+    },
+    {
+      "id": "Strange Patterns",
+      "name": "Padrões Estranhos",
+      "description": "Escolha um número de 1 a 12. Ao rolar esse número em um Dado do Dualidade, receba uma Esperança ou limpe um Estresse. Você pode mudar o número escolhido durante um descanso longo."
+    },
+    {
+      "id": "Evolution",
+      "name": "Evolução",
+      "description": "<b>Gaste 3 de Esperança</b> para usar Forma de Fera sem marcar Estresse. Ao fazer isso, aumente um atributo em +1 até sair da Forma de Fera."
+    },
+    {
+      "id": "Arcane Sense",
+      "name": "Sentido Arcano",
+      "description": "Você pode sentir a presença de objetos e pessoas com magia quando estão Próximos."
+    },
+    {
+      "id": "Make a Scene",
+      "name": "Fazer um Escândalo",
+      "description": "<b>Gaste 3 de Esperança</b> para <i>Distrair</i> temporariamente um alvo Próximo, aplicando uma penalidade de-2 à Dificuldade dele."
+    },
+    {
+      "id": "Channel Raw Power",
+      "name": "Canalizar Poder Bruto",
+      "description": "Uma vez por descanso longo, você pode colocar uma carta de domínio de sua mão na reserva e escolher entre:<br>• Receber Esperança igual ao nível da carta.<br>• Aprimorar um feitiço que cause dano, recebendo um bônus na rolagem de dano igual ao dobro do nível da carta."
+    },
+    {
+      "id": "Beastform",
+      "name": "Forma de Fera",
+      "description": "<b>Marque um Estresse</b> para se transformar magicamente em uma criatura de patamar igual ou menor que o seu na lista de Formas de Fera. Você pode sair dessa forma a qualquer momento. Enquanto estiver transformado, você não pode usar armas ou feitiços das cartas de domínio, mas ainda pode usar outras habilidades ou talentos aos quais tenha acesso. Os feitiços conjurados antes da transformação permanecem ativos, com sua duração normal, e você pode falar e se comunicar normalmente. Além disso, você recebe as habilidades da Forma de Fera escolhida, soma o bônus de Evasão dela à sua Evasão e usa o atributo especificado nas estatísticas dela para atacar. Enquanto estiver na Forma de Fera, sua armadura se torna parte de seu corpo e você marca Pontos de Armadura normalmente; quando sai da Forma de Fera, esses Pontos de Armadura permanecem marcados. Marcar seu último Ponto de Vida faz com que você saia da Forma de Fera automaticamente."
+    },
+    {
+      "id": "Unstoppable",
+      "name": "Imparável",
+      "description": "Uma vez por descanso longo, você pode ficar <i>Imparável</i>, recebendo um Dado Imparável. No 1º nível, seu Dado Imparável é <b>d4</b>. Coloque-o sobre o espaço apropriado na ficha de personagem, começando com o número 1 voltado para cima. Após fazer uma rolagem de dano que tira 1 ou mais Pontos de Vida de um alvo, aumente o valor do Dado Imparável em +1. No momento em que o dado for ultrapassar seu valor máximo, ou quando a cena acabar, remova-o e termine <i>Imparável</i>. Enquanto estiver <i>Imparável</i>, você recebe os seguintes benefícios:<br>• Você reduz a gravidade do dano físico em uma categoria.<br>• Você soma o valor atual do Dado Imparável às suas rolagens de dano.<br>• Você não pode ser <i>Imobilizado</i> ou ficar <i>Vulnerável</i>."
+    },
+    {
+      "id": "Rally",
+      "name": "Regrupar",
+      "description": "Uma vez por sessão, descreva como você reagrupa os companheiros. Você e seus aliados recebem um Dado de Piquete. No 1º nível, seu Dado de Piquete é <b>d6</b>. Um personagem pode rolar o Dado de Piquete e somar o resultado a um teste, teste de reação ou uma rolagem de dano, ou para recuperar Estresse igual ao resultado. No fim de cada sessão, Dados de Piquete não utilizados são perdidos."
+    },
+    {
+      "id": "Prestidigitation",
+      "name": "Prestidigitação",
+      "description": "Você pode executar efeitos mágicos sutis e inofensivos à vontade. Por exemplo, você pode mudar a cor de um objeto, criar um cheiro, acender uma vela, fazer um pequeno objeto flutuar, iluminar uma sala ou consertar um objeto pequeno."
+    },
+    {
+      "id": "Rally (Level 5)",
+      "name": "Reagrupar (Nível 5)",
+      "description": "No 5º nível, seu Dado de Piquete aumenta para <b>d8</b>."
+    },
+    {
+      "id": "Prayer Dice",
+      "name": "Dados de Oração",
+      "description": "No início de cada sessão, role um número de <b>d4</b> igual ao atributo de conjuração de sua subclasse e coloque-os sobre o espaço apropriado na ficha de personagem. Eles são seus Dados de Oração. Você pode gastar qualquer número de Dados de Oração para auxiliar a si mesmo ou um aliado até o alcance Distante. Você pode usar o valor de um dado gasto para reduzir o dano sofrido, somá-lo ao resultado de uma rolagen após ela ser feita ou receber um número de Esperança igual ao resultado. No fim de cada sessão, Dados de Oração não utilizados são descartados."
+    },
+    {
+      "id": "Frontline Tank",
+      "name": "Linha de Frente",
+      "description": "<b>Gaste 3 de Esperança</b> para recuperar 2 Pontos de Armadura."
+    },
+    {
+      "id": "Minor Illusion",
+      "name": "Ilusão Menor",
+      "description": "Faça um <b>teste de conjuração (10)</b>. Em um sucesso, você cria uma ilusão visual em alcance Próxirno. Ela não pode ultrapassar seu tamanho. Essa ilusão parece convincente a qualquer um que esteja Próximo ou mais distante."
+    },
+    {
+      "id": "Combat Training",
+      "name": "Treinamento de Combate",
+      "description": "Você ignora o tipo de empunhadura de armas equipadas. Ao causar dano físico, você recebe um bônus igual ao seu nível na rolagem de dano."
+    },
+    {
+      "id": "Wildtouch",
+      "name": "Dádiva da Natureza",
+      "description": "Você pode criar à vontade efeitos inofensivos e sutis envolvendo a natureza, como fazer com que uma flor cresça rapidamente, invocar uma brisa ou acender uma fogueira."
+    },
+    {
+      "id": "Not This Time",
+      "name": "Não Dessa Vez",
+      "description": "<b>Gaste 3 de Esperança</b> para forçar um adversário Distante ou mais próximo a refazer um teste de ataque ou uma rolagem de dano."
+    },
+    {
+      "id": "Rogue's Dodge",
+      "name": "Esquiva de Ladino",
+      "description": "<b>Gaste 3 de Esperança</b> para receber um bônus de +2 na Evasão até o próximo ataque que acertar você. Caso contrário, esse bônus dura até seu próximo descanso."
+    },
+    {
+      "id": "Volatile Magic",
+      "name": "Magia Volátil",
+      "description": "<b>Gaste 3 de Esperança</b> para rolar novamente uma quantidade qualquer de dados de dano em um ataque que causa dano mágico."
+    },
+    {
+      "id": "Life Support",
+      "name": "Alicerce da Vida",
+      "description": "<b>Gaste 3 de Esperança</b> para recuperar um Ponto de Vida de um aliado Próximo."
+    },
+    {
+      "id": "Ranger's Focus",
+      "name": "Foco do Caçador",
+      "description": "<b>Gaste uma Esperança</b> e ataque um alvo. Se acertar, cause o dano normal e faça do alvo do ataque o seu <i>Foco</i> temporariamente. Até o efeito desta habilidade acabar ou até você colocar outra criatura em <i>Foco</i>, receba os seguintes benefícios contra o seu alvo <i>Focado</i>:<br>• Você sabe precisamente em que direção ele está.<br>• Quando causar dano a esse alvo, ele deve marcar um Estresse.<br>• Quando erra um ataque contra ele, você pode encerrar seu Foco do Caçador para rolar seus Dados de Dualidade novamente."
+    },
+    {
+      "id": "No Mercy",
+      "name": "Sem Piedade",
+      "description": "<b>Gaste 3 de Esperança</b> para receber um bônus de +1 em testes de ataque até seu próximo descanso."
+    },
+    {
+      "id": "Broken Compass",
+      "name": "Bússola Quebrada",
+      "description": "Um item inicial para a classe Caçador."
+    },
+    {
+      "id": "Whispering Orb",
+      "name": "Orbe Sussurrante",
+      "description": "Um item inicial para a classe Feiticeiro."
+    },
+    {
+      "id": "A Romance Novel",
+      "name": "Livro de Romance",
+      "description": "Um item inicial para a classe Bardo."
+    },
+    {
+      "id": "Grappling Hook",
+      "name": "Arpéu",
+      "description": "Um item inicial para a classe Ladino."
+    },
+    {
+      "id": "Drawing Of A Lover",
+      "name": "Desenho de Alguém que Ama",
+      "description": "Um item inicial para a classe Guerreiro."
+    },
+    {
+      "id": "A Sharpening Stone",
+      "name": "Pedra de Amolar",
+      "description": "Um item inicial para a classe Guerreiro."
+    },
+    {
+      "id": "Strange Dirty Penant",
+      "name": "Estranho Pingente Encontrado na Terra",
+      "description": "Um item inicial para a classe Druida."
+    },
+    {
+      "id": "Tiny Elemental Pet",
+      "name": "Pequeno e Inofensivo Elemental de Estimação",
+      "description": "Um item inicial para a classe Mago."
+    },
+    {
+      "id": "Secret Key",
+      "name": "Chave Secreta",
+      "description": "Um item inicial para a classe Guardião."
+    },
+    {
+      "id": "Letter(Never Opened)",
+      "name": "Carta (Nunca Aberta)",
+      "description": "Um item inicial para a classe Bardo."
+    },
+    {
+      "id": "Family Heirloom",
+      "name": "Herança de Família",
+      "description": "Um item inicial para a classe Feiticeiro."
+    },
+    {
+      "id": "Bundle of Offerings",
+      "name": "Algumas Oferendas",
+      "description": "Um item inicial para a classe Serafim."
+    },
+    {
+      "id": "Totem from Mentor",
+      "name": "Totem de Seu Mentor",
+      "description": "Um item inicial para a classe Guardião."
+    },
+    {
+      "id": "Trophy from your First Kill",
+      "name": "Troféu do Seu Primeiro Abate",
+      "description": "Um item inicial para a classe Caçador."
+    },
+    {
+      "id": "Untranslated Book",
+      "name": "Livro que Você Está Tentando Traduzir",
+      "description": "Um item inicial para a classe Mago."
+    },
+    {
+      "id": "50ft of Rope",
+      "name": "15 metros de Corda",
+      "description": "Útil para escalar uma parede ou descer de um desfiladeiro."
+    },
+    {
+      "id": "Sigil of Your God",
+      "name": "Símbolo de Seu Deus",
+      "description": "Um item inicial para a classe Serafim."
+    },
+    {
+      "id": "Small Bag (Rocks & Bones)",
+      "name": "Pequena Bolsa com Ossos e Pedras",
+      "description": "Um item inicial para a classe Druida."
+    },
+    {
+      "id": "Basic Supplies",
+      "name": "Suprimentos Básicos",
+      "description": "Barraca, caixa para fogo, rações etc."
+    },
+    {
+      "id": "Set of Forgery Tools",
+      "name": "Conjunto de Ferramentas de Falsificação",
+      "description": "Um item inicial para a classe Ladino."
+    },
+    {
+      "id": "Torch",
+      "name": "Tocha",
+      "description": "Útil para iluminar uma sala escura."
+    }    
+	]
+}

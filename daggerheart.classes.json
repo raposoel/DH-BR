@@ -58,7 +58,7 @@
     {
       "id": "Attack Of Opportunity",
       "name": "Ataque de Oportunidade",
-      "description": "Se um adversário Corpo a Corpo tentar sair desse alcance, faça um teste de reação usando um atributo à sua escolha contra a Dificuldade dele. Em um sucesso, escolha um efeito; em um sucesso crítico, escolha dois:<br>• Ele não pode sair de onde está.<br>• Você causa dano a ele igual ao dano de sua arma principal.<br>• Você se movimenta com ele."
+      "description": "Se um adversário Adjacente tentar sair desse alcance, faça um teste de reação usando um atributo à sua escolha contra a Dificuldade dele. Em um sucesso, escolha um efeito; em um sucesso crítico, escolha dois:<br>• Ele não pode sair de onde está.<br>• Você causa dano a ele igual ao dano de sua arma principal.<br>• Você se movimenta com ele."
     },
     {
       "id": "Cloaked",
@@ -68,7 +68,7 @@
     {
       "id": "Sneak Attack",
       "name": "Ataque Furtivo",
-      "description": "Quando acertar um ataque enquanto estiver <i>Oculto</i>, ou enquanto um aliado estiver Corpo a Corpo ao seu alvo, some um número de <b>d6</b> igual ao seu patamar à rolagem de dano."
+      "description": "Quando acertar um ataque enquanto estiver <i>Oculto</i>, ou enquanto um aliado estiver Adjacente ao seu alvo, some um número de <b>d6</b> igual ao seu patamar à rolagem de dano."
     },
     {
       "id": "Strange Patterns",
@@ -83,12 +83,12 @@
     {
       "id": "Arcane Sense",
       "name": "Sentido Arcano",
-      "description": "Você pode sentir a presença de objetos e pessoas com magia quando estão Próximos."
+      "description": "Você pode sentir a presença de objetos e pessoas com magia quando estão Perto."
     },
     {
       "id": "Make a Scene",
       "name": "Fazer um Escândalo",
-      "description": "<b>Gaste 3 de Esperança</b> para <i>Distrair</i> temporariamente um alvo Próximo, aplicando uma penalidade de-2 à Dificuldade dele."
+      "description": "<b>Gaste 3 de Esperança</b> para <i>Distrair</i> temporariamente um alvo Perto, aplicando uma penalidade de -2 à Dificuldade dele."
     },
     {
       "id": "Channel Raw Power",
@@ -123,7 +123,7 @@
     {
       "id": "Prayer Dice",
       "name": "Dados de Oração",
-      "description": "No início de cada sessão, role um número de <b>d4</b> igual ao atributo de conjuração de sua subclasse e coloque-os sobre o espaço apropriado na ficha de personagem. Eles são seus Dados de Oração. Você pode gastar qualquer número de Dados de Oração para auxiliar a si mesmo ou um aliado até o alcance Distante. Você pode usar o valor de um dado gasto para reduzir o dano sofrido, somá-lo ao resultado de uma rolagen após ela ser feita ou receber um número de Esperança igual ao resultado. No fim de cada sessão, Dados de Oração não utilizados são descartados."
+      "description": "No início de cada sessão, role um número de <b>d4</b> igual ao atributo de conjuração de sua subclasse e coloque-os sobre o espaço apropriado na ficha de personagem. Eles são seus Dados de Oração. Você pode gastar qualquer número de Dados de Oração para auxiliar a si mesmo ou um aliado até Longe. Você pode usar o valor de um dado gasto para reduzir o dano sofrido, somá-lo ao resultado de uma rolagem após ela ser feita ou receber um número de Esperança igual ao resultado. No fim de cada sessão, Dados de Oração não utilizados são descartados."
     },
     {
       "id": "Frontline Tank",
@@ -133,7 +133,7 @@
     {
       "id": "Minor Illusion",
       "name": "Ilusão Menor",
-      "description": "Faça um <b>teste de conjuração (10)</b>. Em um sucesso, você cria uma ilusão visual em alcance Próxirno. Ela não pode ultrapassar seu tamanho. Essa ilusão parece convincente a qualquer um que esteja Próximo ou mais distante."
+      "description": "Faça um <b>teste de conjuração (10)</b>. Em um sucesso, você cria uma ilusão visual Perto. Ela não pode ultrapassar seu tamanho. Essa ilusão parece convincente a qualquer um que esteja Perto ou mais distante."
     },
     {
       "id": "Combat Training",
@@ -148,7 +148,7 @@
     {
       "id": "Not This Time",
       "name": "Não Dessa Vez",
-      "description": "<b>Gaste 3 de Esperança</b> para forçar um adversário Distante ou mais próximo a refazer um teste de ataque ou uma rolagem de dano."
+      "description": "<b>Gaste 3 de Esperança</b> para forçar um adversário Longe ou mais próximo a refazer um teste de ataque ou uma rolagem de dano."
     },
     {
       "id": "Rogue's Dodge",
@@ -163,7 +163,7 @@
     {
       "id": "Life Support",
       "name": "Alicerce da Vida",
-      "description": "<b>Gaste 3 de Esperança</b> para recuperar um Ponto de Vida de um aliado Próximo."
+      "description": "<b>Gaste 3 de Esperança</b> para recuperar um Ponto de Vida de um aliado Perto."
     },
     {
       "id": "Ranger's Focus",

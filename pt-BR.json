@@ -572,8 +572,8 @@
         },
         "CLASS": {
             "Feature": {
-                "rallyDice": "Dado de Inspiração de Bardo",
-                "short": "Inspiração"
+                "rallyDice": "Dado de Piquete de Bardo",
+                "short": "Reagrupar"
             }
         },
         "CONFIG": {

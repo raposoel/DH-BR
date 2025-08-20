@@ -7,12 +7,12 @@
     {
       "id": "Quick Reactions",
       "name": "Reação Rápida",
-      "description": "Marque um Estresse para receber vantagem em um teste de reação."
+      "description": "<b>Marque um Estresse</b> para receber vantagem em um teste de reação."
     },
     {
       "id": "Increased Fortitude",
       "name": "Vigoroso",
-      "description": "Gaste 3 de Esperança para reduzir à metade o dano físico sofrido."
+      "description": "<b>Gaste 3 de Esperança<b> para reduzir à metade o dano físico sofrido."
     },
     {
       "id": "Efficient",
@@ -37,17 +37,17 @@
     {
       "id": "Sturdy",
       "name": "Robusto",
-      "description": "Quando você tem apenas 1 Ponto de Vida restante, ataques contra você têm desvantagem."
+      "description": "Quando você tem apenas um Ponto de Vida restante, ataques contra você têm desvantagem."
     },
     {
       "id": "Luckbringer",
       "name": "Talismã da Sorte",
-      "description": "No início de cada sessão, todos os membros de seu grupo recebem 1 Ponto de Esperança."
+      "description": "No início de cada sessão, todos os membros de seu grupo recebem uma Esperança."
     },
     {
       "id": "Fungril Network",
       "name": "Conexão Fungril",
-      "description": "Faça um teste de Instinto (12) para conversar com outros membros de sua ancestralidade por meio da rede micelial. Em um sucesso, você pode se comunicar a qualquer distância."
+      "description": "Faça um <b>teste de Instinto (12)</b> para conversar com outros membros de sua ancestralidade por meio da rede micelial. Em um sucesso, você pode se comunicar a qualquer distância."
     },
     {
       "id": "Shell",
@@ -57,17 +57,17 @@
     {
       "id": "Charge",
       "name": "Investida",
-      "description": "Ao obter sucesso em um teste de Agilidade para se movimentar do alcance Distante ou Muito Distante para Corpo a Corpo a um ou mais alvos, você pode marcar um Estresse para causar 1d12 de dano físico a todos os alvos em alcance Corpo a Corpo."
+      "description": "Ao obter sucesso em um teste de Agilidade para se movimentar de Longe ou Bem Longe para Adjacente a um ou mais alvos, você pode <b>marcar um Estresse</b> para causar 1d12 de dano físico a todos os alvos Adjacentes."
     },
     {
       "id": "Danger Sense",
       "name": "Cheiro de Perigo",
-      "description": "Uma vez por descanso, marque um Estresse para forçar um adversário a fazer novamente um teste de ataque contra você ou um aliado Muito Próximo."
+      "description": "Uma vez por descanso, <b>marque um Estresse</b> para forçar um adversário a fazer novamente um teste de ataque contra você ou um aliado Muito Próximo."
     },
     {
       "id": "Adaptability",
       "name": "Adaptabilidade",
-      "description": "Ao rolar uma falha em um teste que usou uma de suas Experiências, você pode marcar um Estresse para fazer a rolagem novamente."
+      "description": "Ao rolar uma falha em um teste que usou uma de suas Experiências, você pode <b>marcar um Estresse</b> para fazer a rolagem novamente."
     },
     {
       "id": "Halfling",
@@ -112,7 +112,7 @@
     {
       "id": "Fearless",
       "name": "Destemido",
-      "description": "Quando rolar com Medo, você pode marcar 2 Pontos de Fadiga para rolar com Esperança em vez disso."
+      "description": "Quando rolar com Medo, você pode <b>marcar 2 Estresse</b> para rolar com Esperança em vez disso."
     },
     {
       "id": "Fungril",
@@ -122,7 +122,7 @@
     {
       "id": "Thick Skin",
       "name": "Pele Espessa",
-      "description": "Quando sofre dano leve, você pode marcar 2 Pontos de Fadiga em vez de marcar 1 Ponto de Vida."
+      "description": "Quando sofre dano leve, você pode <b>marcar 2 Estresse</b> em vez de marcar um Ponto de Vida."
     },
     {
       "id": "Celestial Trance",
@@ -132,12 +132,12 @@
     {
       "id": "Luckbender",
       "name": "Testar a Sorte",
-      "description": "Uma vez por sessão, após você ou um aliado voluntário Próximo fazer um teste, você pode gastar 3 Pontos de Esperança para rolar novamente os Dados de Dualidade."
+      "description": "Uma vez por sessão, após você ou um aliado voluntário Perto fazer um teste, você pode<b>gastar 3 de Esperança</b> para rolar novamente os Dados de Dualidade."
     },
     {
       "id": "Retract",
       "name": "Retração",
-      "description": "Marque um Estresse para entrar na sua carapaça. Enquanto estiver dentro dela, você tem resistência a dano físico, desvantagem em testes e não pode se mover."
+      "description": "<b>Marque um Estresse</b> para entrar na sua carapaça. Enquanto estiver dentro dela, você tem resistência a dano físico, desvantagem em testes e não pode se mover."
     },
     {
       "id": "Drakona",
@@ -147,17 +147,17 @@
     {
       "id": "Reach",
       "name": "Alcance",
-      "description": "Trate qualquer arma, talento, magia ou outra habilidade com alcance Corpo a Corpo como se ela tivesse alcance Muito Próximo."
+      "description": "Trate qualquer arma, talento, magia ou outra habilidade com alcance Adjacente como se ela tivesse alcance Bem Perto."
     },
     {
       "id": "Wings",
       "name": "Asas",
-      "description": "Você pode voar. Enquanto estiver voando, e após um adversário atacar você, você pode marcar um Estresse para receber um bônus de +2 na Evasão contra esse ataque."
+      "description": "Você pode voar. Enquanto estiver voando, e após um adversário atacar você, você pode <b>marcar um Estresse</b> para receber um bônus de +2 na Evasão contra esse ataque."
     },
     {
       "id": "Death Connection",
       "name": "Vínculo Mortal",
-      "description": "Enquanto estiver tocando um cadáver que tenha morrido recentemente, você pode marcar um Estresse para extrair dele uma memória relacionada a uma emoção ou sensação específica à sua escolha."
+      "description": "Enquanto estiver tocando um cadáver que tenha morrido recentemente, você pode <b>marcar um Estresse</b> para extrair dele uma memória relacionada a uma emoção ou sensação específica à sua escolha."
     },
     {
       "id": "Faerie",
@@ -167,7 +167,7 @@
     {
       "id": "Tusks",
       "name": "Presas",
-      "description": "Quando acerta um ataque contra um alvo Corpo a Corpo, você pode gastar 1 Ponto de Esperança para perfurá-lo com suas presas, causando 1d6 de dano adicional."
+      "description": "Quando acerta um ataque contra um alvo Adjacente, você pode <b>gastar uma Esperança</b> para perfurá-lo com suas presas, causando 1d6 de dano adicional."
     },
     {
       "id": "Surefooted",
@@ -177,7 +177,7 @@
     {
       "id": "Retracting Claws",
       "name": "Garras Retráteis",
-      "description": "Faça um teste de Agilidade para arranhar um alvo Corpo a Corpo. Em um sucesso, ele fica temporariamente Vulnerável."
+      "description": "Faça um <b>teste de Agilidade</b> para arranhar um alvo Adjacente. Em um sucesso, ele fica temporariamente <i>Vulnerável</i>."
     },
     {
       "id": "Internal Compass",
@@ -202,7 +202,7 @@
     {
       "id": "Kick",
       "name": "Coice",
-      "description": "Quando você acerta um ataque contra um alvo Corpo a Corpo, você pode marcar um Estresse para dar um coice, causando 2d6 de dano adicional. Ao fazer isso, você empurra o adversário ou a si mesmo para um ponto em alcance Muito Próximo."
+      "description": "Quando você acerta um ataque contra um alvo Adjacente, você pode <b>marcar um Estresse</b> para dar um coice, causando 2d6 de dano adicional. Ao fazer isso, você empurra o adversário ou a si mesmo para um ponto Bem Perto."
     },
     {
       "id": "Infernis",
@@ -222,17 +222,17 @@
     {
       "id": "Feline Instincts",
       "name": "Instinto Felino",
-      "description": "Ao fazer uma teste de Agilidade, você pode gastar 2 Pontos de Esperança para rolar seu Dado de Esperança novamente."
+      "description": "Ao fazer uma teste de Agilidade, você pode <b>gastar 2 de Esperança</b> para rolar seu Dado de Esperança novamente."
     },
     {
       "id": "Caprine Leap",
       "name": "Salto Caprino",
-      "description": "Você pode saltar para qualquer ponto no alcance Próximo como se estivesse usando seu movimento normal, o que lhe permite transpor obstáculos, atravessar fendas no solo ou escalar barreiras com facilidade."
+      "description": "Você pode saltar para qualquer ponto Perto como se estivesse usando seu movimento normal, o que lhe permite transpor obstáculos, atravessar fendas no solo ou escalar barreiras com facilidade."
     },
     {
       "id": "Long Tongue",
       "name": "Linguarudo",
-      "description": "Você pode usar sua língua comprida para agarrar coisas Próximas. Marque um Estresse para usá-la como uma arma de Finesse com alcance Próximo que causa d12 de dano físico com sua Proficiência."
+      "description": "Você pode usar sua língua comprida para agarrar coisas Perto. <b>Marque um Estresse</b> para usá-la como uma arma de Finesse com alcance Próximo que causa d12 de dano físico com sua Proficiência."
     },
     {
       "id": "Dwarf",
@@ -247,7 +247,7 @@
     {
       "id": "Elemental Breath",
       "name": "Sopro Elemental",
-      "description": "Escolha um elemento para seu sopro (como eletricidade, fogo ou gelo). Você pode usar esse sopro contra um alvo ou grupo de alvos Muito Próximo, tratando-o como uma arma que usa Instinto e causa d8 de dano mágico com sua Proficiência."
+      "description": "Escolha um elemento para seu sopro (como eletricidade, fogo ou gelo). Você pode usar esse sopro contra um alvo ou grupo de alvos Bem Perto, tratando-o como uma arma que usa Instinto e causa d8 de dano mágico com sua Proficiência."
     },
     {
       "id": "Natural Climber",
@@ -257,12 +257,12 @@
     {
       "id": "Endurance",
       "name": "Resistência",
-      "description": "Receba 1 Ponto de Vida adicional durante a criação de personagem."
+      "description": "Receba um Ponto de Vida adicional durante a criação de personagem."
     },
     {
       "id": "Scales",
       "name": "Escamas",
-      "description": "Suas escamas servem como proteção natural. Quando sofrer dano grave, você pode marcar um Estresse para marcar 1 Ponto de Vida a menos."
+      "description": "Suas escamas servem como proteção natural. Quando sofrer dano severo, você pode <b>marcar um Estresse</b> para marcar um Ponto de Vida a menos."
     },
     {
       "id": "Human",

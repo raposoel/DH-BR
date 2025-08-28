@@ -406,7 +406,7 @@
                         "name": "Preparar-se"
                     },
                     "repairArmor": {
-                        "description": "Descreva como você passa um tempo reparando sua armadura e recupera todos os seus Pontos de Armadura. Você também pode fazer isso na armadura de um aliado.",
+                        "description": "Descreva como você passa um tempo reparando sua armadura e recupera toda sua Armadura. Você também pode fazer isso na armadura de um aliado.",
                         "name": "Reparar Armadura por Completo"
                     },
                     "tendToWounds": {
@@ -431,7 +431,7 @@
                     },
                     "repairArmor": {
                         "name": "Reparar Armadura",
-                        "description": "Descreva como você conserta sua armadura rapidamente, então recupere um número de Pontos de Armadura igual a 1d4 + seu patamar. Você pode fazer isso na armadura de um aliado."
+                        "description": "Descreva como você conserta sua armadura rapidamente, então recupere um número de Armadura igual a 1d4 + seu patamar. Você pode fazer isso na armadura de um aliado."
                     },
                     "prepare": {
                         "name": "Preparar-se",
@@ -456,7 +456,7 @@
                     },
                     "armored": {
                         "name": "Blindado",
-                        "description": "Quando seu companheiro animal sofre dano, você pode marcar um de seus Pontos de Armadura em vez de marcar um Estresse dele."
+                        "description": "Quando seu companheiro animal sofre dano, você pode marcar uma Armadura em vez de marcar um Estresse dele."
                     },
                     "bonded": {
                         "name": "Apegado",
@@ -494,7 +494,7 @@
                     "intelligent": "Seu companheiro recebe um bônus permanente de +1 em uma Experiência de companheiro à sua escolha.",
                     "lightInTheDark": "Seu personagem pode marcar uma Esperança adicional.",
                     "creatureComfort": "Uma vez por descanso, quando você passa um momento de tranquilidade dando carinho e atenção a seu companheiro animal, você pode receber uma Esperança ou cada um de vocês pode limpar um Estresse.",
-                    "armored": "Quando seu companheiro animal sofre dano, você pode marcar um de seus Pontos de Armadura em vez de marcar um Estresse dele.",
+                    "armored": "Quando seu companheiro animal sofre dano, você pode marcar uma Armadura em vez de marcar um Estresse dele.",
                     "vicious": "Aumente o dado de dano ou alcance de seu companheiro em um passo (d6 para d8, Corpo a Corpo para Próximo, etc.)",
                     "resilient": "Seu companheiro recebe um Estresse adicional.",
                     "bonded": "Quando você marca seu último Ponto de Vida, seu companheiro animal vem rapidamente para socorrê-lo. Role um número de d6 igual ao número de Estresse que ele ainda tem disponível e marque-os. Se tirar 6 em qualquer uma dessas rolagens, seu companheiro animal ajuda você. Recupere seu último Ponto de Vida e volte à cena.",
@@ -684,11 +684,11 @@
                 },
                 "fortified": {
                     "name": "Fortificação",
-                    "description": "Ao marcar um Ponto de Armadura, você reduz a gravidade de um ataque em dois limiares em vez de um.",
+                    "description": "Ao marcar uma Armadura, você reduz a gravidade de um ataque em dois limiares em vez de um.",
                     "effects": {
                         "fortified": {
                             "name": "Fortificação",
-                            "description": "Ao marcar um Ponto de Armadura, você reduz a gravidade de um ataque em dois limiares em vez de um."
+                            "description": "Ao marcar uma Armadura, você reduz a gravidade de um ataque em dois limiares em vez de um."
                         }
                     }
                 },
@@ -714,11 +714,11 @@
                 },
                 "hopeful": {
                     "name": "Esperança",
-                    "description": "Quando for gastar uma Esperança, você pode marcar um Ponto de Armadura em vez disso.",
+                    "description": "Quando for gastar uma Esperança, você pode marcar uma Armadura em vez disso.",
                     "actions": {
                         "hope": {
                             "name": "Esperança",
-                            "description": "Quando for gastar uma Esperança, você pode marcar um Ponto de Armadura em vez disso."
+                            "description": "Quando for gastar uma Esperança, você pode marcar uma Armadura em vez disso."
                         }
                     }
                 },
@@ -734,31 +734,31 @@
                 },
                 "magical": {
                     "name": "Mágica",
-                    "description": "Você não pode marcar PA para reduzir dano físico.",
+                    "description": "Você não pode marcar Armadura para reduzir dano físico.",
                     "effects": {
                         "magical": {
                             "name": "Mágica",
-                            "description": "Você não pode marcar PA para reduzir dano físico."
+                            "description": "Você não pode marcar Armadura para reduzir dano físico."
                         }
                     }
                 },
                 "painful": {
                     "name": "Excruciante",
-                    "description": "Sempre que marcar um Ponto de Armadura, você também deve marcar um Estresse.",
+                    "description": "Sempre que marcar uma Armadura, você também deve marcar um Estresse.",
                     "actions": {
                         "pain": {
                             "name": "Dor",
-                            "description": "Sempre que marcar um Ponto de Armadura, você também deve marcar um Estresse."
+                            "description": "Sempre que marcar uma Armadura, você também deve marcar um Estresse."
                         }
                     }
                 },
                 "physical": {
                     "name": "Física",
-                    "description": "Você não pode marcar Ponto de Armadura para reduzir dano mágico.",
+                    "description": "Você não pode marcar Armadura para reduzir dano mágico.",
                     "effects": {
                         "physical": {
                             "name": "Física",
-                            "description": "Você não pode marcar Ponto de Armadura para reduzir dano mágico."
+                            "description": "Você não pode marcar Armadura para reduzir dano mágico."
                         }
                     }
                 },
@@ -774,27 +774,27 @@
                 },
                 "reinforced": {
                     "name": "Reforços",
-                    "description": "Quando marcar seu último Ponto de Armadura, aumente seus limiares de dano em +2 até você recuperar pelo menos um Ponto de Armadura.",
+                    "description": "Quando marcar sua última Armadura, aumente seus limiares de dano em +2 até você recuperar pelo menos uma Armadura.",
                     "actions": {
                         "reinforce": {
                             "name": "Reforçar",
-                            "description": "Quando marcar seu último Ponto de Armadura, aumente seus limiares de dano em +2 até você recuperar pelo menos um Ponto de Armadura."
+                            "description": "Quando marcar sua última Armadura, aumente seus limiares de dano em +2 até você recuperar pelo menos uma Armadura."
                         }
                     },
                     "effects": {
                         "reinforced": {
                             "name": "Reforços",
-                            "description": "Quando marcar seu último Ponto de Armadura, aumente seus limiares de dano em +2 até você recuperar pelo menos um Ponto de Armadura."
+                            "description": "Quando marcar sua última Armadura, aumente seus limiares de dano em +2 até você recuperar pelo menos uma Armadura."
                         }
                     }
                 },
                 "resilient": {
                     "name": "Resiliente",
-                    "description": "Antes de marcar seu último Ponto de Armadura, role 1d6. Em um resultado 6, reduza a gravidade do dano em um limiar sem marcar um Ponto de Armadura.",
+                    "description": "Antes de marcar sua última Armadura, role 1d6. Em um resultado 6, reduza a gravidade do dano em um limiar sem marcar Armadura.",
                     "actions": {
                         "resilient": {
                             "name": "Resiliente",
-                            "description": "Antes de marcar seu último Ponto de Armadura, role 1d6. Em um resultado 6, reduza a gravidade do dano em um limiar sem marcar um Ponto de Armadura."
+                            "description": "Antes de marcar sua última Armadura, role 1d6. Em um resultado 6, reduza a gravidade do dano em um limiar sem marcar Armadura."
                         }
                     }
                 },
@@ -810,21 +810,21 @@
                 },
                 "shifting": {
                     "name": "Inconstante",
-                    "description": "Ao sofrer um ataque, você pode marcar 1 PA para que o teste deste ataque seja feito com desvantagem.",
+                    "description": "Ao sofrer um ataque, você pode marcar uma Armadura para que o teste deste ataque seja feito com desvantagem.",
                     "actions": {
                         "shift": {
                             "name": "Mudar",
-                            "description": "Ao sofrer um ataque, você pode marcar 1 PA para que o teste deste ataque seja feito com desvantagem."
+                            "description": "Ao sofrer um ataque, você pode marcar uma Armadura para que o teste deste ataque seja feito com desvantagem."
                         }
                     }
                 },
                 "timeslowing": {
                     "name": "Lentidão Temporal",
-                    "description": "Quando sofre um ataque, marque um Ponto de Armadura para somar um bônus de 1d4 na sua Evasão contra este ataque.",
+                    "description": "Quando sofre um ataque, marque uma Armadura para somar um bônus de 1d4 na sua Evasão contra este ataque.",
                     "actions": {
                         "slowTime": {
                             "name": "Desacelerar o Tempo",
-                            "description": "Quando sofre um ataque, marque um Ponto de Armadura para somar um bônus de 1d4 na sua Evasão contra este ataque."
+                            "description": "Quando sofre um ataque, marque uma Armadura para somar um bônus de 1d4 na sua Evasão contra este ataque."
                         }
                     }
                 },
@@ -1106,11 +1106,11 @@
             "WeaponFeature": {
                 "barrier": {
                     "name": "Barreira",
-                    "description": "+2 Pontos de Armadura; –1 na Evasão",
+                    "description": "+2 de Armadura; –1 na Evasão",
                     "effects": {
                         "barrier": {
                             "name": "Barreira",
-                            "description": "+2 Pontos de Armadura; –1 na Evasão"
+                            "description": "+2 de Armadura; –1 na Evasão"
                         }
                     }
                 },
@@ -1212,11 +1212,11 @@
                 },
                 "deflecting": {
                     "name": "Desviar",
-                    "description": "Ao sofrer um ataque, você pode marcar um Ponto de Armadura para receber um bônus na Evasão igual à sua Armadura contra este ataque.",
+                    "description": "Ao sofrer um ataque, você pode marcar uma Armadura para receber um bônus na Evasão igual à sua Armadura contra este ataque.",
                     "actions": {
                         "deflect": {
                             "name": "Desviar",
-                            "description": "Ao sofrer um ataque, você pode marcar um Ponto de Armadura para receber um bônus na Evasão igual à sua Armadura contra este ataque."
+                            "description": "Ao sofrer um ataque, você pode marcar uma Armadura para receber um bônus na Evasão igual à sua Armadura contra este ataque."
                         }
                     },
                     "effects": {
@@ -1254,11 +1254,11 @@
                 },
                 "doubleDuty": {
                     "name": "Dupla Função",
-                    "description": "+1 PA; +1 de dano para a arma principal em alvos Corpo a Corpo",
+                    "description": "+1 Armadura; +1 de dano para a arma principal em alvos Corpo a Corpo",
                     "effects": {
                         "doubleDuty": {
                             "name": "Dupla Função",
-                            "description": "+1 PA; +1 de dano para a arma principal em alvos Corpo a Corpo"
+                            "description": "+1 Armadura; +1 de dano para a arma principal em alvos Corpo a Corpo"
                         }
                     }
                 },
@@ -1586,11 +1586,11 @@
                 },
                 "sheltering": {
                     "name": "Proteção",
-                    "description": "Ao marcar um Ponto de Armadura, ele reduz o dano causado em você e em todos os aliados CaC que receberam o mesmo dano.",
+                    "description": "Ao marcar uma Armadura, ele reduz o dano causado em você e em todos os aliados CaC que receberam o mesmo dano.",
                     "actions": {
                         "shelter": {
                             "name": "Abrigo",
-                            "description": "Ao marcar um Ponto de Armadura, ele reduz o dano causado em você e em todos os aliados CaC que receberam o mesmo dano."
+                            "description": "Ao marcar uma Armadura, ele reduz o dano causado em você e em todos os aliados CaC que receberam o mesmo dano."
                         }
                     }
                 },
@@ -1848,13 +1848,13 @@
             "Rules": {
                 "damageReduction": {
                     "increasePerArmorMark": {
-                        "label": "Redução de Dano por Ponto de Armadura",
+                        "label": "Redução de Dano por Armadura",
                         "hint": "Um ponto de armadura usado normalmente reduz o dano em um limiar. Este valor aumenta o número de limiares que o dano é reduzido."
                     },
                     "maxArmorMarkedBonus": "Máx. de Armadura Usada",
                     "maxArmorMarkedStress": {
                         "label": "Máx. de Armadura Usada com Estresse",
-                        "hint": "Se este valor for definido, você pode usar essa quantidade de Estresse para gastar Pontos de Armadura adicionais além do seu máximo normal."
+                        "hint": "Se este valor for definido, você pode usar essa quantidade de Estresse para gastar Armadura adicional além do seu máximo normal."
                     },
                     "stress": {
                         "any": {

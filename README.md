@@ -10,8 +10,7 @@ Diferenças com a tradução oficial:
 Baseado no trabalho do Mestre Digital. https://github.com/brunocalado/daggerheart-ptbr
 
 # Como instalar
-Manifest: [https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/modulo/module.json](https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json)
-
+Manifest: https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json
 Aproveite seu jogo traduzido de forma a refletir o jogo original na essência.
 
 # License

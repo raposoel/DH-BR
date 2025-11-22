@@ -8,7 +8,7 @@
 		{
 			"id": "Bard",
 			"name": "Bardo",
-			"description": "Bardos são as pessoas mais carismáticas dos reinos. Membros desta classe são mestres do fascínio e se especializam em diversos tipos de performance, como a música, o humor e a contação de histórias. Bardos são ótimos em situações sociais, seja interagindo com um público ou com un indivíduo. Ainda que hajam membros dessa classe com egos inflados, há escolas e guildas onde bardos compartilham laços e conhecimento. Embora sejam os mais capazes de unir pessoas, um bardo de temperamento forte pode dividir um grupo com a mesma facilidade."
+			"description": "Bardos são as pessoas mais carismáticas dos reinos. Membros desta classe são mestres do fascínio e se especializam em diversos tipos de performance, como a música, o humor e a contação de histórias. Bardos são ótimos em situações sociais, seja interagindo com um público ou com um indivíduo. Ainda que hajam membros dessa classe com egos inflados, há escolas e guildas onde bardos compartilham laços e conhecimento. Embora sejam os mais capazes de unir pessoas, um bardo de temperamento forte pode dividir um grupo com a mesma facilidade."
 		},
 		{
 			"id": "Ranger",
@@ -83,12 +83,12 @@
     {
       "id": "Arcane Sense",
       "name": "Sentido Arcano",
-      "description": "Você pode sentir a presença de objetos e pessoas com magia quando estão Perto."
+      "description": "Você pode sentir a presença de objetos e pessoas com magia quando estão Próximos."
     },
     {
       "id": "Make a Scene",
       "name": "Fazer um Escândalo",
-      "description": "<b>Gaste 3 de Esperança</b> para <i>Distrair</i> temporariamente um alvo Perto, aplicando uma penalidade de -2 à Dificuldade dele."
+      "description": "<b>Gaste 3 de Esperança</b> para <i>Distrair</i> temporariamente um alvo Próximo, aplicando uma penalidade de -2 à Dificuldade dele."
     },
     {
       "id": "Channel Raw Power",
@@ -123,7 +123,7 @@
     {
       "id": "Prayer Dice",
       "name": "Dados de Oração",
-      "description": "No início de cada sessão, role um número de <b>d4</b> igual ao atributo de conjuração de sua subclasse e coloque-os sobre o espaço apropriado na ficha de personagem. Eles são seus Dados de Oração. Você pode gastar qualquer número de Dados de Oração para auxiliar a si mesmo ou um aliado até Longe. Você pode usar o valor de um dado gasto para reduzir o dano sofrido, somá-lo ao resultado de uma rolagem após ela ser feita ou receber um número de Esperança igual ao resultado. No fim de cada sessão, Dados de Oração não utilizados são descartados."
+      "description": "No início de cada sessão, role um número de <b>d4</b> igual ao atributo de conjuração de sua subclasse e coloque-os sobre o espaço apropriado na ficha de personagem. Eles são seus Dados de Oração. Você pode gastar qualquer número de Dados de Oração para auxiliar a si mesmo ou um aliado Distante. Você pode usar o valor de um dado gasto para reduzir o dano sofrido, somá-lo ao resultado de uma rolagem após ela ser feita ou receber um número de Esperança igual ao resultado. No fim de cada sessão, Dados de Oração não utilizados são descartados."
     },
     {
       "id": "Frontline Tank",
@@ -133,7 +133,7 @@
     {
       "id": "Minor Illusion",
       "name": "Ilusão Menor",
-      "description": "Faça um <b>teste de conjuração (10)</b>. Em um sucesso, você cria uma ilusão visual Perto. Ela não pode ultrapassar seu tamanho. Essa ilusão parece convincente a qualquer um que esteja Perto ou mais distante."
+      "description": "Faça um <b>teste de conjuração (10)</b>. Em um sucesso, você cria uma ilusão visual Próxima. Ela não pode ultrapassar seu tamanho. Essa ilusão parece convincente a qualquer um que esteja Próximo ou mais distante."
     },
     {
       "id": "Combat Training",
@@ -148,7 +148,7 @@
     {
       "id": "Not This Time",
       "name": "Não Dessa Vez",
-      "description": "<b>Gaste 3 de Esperança</b> para forçar um adversário Longe ou mais próximo a refazer um teste de ataque ou uma rolagem de dano."
+      "description": "<b>Gaste 3 de Esperança</b> para forçar um adversário Distante ou mais próximo a refazer um teste de ataque ou uma rolagem de dano."
     },
     {
       "id": "Rogue's Dodge",
@@ -163,7 +163,7 @@
     {
       "id": "Life Support",
       "name": "Alicerce da Vida",
-      "description": "<b>Gaste 3 de Esperança</b> para recuperar um Ponto de Vida de um aliado Perto."
+      "description": "<b>Gaste 3 de Esperança</b> para recuperar um Ponto de Vida de um aliado Próximo."
     },
     {
       "id": "Ranger's Focus",
@@ -280,5 +280,5 @@
       "name": "Tocha",
       "description": "Útil para iluminar uma sala escura."
     }    
-	]
+  ]
 }

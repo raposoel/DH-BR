@@ -57,7 +57,7 @@
     {
       "id": "Charge",
       "name": "Investida",
-      "description": "Ao obter sucesso em um teste de Agilidade para se movimentar de Longe ou Bem Longe para Adjacente a um ou mais alvos, você pode <b>marcar um Estresse</b> para causar 1d12 de dano físico a todos os alvos Adjacentes."
+      "description": "Ao obter sucesso em um teste de Agilidade para se movimentar de Longe ou Muito Longe para Adjacente a um ou mais alvos, você pode <b>marcar um Estresse</b> para causar 1d12 de dano físico a todos os alvos Adjacentes."
     },
     {
       "id": "Danger Sense",
@@ -147,7 +147,7 @@
     {
       "id": "Reach",
       "name": "Alcance",
-      "description": "Trate qualquer arma, talento, magia ou outra habilidade com alcance Adjacente como se ela tivesse alcance Bem Perto."
+      "description": "Trate qualquer arma, talento, magia ou outra habilidade com alcance Adjacente como se ela tivesse alcance Muito Perto."
     },
     {
       "id": "Wings",
@@ -202,7 +202,7 @@
     {
       "id": "Kick",
       "name": "Coice",
-      "description": "Quando você acerta um ataque contra um alvo Adjacente, você pode <b>marcar um Estresse</b> para dar um coice, causando 2d6 de dano adicional. Ao fazer isso, você empurra o adversário ou a si mesmo para um ponto Bem Perto."
+      "description": "Quando você acerta um ataque contra um alvo Adjacente, você pode <b>marcar um Estresse</b> para dar um coice, causando 2d6 de dano adicional. Ao fazer isso, você empurra o adversário ou a si mesmo para um ponto Muito Perto."
     },
     {
       "id": "Infernis",
@@ -247,7 +247,7 @@
     {
       "id": "Elemental Breath",
       "name": "Sopro Elemental",
-      "description": "Escolha um elemento para seu sopro (como eletricidade, fogo ou gelo). Você pode usar esse sopro contra um alvo ou grupo de alvos Bem Perto, tratando-o como uma arma que usa Instinto e causa d8 de dano mágico com sua Proficiência."
+      "description": "Escolha um elemento para seu sopro (como eletricidade, fogo ou gelo). Você pode usar esse sopro contra um alvo ou grupo de alvos Muito Perto, tratando-o como uma arma que usa Instinto e causa d8 de dano mágico com sua Proficiência."
     },
     {
       "id": "Natural Climber",

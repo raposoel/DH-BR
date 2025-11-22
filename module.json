@@ -1,8 +1,8 @@
 {
-  "id": "daggerheart-ptbr",
-  "title": "Daggerheart - Tradução para Português (Brasil)",
-  "description": "<p>Adiciona o idioma Português (Brasil) para o sistema de jogo Daggerheart. Sem Inventar, só traduzido.</p>",
-  "version": "1.0.1",
+  "id": "daggerheart-br",
+  "title": "Daggerheart - Tradução para Brasileiro",
+  "description": "<p>Adiciona o idioma Brasileiro corrigido para o sistema de jogo Daggerheart. Sem Inventar, só traduzido.</p>",
+  "version": "1.5",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -33,7 +33,7 @@
     {
       "name": "Corrigido por Raposo El",
       "discord": "luizrealoficial",
-      "url": "https://github.com/Lsarga/DH-BR",
+      "url": "https://github.com/raposoel",
       "flags": {}
     }
   ],
@@ -44,10 +44,12 @@
     {
       "lang": "pt-BR",
       "name": "Português (Brasil)",
-      "path": "lang/pt-BR.json"
+      "path": "lang/pt-BR.json",
+      "flags": {}
     }
   ],
-  "url": "https://github.com/brunocalado/daggerheart-ptbr",
-  "manifest": "",
-  "download": ""
+  "url": "https://github.com/raposoel/DH-BR",
+  "manifest": "https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/modulo/module.json",
+  "download": "https://github.com/raposoel/DH-BR/archive/refs/heads/main.zip",
+  "flags": {}
 }

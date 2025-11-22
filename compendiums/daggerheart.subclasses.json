@@ -22,12 +22,12 @@
     {
       "id": "Warden’s Protection",
       "name": "Proteção Druídica",
-      "description": "Uma vez por descanso longo, <b>gaste 2 de Esperança<b> para recuperar 2 Pontos de Vida de 1d4 aliados Perto."
+      "description": "Uma vez por descanso longo, <b>gaste 2 Esperança<b> para limpar 2 Pontos de Vida de 1d4 aliados Próximos."
     },
     {
       "id": "Elemental Aura",
       "name": "Aura Elemental",
-      "description": "Uma vez por descanso, enquanto estiver <i>Canalizando</i>, você pode manifestar uma aura correspondente ao seu elemento. Ela afeta alvos Perto até o fim da sua <i>Canalização</i>.<br>• <b><i>Água:</b></i> quando um adversário causa dano a você, você pode <b>marcar um Estresse</b> para movê-lo para qualquer ponto Bem Perto de onde ele está.<br>• <b><i>Ar:</b></i> quando você ou um aliado sofre dano de um ataque oriundo de fora do alcance Perto, reduza esse dano em <b>1d8</b>.<br>• <b><i>Fogo:</b></i> quando um adversário marca um ou mais Pontos de Vida, ele também deve marcar um Estresse.<br>• <b><i>Terra:</b></i> seus aliados recebem um bônus de +1 em Força."
+      "description": "Uma vez por descanso, enquanto estiver <i>Canalizando</i>, você pode manifestar uma aura correspondente ao seu elemento. Ela afeta alvos Próximos até o fim da sua <i>Canalização</i>.<br>• <b><i>Água:</b></i> quando um adversário causa dano a você, você pode <b>marcar um Estresse</b> para movê-lo para qualquer ponto Muito Próximo de onde ele está.<br>• <b><i>Ar:</b></i> quando você ou um aliado sofre dano de um ataque originado de além de Próximo, reduza esse dano em <b>1d8</b>.<br>• <b><i>Fogo:</b></i> quando um adversário marca um ou mais Pontos de Vida, ele também deve marcar um Estresse.<br>• <b><i>Terra:</b></i> seus aliados recebem um bônus de +1 em Força."
     },
     {
       "id": "Enchanted Aid",
@@ -77,7 +77,7 @@
     {
       "id": "Gifted Performer",
       "name": "Artista Talentoso",
-      "description": "Descreva como você se apresenta para as pessoas. Você pode cantar ou tocar cada canção uma vez por descanso longo:<br>• <b><i>Canção Comovente:</b></i> você e todos os aliados Perto recebem uma Esperança.<br>• <b><i>Canção Épica:</b></i> deixe um alvo Perto temporariamente <i>Vulnerável</i>.<br>• <b><i>Canção Relaxante:</b></i> você e todos os aliados Perto recuperam um Ponto de Vida."
+      "description": "Descreva como você se apresenta para as pessoas. Você pode cantar ou tocar cada canção uma vez por descanso longo:<br>• <b><i>Canção Comovente:</b></i> você e todos os aliados Próximos recebem uma Esperança.<br>• <b><i>Canção Épica:</b></i> deixe um alvo Próximo temporariamente <i>Vulnerável</i>.<br>• <b><i>Canção Relaxante:</b></i> você e todos os aliados Próximo limpam um Ponto de Vida."
     },
     {
       "id": "Heart of a Poet",
@@ -97,7 +97,7 @@
     {
       "id": "Nemesis",
       "name": "Nêmesis",
-      "description": "<b>Gaste 2 de Esperança</b> para priorizar um adversário até seu próximo descanso. Ao atacar um adversário priorizado, você pode trocar os resultados dos dados de Esperança e Medo um pelo outro. Você só pode priorizar um adversário por vez."
+      "description": "<b>Gaste 2 Esperança</b> para priorizar um adversário até seu próximo descanso. Ao atacar um adversário priorizado, você pode trocar os resultados dos dados de Esperança e Medo um pelo outro. Você só pode priorizar um adversário por vez."
     },
     {
       "id": "Sacred Resonance",
@@ -112,12 +112,12 @@
     {
       "id": "Fleeting Shadow",
       "name": "Sombra Fugaz",
-      "description": "Você recebe um bônus permanente de +1 na Evasão. Além disso, pode usar Passo Sombrio para se mover até uma sombra Bem Longe."
+      "description": "Você recebe um bônus permanente de +1 na Evasão. Além disso, pode usar Passo Sombrio para se mover até uma sombra Muito Distante."
     },
     {
       "id": "Partner-in-Arms",
       "name": "Irmãos de Armas",
-      "description": "Quando um aliado Bem Perto sofrer dano físico, você pode <b>marcar um Ponto de Armadura</b> para reduzir a gravidade em um limiar."
+      "description": "Quando um aliado Muito Próximo sofrer dano físico, você pode <b>marcar um Ponto de Armadura</b> para reduzir a gravidade em um limiar."
     },
     {
       "id": "Primal Origin",
@@ -152,12 +152,12 @@
     {
       "id": "Defender",
       "name": "Defensor",
-      "description": "Sua transformação animal incorpora um espírito curativo protetor. Quando você está em Forma de Fera e um aliado Perto marca 2 ou mais Pontos de Vida, você pode <b>marcar um Estresse</b> para reduzir o número de PV marcados por esse aliado em 1."
+      "description": "Sua transformação animal incorpora um espírito curativo protetor. Quando você está em Forma de Fera e um aliado Próximo marca 2 ou mais Pontos de Vida, você pode <b>marcar um Estresse</b> para reduzir o número de PV marcados por esse aliado em 1."
     },
     {
       "id": "Regeneration",
       "name": "Regeneração",
-      "description": "Toque uma criatura e <b>gaste 3 de  Esperança</b>. Ela recupera 1d4 Pontos de Vida."
+      "description": "Toque uma criatura e <b>gaste 3 de  Esperança</b>. Ela limpa 1d4 Pontos de Vida."
     },
     {
       "id": "Wings of Light",
@@ -177,7 +177,7 @@
     {
       "id": "Spirit Weapon",
       "name": "Arma Espiritual",
-      "description": "Quando você tem equipada uma arma com alcance Adjcente ou Bem Perto, ela pode voar da sua mão para atacar um adversário Proximo, retornando para você em seguida. Você pode <b>marcar um Estresse</b> para escolher um adversário adicional dentro do alcance como alvo, usando o mesmo teste de ataque."
+      "description": "Quando você tem equipada uma arma com alcance Adjcente ou Muito Próximo, ela pode voar da sua mão para atacar um adversário Proximo, retornando para você em seguida. Você pode <b>marcar um Estresse</b> para escolher um adversário adicional dentro do alcance como alvo, usando o mesmo teste de ataque."
     },
     {
       "id": "Call Of The Brave",
@@ -187,7 +187,7 @@
     {
       "id": "Rousing Speech",
       "name": "Discurso Inspirador",
-      "description": "Uma vez por descanso longo, você pode fazer um discurso emocionante e inspirador. Todos os aliados até Longe limpam 2 Estresse."
+      "description": "Uma vez por descanso longo, você pode fazer um discurso emocionante e inspirador. Todos os aliados Distantes limpam 2 Estresse."
     },
     {
       "id": "Reliable Backup",
@@ -267,7 +267,7 @@
     {
       "id": "Comaraderie",
       "name": "Camaradagem",
-      "description": "Sua bravura inabalável é um ponto de encontro para seus aliados. Você pode iniciar uma Rolagem Combinada adicional por sessão. Além disso, quando um aliado inicia uma Rolagem Combinada com você, ele só precisa gastar 2 de Esperança para fazer isso."
+      "description": "Sua bravura inabalável é um ponto de encontro para seus aliados. Você pode iniciar uma Rolagem Combinada adicional por sessão. Além disso, quando um aliado inicia uma Rolagem Combinada com você, ele só precisa gastar 2 Esperança para fazer isso."
     },
     {
       "id": "Martial Preparation",
@@ -292,12 +292,12 @@
     {
       "id": "Clarity of Nature",
       "name": "Serenidade da Natureza",
-      "description": "Uma vez por descanso longo, você pode criar um espaço de serenidade natural Perto. Ao gastar alguns minutos descansando no espaço, recupere Estresse do grupo (distribuído entre você e seus aliados à sua escolha) em um número igual ao seu Instinto."
+      "description": "Uma vez por descanso longo, você pode criar um espaço de serenidade natural Próximo. Ao gastar alguns minutos descansando no espaço, limpe Estresse do grupo (distribuído entre você e seus aliados à sua escolha) em um número igual ao seu Instinto."
     },
     {
       "id": "Elemental Incarnation",
       "name": "Encarnação Elemental",
-      "description": "<b>Marque um Estresse</b> para <i>Canalizar</i> um dos seguintes elementos até sofrer dano severo ou até seu próximo descanso:<br>• <b><i>Água:</b></i> quando você causa dano a um adversário Corpo a Corpo, todos os outros adversários Bem Perto devem marcar um Estresse.<br>• <b><i>Ar:</b></i> você pode pairar para receber vantagem em testes de Agilidade.<br>• <b><i>Fogo:</b></i> quando um adversário Corpo a Corpo causa dano a você, ele sofre <b>1d10</b> pontos de dano mágico.<br>• <b><i>Terra:</b></i> você recebe um bônus igual à sua Proficiência em todos os seus limiares de dano."
+      "description": "<b>Marque um Estresse</b> para <i>Canalizar</i> um dos seguintes elementos até sofrer dano severo ou até seu próximo descanso:<br>• <b><i>Água:</b></i> quando você causa dano a um adversário Corpo a Corpo, todos os outros adversários Muito Próximos devem marcar um Estresse.<br>• <b><i>Ar:</b></i> você pode pairar para receber vantagem em testes de Agilidade.<br>• <b><i>Fogo:</b></i> quando um adversário Corpo a Corpo causa dano a você, ele sofre <b>1d10</b> pontos de dano mágico.<br>• <b><i>Terra:</b></i> você recebe um bônus igual à sua Proficiência em todos os seus limiares de dano."
     },
     {
       "id": "Ascendant",
@@ -317,7 +317,7 @@
     {
       "id": "Shadow Stepper",
       "name": "Passo Sombrio",
-      "description": "Você pode se movimentar de uma sombra para outra. Ao entrar em uma área de escuridão ou na sombra de outra criatura ou objeto, você pode <b>marcar um Estresse</b> para desaparecer de onde está e reaparecer dentro de outra sombra Longe. Ao reaparecer, você está <i>Oculto</i>."
+      "description": "Você pode se movimentar de uma sombra para outra. Ao entrar em uma área de escuridão ou na sombra de outra criatura ou objeto, você pode <b>marcar um Estresse</b> para desaparecer de onde está e reaparecer dentro de outra sombra Distante. Ao reaparecer, você está <i>Oculto</i>."
     },
     {
       "id": "Fueled by Fear",
@@ -332,7 +332,7 @@
     {
       "id": "Loyal Protector",
       "name": "Protetor Leal",
-      "description": "Quando um aliado Perto tiver 2 Pontos de Vida ou menos e for sofrer dano, você pode <b>marcar um Estresse</b> para tomar sua frente e receber o dano em seu lugar."
+      "description": "Quando um aliado Próximo tiver 2 Pontos de Vida ou menos e for sofrer dano, você pode <b>marcar um Estresse</b> para tomar sua frente e receber o dano em seu lugar."
     },
     {
       "id": "Expert Training",
@@ -382,7 +382,7 @@
     {
       "id": "Conjure Shield",
       "name": "Conjurar Escudo",
-      "description": "Você tem a capacidade de manter uma barreira mágica protetora. Enquanto tiver ao menos 2 de Esperança, some sua Proficiência à sua Evasão."
+      "description": "Você tem a capacidade de manter uma barreira mágica protetora. Enquanto tiver ao menos 2 Esperança, some sua Proficiência à sua Evasão."
     },
     {
       "id": "School Of Knowledge",
@@ -392,7 +392,7 @@
     {
       "id": "Battle Ritual",
       "name": "Ritual de Batalha",
-      "description": "Uma vez por descanso longo, antes de tentar fazer algo incrivelmente perigoso ou enfrentar um oponente claramente superior a você, descreva o ritual e as preparações que você faz. Após isso, limpe 2 de Estresse e receba 2 de Esperança."
+      "description": "Uma vez por descanso longo, antes de tentar fazer algo incrivelmente perigoso ou enfrentar um oponente claramente superior a você, descreva o ritual e as preparações que você faz. Após isso, limpe 2 Estresse e receba 2 Esperança."
     },
     {
       "id": "Stalwart",
@@ -447,7 +447,7 @@
     {
       "id": "Loyal Friend",
       "name": "Amigo Leal",
-      "description": "Uma vez por descanso longo, quando o dano de um ataque for marcar o último Estresse do seu companheiro ou seu último Ponto de Vida e vocês estiverem Perto um do outro, você ou seu companheiro podem correr para o lado do outro e sofrer esse dano."
+      "description": "Uma vez por descanso longo, quando o dano de um ataque for marcar o último Estresse do seu companheiro ou seu último Ponto de Vida e vocês estiverem Próximos um do outro, você ou seu companheiro podem correr para o lado do outro e sofrer esse dano."
     },
     {
       "id": "Warden of Renewal",
@@ -462,7 +462,7 @@
     {
       "id": "Arcane Charge",
       "name": "Carga Arcana",
-      "description": "Você pode reunir energia mágica para aprimorar suas capacidades. Ao sofrer dano mágico, você fica <i>Carregado</i>. Você também pode <b>gastar 2 de Esperança</b> para ficar <i>Carregado</i>. Enquanto estiver <i>Carregado</i>, ao acertar um ataque que causa dano mágico, você pode zerar sua <i>Carga</i> para receber +10 de bônus na rolagem de dano ou +3 de bônus na Dificuldade de um teste de reação que o feitiço exija do alvo. Você deixa de estar <i>Carregado</i> em seu próximo descanso longo."
+      "description": "Você pode reunir energia mágica para aprimorar suas capacidades. Ao sofrer dano mágico, você fica <i>Carregado</i>. Você também pode <b>gastar 2 Esperança</b> para ficar <i>Carregado</i>. Enquanto estiver <i>Carregado</i>, ao acertar um ataque que causa dano mágico, você pode zerar sua <i>Carga</i> para receber +10 de bônus na rolagem de dano ou +3 de bônus na Dificuldade de um teste de reação que o feitiço exija do alvo. Você deixa de estar <i>Carregado</i> em seu próximo descanso longo."
     },
     {
       "id": "Wayfinder",

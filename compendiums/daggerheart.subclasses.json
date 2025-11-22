@@ -67,7 +67,7 @@
     {
       "id": "Iron Will",
       "name": "Vontade de Ferro",
-      "description": "Ao sofrer dano físico, você pode <b>marcar um Ponto de Armadura adicional</b> para reduzir a gravidade."
+      "description": "Ao sofrer dano físico, você pode <b>marcar uma Armadura adicional</b> para reduzir a gravidade."
     },
     {
       "id": "Well-Connected",
@@ -132,7 +132,7 @@
     {
       "id": "Partner-in-Arms",
       "name": "Irmãos de Armas",
-      "description": "Quando um aliado Muito Próximo sofrer dano físico, você pode <b>marcar um Ponto de Armadura</b> para reduzir a gravidade em um limiar."
+      "description": "Quando um aliado Muito Próximo sofrer dano físico, você pode <b>marcar uma Armadura</b> para reduzir a gravidade em um limiar."
     },
     {
       "id": "Primal Origin",
@@ -312,7 +312,7 @@
     {
       "id": "Elemental Incarnation",
       "name": "Encarnação Elemental",
-      "description": "<b>Marque um Estresse</b> para <i>Canalizar</i> um dos seguintes elementos até sofrer dano severo ou até seu próximo descanso:<br>• <b><i>Água:</b></i> quando você causa dano a um adversário Corpo a Corpo, todos os outros adversários Muito Próximos devem marcar um Estresse.<br>• <b><i>Ar:</b></i> você pode pairar para receber vantagem em testes de Agilidade.<br>• <b><i>Fogo:</b></i> quando um adversário Corpo a Corpo causa dano a você, ele sofre <b>1d10</b> pontos de dano mágico.<br>• <b><i>Terra:</b></i> você recebe um bônus igual à sua Proficiência em todos os seus limiares de dano."
+      "description": "<b>Marque um Estresse</b> para <i>Canalizar</i> um dos seguintes elementos até sofrer dano severo ou até seu próximo descanso:<br>• <b><i>Água:</b></i> quando você causa dano a um adversário Adjacente, todos os outros adversários Muito Próximos devem marcar um Estresse.<br>• <b><i>Ar:</b></i> você pode pairar para receber vantagem em testes de Agilidade.<br>• <b><i>Fogo:</b></i> quando um adversário Adjacente causa dano a você, ele sofre <b>1d10</b> pontos de dano mágico.<br>• <b><i>Terra:</b></i> você recebe um bônus igual à sua Proficiência em todos os seus limiares de dano."
     },
     {
       "id": "Ascendant",
@@ -342,7 +342,7 @@
     {
       "id": "Battle-Bonded",
       "name": "Unidos na Batalha",
-      "description": "Quando um adversário estiver Corpo a Corpo a seu companheiro animal e atacar você, você recebe +2 de bônus na Evasão contra esse ataque."
+      "description": "Quando um adversário estiver Adjacente a seu companheiro animal e atacar você, você recebe +2 de bônus na Evasão contra esse ataque."
     },
     {
       "id": "Loyal Protector",
@@ -362,7 +362,7 @@
     {
       "id": "Act of Reprisal",
       "name": "Represália",
-      "description": "Quando um adversário causar dano a um aliado Corpo a Corpo, você recebe um bônus de +1 em Proficiência no próximo ataque que acertar contra ele."
+      "description": "Quando um adversário causar dano a um aliado Adjacente, você recebe um bônus de +1 em Proficiência no próximo ataque que acertar contra ele."
     },
     {
       "id": "Virtuoso",
@@ -392,7 +392,7 @@
     {
       "id": "Revenge",
       "name": "Revanche",
-      "description": "Quando um adversário Corpo a Corpo acerta um ataque contra você, você pode <b>marcar um Estresse</b> para forçá-lo a marcar um Ponto de Vida."
+      "description": "Quando um adversário Adjacente acerta um ataque contra você, você pode <b>marcar um Estresse</b> para forçá-lo a marcar um Ponto de Vida."
     },
     {
       "id": "Conjure Shield",

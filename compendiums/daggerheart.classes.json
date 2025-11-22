@@ -112,7 +112,7 @@
     {
       "id": "Beastform",
       "name": "Forma de Fera",
-      "description": "<b>Marque um Estresse</b> para se transformar magicamente em uma criatura de patamar igual ou menor que o seu na lista de Formas de Fera. Você pode sair dessa forma a qualquer momento. Enquanto estiver transformado, você não pode usar armas ou feitiços das cartas de domínio, mas ainda pode usar outras habilidades ou talentos aos quais tenha acesso. Os feitiços conjurados antes da transformação permanecem ativos, com sua duração normal, e você pode falar e se comunicar normalmente. Além disso, você recebe as habilidades da Forma de Fera escolhida, soma o bônus de Evasão dela à sua Evasão e usa o atributo especificado nas estatísticas dela para atacar. Enquanto estiver na Forma de Fera, sua armadura se torna parte de seu corpo e você marca Pontos de Armadura normalmente; quando sai da Forma de Fera, esses Pontos de Armadura permanecem marcados. Marcar seu último Ponto de Vida faz com que você saia da Forma de Fera automaticamente."
+      "description": "<b>Marque um Estresse</b> para se transformar magicamente em uma criatura de patamar igual ou menor que o seu na lista de Formas de Fera. Você pode sair dessa forma a qualquer momento. Enquanto estiver transformado, você não pode usar armas ou feitiços das cartas de domínio, mas ainda pode usar outras habilidades ou talentos aos quais tenha acesso. Os feitiços conjurados antes da transformação permanecem ativos, com sua duração normal, e você pode falar e se comunicar normalmente. Além disso, você recebe as habilidades da Forma de Fera escolhida, soma o bônus de Evasão dela à sua Evasão e usa o atributo especificado nas estatísticas dela para atacar. Enquanto estiver na Forma de Fera, sua armadura se torna parte de seu corpo e você marca Armadura normalmente; quando sai da Forma de Fera, essa Armadura permanece marcada. Marcar seu último Ponto de Vida faz com que você saia da Forma de Fera automaticamente."
     },
     {
       "id": "Unstoppable",
@@ -122,7 +122,7 @@
     {
       "id": "Rally",
       "name": "Regrupar",
-      "description": "Uma vez por sessão, descreva como você reagrupa os companheiros. Você e seus aliados recebem um Dado de Piquete. No 1º nível, seu Dado de Piquete é <b>d6</b>. Um personagem pode rolar o Dado de Piquete e somar o resultado a um teste, teste de reação ou uma rolagem de dano, ou para recuperar Estresse igual ao resultado. No fim de cada sessão, Dados de Piquete não utilizados são perdidos."
+      "description": "Uma vez por sessão, descreva como você reagrupa os companheiros. Você e seus aliados recebem um Dado de Piquete. No 1º nível, seu Dado de Piquete é <b>d6</b>. Um personagem pode rolar o Dado de Piquete e somar o resultado a um teste, teste de reação ou uma rolagem de dano, ou para limpar Estresse igual ao resultado. No fim de cada sessão, Dados de Piquete não utilizados são perdidos."
     },
     {
       "id": "Prestidigitation",
@@ -142,7 +142,7 @@
     {
       "id": "Frontline Tank",
       "name": "Linha de Frente",
-      "description": "<b>Gaste 3 de Esperança</b> para recuperar 2 Pontos de Armadura."
+      "description": "<b>Gaste 3 de Esperança</b> para limpar 2 Armadura."
     },
     {
       "id": "Minor Illusion",
@@ -177,7 +177,7 @@
     {
       "id": "Life Support",
       "name": "Alicerce da Vida",
-      "description": "<b>Gaste 3 de Esperança</b> para recuperar um Ponto de Vida de um aliado Próximo."
+      "description": "<b>Gaste 3 de Esperança</b> para limpar um Ponto de Vida de um aliado Próximo."
     },
     {
       "id": "Ranger's Focus",

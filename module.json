@@ -2,7 +2,7 @@
   "id": "daggerheart-br",
   "title": "Daggerheart - Tradução para Brasileiro",
   "description": "<p>Adiciona o idioma Brasileiro corrigido para o sistema de jogo Daggerheart. Sem Inventar, só traduzido.</p>",
-  "version": "1.1",
+  "version": "1.2.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -50,6 +50,6 @@
   ],
   "url": "https://github.com/raposoel/DH-BR",
   "manifest": "https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/modulo/module.json",
-  "download": "https://github.com/raposoel/DH-BR/archive/refs/tags/DH-BR2.zip",
+  "download": "https://github.com/raposoel/DH-BR/archive/refs/heads/main.zip",
   "flags": {}
 }

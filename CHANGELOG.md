@@ -3,3 +3,6 @@ Corrigido Ancestralidades para o formato atual do sistema Foundryborne, com a de
 
 1.2.3
 Corrigidos Classes e Subclasses para o formato novo.
+
+1.2.7
+Teste

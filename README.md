@@ -11,7 +11,7 @@ Baseado no trabalho do Mestre Digital. https://github.com/brunocalado/daggerhear
 
 # Como instalar
 Manifest: https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json
-Aproveite seu jogo traduzido de forma a refletir o jogo original na essência.
+<br>Aproveite seu jogo traduzido de forma a refletir o jogo original na essência.
 
 # License
 https://www.daggerheart.com/srd/

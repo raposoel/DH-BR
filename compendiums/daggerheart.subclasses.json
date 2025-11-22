@@ -1,5 +1,20 @@
 {
   "label": "Subclasses",
+  "folders": {
+    "Bard": "Bardo",
+    "Druid": "Druida",
+    "Guardian": "Guardião",
+    "Ranger": "Caçador",
+    "Rogue": "Ladino",
+    "Warrior": "Guerreiro",
+    "Wizard": "Mago",
+    "Sorcerer": "Feiticeiro",
+    "Seraph": "Serafim",
+    "Foundation Features": "Fundamental",
+    "Specialization Features": "Especialização",
+    "Mastery Features": "Maestria",
+    "Subclass Features": "Características de Subclasse"
+  },  
   "mapping": {
     "description": "system.description"
   },

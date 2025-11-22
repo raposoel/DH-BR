@@ -1,5 +1,19 @@
 {
 	"label": "Classes",
+  "folders": {
+    "Class Features": "Características de Classe",
+    "Seraph": "Serafim",
+    "Class Items": "Itens de Classe",
+    "Bard": "Bardo",
+    "Druid": "Druida",
+    "Guardian": "Guardião",
+    "Ranger": "Caçador",
+    "Rogue": "Ladino",
+    "Warrior": "Guerreiro",
+    "Wizard": "Mago",
+    "Sorcerer": "Feiticeiro",
+    "Standard Take": "Itens Iniciais"
+  },  
   "mapping": {
     "description": "system.description"
   },

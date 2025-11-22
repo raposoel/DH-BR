@@ -49,7 +49,7 @@
     }
   ],
   "url": "https://github.com/raposoel/DH-BR",
-  "manifest": "https://github.com/raposoel/DH-BR/releases/latest/download/module.json",
-  "download": "https://github.com/raposoel/DH-BR/releases/latest/download/dh-br.zip",
+  "manifest": "https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json",
+  "download": "https://codeload.github.com/raposoel/DH-BR/zip/main",
   "flags": {}
 }

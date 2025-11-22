@@ -48,12 +48,12 @@
     {
       "id": "Book of Tyfar",
       "name": "Livro de Tyfar",
-      "description": "<b><i>Chama Selvagem:</b></i> faça um <b>Teste de Conjuração</b> contra até três adversários Corpo a Corpo. Chamas irrompem de sua mão. Alvos atingidos sofrem 2d6 de dano mágico e marcam um Estresse.<br><b><i>Mão Arcana:</i></b> você conjura uma mão mágica idêntica à sua em força e tamanho num ponto Distante.<br><b><i>Névoa misteriosa:</i></b> faça um <b>teste de conjuração (13)</b> para conjurar uma névoa densa que fica em uma área estática Muito Próxima. A neblina deixa essa área e tudo o que há nela fortemente obscurecido."
+      "description": "<b><i>Chama Selvagem:</b></i> faça um <b>Teste de Conjuração</b> contra até três adversários Adjacentes. Chamas irrompem de sua mão. Alvos atingidos sofrem 2d6 de dano mágico e marcam um Estresse.<br><b><i>Mão Arcana:</i></b> você conjura uma mão mágica idêntica à sua em força e tamanho num ponto Distante.<br><b><i>Névoa misteriosa:</i></b> faça um <b>teste de conjuração (13)</b> para conjurar uma névoa densa que fica em uma área estática Muito Próxima. A neblina deixa essa área e tudo o que há nela fortemente obscurecido."
     },
     {
       "id": "Preservation Blast",
       "name": "Impacto Defensivo",
-      "description": "Faça um <b>Teste de Conjuração</b> contra todos os alvos Corpo a Corpo. Alvos atingidos são empurrados para um ponto qualquer Distante e sofrem d8+3 de dano mágico usando seu atributo de conjuração."
+      "description": "Faça um <b>Teste de Conjuração</b> contra todos os alvos Adjacentes. Alvos atingidos são empurrados para um ponto qualquer Distante e sofrem d8+3 de dano mágico usando seu atributo de conjuração."
     },
     {
       "id": "Hypnotic Shimmer",
@@ -93,7 +93,7 @@
     {
       "id": "Cinder Grasp",
       "name": "Incendiar",
-      "description": "Faça um <b>Teste de Conjuração</b> contra um alvo Corpo a Corpo. Em um sucesso, o alvo instantaneamente irrompe em chamas, sofre 1d20+3 de dano mágico e fica temporariamente <i>Em Chamas</i>.<br>Quando uma criatura <i>Em Chamas</i> age, ela sofre 2d6 de dano mágico adicional se ainda estiver <i>Em Chamas</i> no fim da ação dela."
+      "description": "Faça um <b>Teste de Conjuração</b> contra um alvo Adjacente. Em um sucesso, o alvo instantaneamente irrompe em chamas, sofre 1d20+3 de dano mágico e fica temporariamente <i>Em Chamas</i>.<br>Quando uma criatura <i>Em Chamas</i> age, ela sofre 2d6 de dano mágico adicional se ainda estiver <i>Em Chamas</i> no fim da ação dela."
     },
     {
       "id": "Arcana-Touched",
@@ -228,7 +228,7 @@
     {
       "id": "Midnight Spirit",
       "name": "Espírito da Meia-Noite",
-      "description": "<b>Gaste uma Esperança</b> para invocar um espírito de tamanho humanoide que pode se mover ou carregar coisas para você até seu próximo descanso.<br>Você também pode mandá-lo atacar um adversário. Ao fazer isso, faça um <b>Teste de Conjuração</b> contra um alvo Muito Distante. Em um sucesso, o espírito se move até ficar Corpo a Corpo ao alvo. Role um número de d6 igual ao seu atributo de conjuração e cause o resultado deles como dano mágico ao alvo. O espírito então se dissipa. Você pode ter apenas um espírito por vez."
+      "description": "<b>Gaste uma Esperança</b> para invocar um espírito de tamanho humanoide que pode se mover ou carregar coisas para você até seu próximo descanso.<br>Você também pode mandá-lo atacar um adversário. Ao fazer isso, faça um <b>Teste de Conjuração</b> contra um alvo Muito Distante. Em um sucesso, o espírito se move até ficar Adjacente ao alvo. Role um número de d6 igual ao seu atributo de conjuração e cause o resultado deles como dano mágico ao alvo. O espírito então se dissipa. Você pode ter apenas um espírito por vez."
     },
     {
       "id": "Telekinesis",
@@ -583,7 +583,7 @@
     {
       "id": "Book of Ava",
       "name": "Livro de Ava",
-      "description": "<b><i>Propelir:</b></i> faça um <b>Teste de Conjuração</b> contra um alvo Corpo a Corpo. Em um sucesso, ele é empurrado para um ponto Distantes e sofre d10+2 de dano mágico com sua Proficiência.<br><b><i>Armadura de Tava:</i> gaste uma Esperança</b> para conceder um bônus de +1 na Armadura a um alvo que você possa tocar. Esse bônus dura até o próximo descanso do alvo ou até que você conjure Armadura de Tava novamente.<br><b><i>Estaca de gelo:</b></i> faça um <b>teste de conjuração (12)</b> para invocar um grande espinho de gelo Distante. Se usá-lo como arma, em vez disso, faça o <b>Teste de Conjuração</b> contra a dificuldade do alvo. Em um sucesso, você causa d6 de dano físico usando sua Proficiência."
+      "description": "<b><i>Propelir:</b></i> faça um <b>Teste de Conjuração</b> contra um alvo Adjacente. Em um sucesso, ele é empurrado para um ponto Distantes e sofre d10+2 de dano mágico com sua Proficiência.<br><b><i>Armadura de Tava:</i> gaste uma Esperança</b> para conceder um bônus de +1 na Armadura a um alvo que você possa tocar. Esse bônus dura até o próximo descanso do alvo ou até que você conjure Armadura de Tava novamente.<br><b><i>Estaca de gelo:</b></i> faça um <b>teste de conjuração (12)</b> para invocar um grande espinho de gelo Distante. Se usá-lo como arma, em vez disso, faça o <b>Teste de Conjuração</b> contra a dificuldade do alvo. Em um sucesso, você causa d6 de dano físico usando sua Proficiência."
     },
     {
       "id": "Cloaking Blast",
@@ -593,7 +593,7 @@
     {
       "id": "Words of Discord",
       "name": "Palavras de Discórdia",
-      "description": "Sussurre palavras de discórdia para um adversário Corpo a Corpo e faça um <b>teste de conjuração (13)</b>. Em um sucesso, o alvo deve marcar um Estresse e atacar outro adversário em vez de você ou seus aliados.<br>Após concluir o ataque, o alvo percebe o que aconteceu. Na próxima vez que conjurar Palavras de Discórdia sobre ele, você sofre uma penalidade de –5 no teste de conjuração."
+      "description": "Sussurre palavras de discórdia para um adversário Adjacente e faça um <b>teste de conjuração (13)</b>. Em um sucesso, o alvo deve marcar um Estresse e atacar outro adversário em vez de você ou seus aliados.<br>Após concluir o ataque, o alvo percebe o que aconteceu. Na próxima vez que conjurar Palavras de Discórdia sobre ele, você sofre uma penalidade de –5 no teste de conjuração."
     },
     {
       "id": "Adjust Reality",
@@ -613,12 +613,12 @@
     {
       "id": "Body Basher",
       "name": "Força Esmagadora",
-      "description": "Você usa toda sua força física em um combate. Ao acertar um ataque usando uma arma com alcance Corpo a Corpo, receba um bônus igual à sua Força na rolagem de dano."
+      "description": "Você usa toda sua força física em um combate. Ao acertar um ataque usando uma arma com alcance Adjacente, receba um bônus igual à sua Força na rolagem de dano."
     },
     {
       "id": "Book of Vagras",
       "name": "Livro de Vagras",
-      "description": "<b><i>Portal Arcano:</b></i> se não houver adversários Corpo a Corpo, faça um <b>teste de conjuração (13)</b>. Em um sucesso, <b>gaste uma Esperança</b> para criar um portal de onde você está para outro ponto Distante que você possa ver. Ele se fecha depois que uma criatura passar por ele.<br><b><i>Revelar:</b></i> faça um <b>Teste de Conjuração</b>. Se houver alguma coisa escondida por magia Próxima, ela é revelada.<br><b><i>Tranca Rúnica:</b></i> faça um <b>teste de conjuração (15)</b> sobre um objeto que esteja tocando e que possa fechar (como um baú, cadeado, caixa ou fechadura). Uma vez por descanso, em um sucesso, você pode trancar o objeto de modo que ele só possa ser aberto por criaturas designadas por você. Este feitiço pode ser quebrado em uma hora por uma pessoa com acesso a magia."
+      "description": "<b><i>Portal Arcano:</b></i> se não houver adversários Adjacentes, faça um <b>teste de conjuração (13)</b>. Em um sucesso, <b>gaste uma Esperança</b> para criar um portal de onde você está para outro ponto Distante que você possa ver. Ele se fecha depois que uma criatura passar por ele.<br><b><i>Revelar:</b></i> faça um <b>Teste de Conjuração</b>. Se houver alguma coisa escondida por magia Próxima, ela é revelada.<br><b><i>Tranca Rúnica:</b></i> faça um <b>teste de conjuração (15)</b> sobre um objeto que esteja tocando e que possa fechar (como um baú, cadeado, caixa ou fechadura). Uma vez por descanso, em um sucesso, você pode trancar o objeto de modo que ele só possa ser aberto por criaturas designadas por você. Este feitiço pode ser quebrado em uma hora por uma pessoa com acesso a magia."
     },
     {
       "id": "Whirlwind",
@@ -638,7 +638,7 @@
     {
       "id": "Book of Korvax",
       "name": "Livro de Korvax",
-      "description": "<b><i>Círculo Rúnico:</i> marque um Estresse</b> para criar um círculo mágico temporário abaixo de onde você está. Todos os adversários que entrarem ou estiverem em alcance Corpo a Corpo sofrem 2d12+4 de dano mágico e são empurrados para um ponto Muito Próximo.<br><b><i>Lapso:</i> gaste uma Esperança</b> para forçar um alvo Corpo a Corpo a fazer um teste de reação (15). Se falhar, ele esquece o último minuto de conversa com você.<br><b><i>Levitação:</b></i> faça um <b>Teste de Conjuração</b> para suspender um alvo que você possa ver temporariamente no ar e movê-lo para um ponto Próximo relativo à posição original dele."
+      "description": "<b><i>Círculo Rúnico:</i> marque um Estresse</b> para criar um círculo mágico temporário abaixo de onde você está. Todos os adversários que entrarem ou estiverem Adjacentes sofrem 2d12+4 de dano mágico e são empurrados para um ponto Muito Próximo.<br><b><i>Lapso:</i> gaste uma Esperança</b> para forçar um alvo Adjacente a fazer um teste de reação (15). Se falhar, ele esquece o último minuto de conversa com você.<br><b><i>Levitação:</b></i> faça um <b>Teste de Conjuração</b> para suspender um alvo que você possa ver temporariamente no ar e movê-lo para um ponto Próximo relativo à posição original dele."
     },
     {
       "id": "Inspirational Words",
@@ -663,7 +663,7 @@
     {
       "id": "Deft Maneuvers",
       "name": "Movimento Ligeiro",
-      "description": "Uma vez por descanso, <b>marque um Estresse</b> para se deslocar para qualquer lugar Distante sem precisar de um <b>teste de Agilidade</b>.<br>Se terminar esse movimento Corpo a Corpo a um adversário e imediatamente atacá-lo, você ganha um bônus de +1 no teste de ataque."
+      "description": "Uma vez por descanso, <b>marque um Estresse</b> para se deslocar para qualquer lugar Distante sem precisar de um <b>teste de Agilidade</b>.<br>Se terminar esse movimento Adjacente a um adversário e imediatamente atacá-lo, você ganha um bônus de +1 no teste de ataque."
     },
     {
       "id": "Book of Illiat",
@@ -673,7 +673,7 @@
     {
       "id": "Book of Sitil",
       "name": "Livro de Sitil",
-      "description": "<b><i>Ajustar Aparência:</b></i> você muda magicamente sua aparência e vestimentas para evitar ser reconhecido.<br><b><i>Paralelos:</i> gaste 2 Esperança</b> para conjurar este feitiço sobre si mesmo ou sobre um aliado Próximo. Na próxima vez que o alvo fizer um ataque, ele pode acertar um alvo adicional dentro do alcance contra o qual seu teste de ataque seria bem-sucedido. Você pode manter este feitiço ativo apenas sobre uma criatura por vez.<br><b><i>Ilusão:</b></i> faça um <b>teste de conjuração (14)</b>. Em um sucesso, você cria uma ilusão visual temporária Próxima. Ela não pode ultrapassar seu tamanho e dura enquanto você olhar para ela. A ilusão não levanta suspeitas até que um observador esteja Corpo a Corpo a ela."
+      "description": "<b><i>Ajustar Aparência:</b></i> você muda magicamente sua aparência e vestimentas para evitar ser reconhecido.<br><b><i>Paralelos:</i> gaste 2 Esperança</b> para conjurar este feitiço sobre si mesmo ou sobre um aliado Próximo. Na próxima vez que o alvo fizer um ataque, ele pode acertar um alvo adicional dentro do alcance contra o qual seu teste de ataque seria bem-sucedido. Você pode manter este feitiço ativo apenas sobre uma criatura por vez.<br><b><i>Ilusão:</b></i> faça um <b>teste de conjuração (14)</b>. Em um sucesso, você cria uma ilusão visual temporária Próxima. Ela não pode ultrapassar seu tamanho e dura enquanto você olhar para ela. A ilusão não levanta suspeitas até que um observador esteja Adjacente a ela."
     },
     {
       "id": "Spellcharge",
@@ -683,7 +683,7 @@
     {
       "id": "Redirect",
       "name": "Redirecionar",
-      "description": "Quando um ataque originado de um ponto além do alcance Corpo a Corpo falha contra você, role um número de [[/r @profd6]]{d6} igual à sua Proficiência. Se tirar 6 em qualquer dado, você pode <b>marcar um Estresse</b> para redirecionar o ataque, fazendo-o causar dano a um adversário Muito Próximo."
+      "description": "Quando um ataque originado de um ponto além do alcance Adjacente falha contra você, role um número de [[/r @profd6]]{d6} igual à sua Proficiência. Se tirar 6 em qualquer dado, você pode <b>marcar um Estresse</b> para redirecionar o ataque, fazendo-o causar dano a um adversário Muito Próximo."
     },
     {
       "id": "Second Wind",
@@ -753,7 +753,7 @@
     {
       "id": "Hold the Line",
       "name": "Manter Posição",
-      "description": "Descreva a posição defensiva que você assume e <b>gaste uma Esperança</b>. Se um adversário se mover para Muito Próximo, ele é puxado para o alcance Corpo a Corpo e fica <i>Imobilizado</i>.<br>Essa condição dura até você se mover ou rolar uma falha com Medo, ou até o mestre gastar 2 de Medo no turno dele para encerrá-la."
+      "description": "Descreva a posição defensiva que você assume e <b>gaste uma Esperança</b>. Se um adversário se mover para Muito Próximo, ele é puxado para o alcance Adjacente e fica <i>Imobilizado</i>.<br>Essa condição dura até você se mover ou rolar uma falha com Medo, ou até o mestre gastar 2 de Medo no turno dele para encerrá-la."
     },
     {
       "id": "Shadowbind",
@@ -813,7 +813,7 @@
     {
       "id": "Thorn Skin",
       "name": "Pele de Espinhos",
-      "description": "Uma vez por descanso, <b>gaste uma Esperança</b> para fazer com que espinhos brotem de todo o seu corpo. Ao fazer isso, coloque um número de marcadores igual ao seu atributo de conjuração nesta carta. Ao sofrer dano, você pode gastar qualquer quantidade de marcadores e rolar um número equivalente de d6. Reduza o dano sofrido em um número igual à soma dos resultados. Se estiver Corpo a Corpo ao atacante, cause a mesma quantidade de dano a ele.<br>Após um descanso, marcadores não utilizados são perdidos."
+      "description": "Uma vez por descanso, <b>gaste uma Esperança</b> para fazer com que espinhos brotem de todo o seu corpo. Ao fazer isso, coloque um número de marcadores igual ao seu atributo de conjuração nesta carta. Ao sofrer dano, você pode gastar qualquer quantidade de marcadores e rolar um número equivalente de d6. Reduza o dano sofrido em um número igual à soma dos resultados. Se estiver Adjacente ao atacante, cause a mesma quantidade de dano a ele.<br>Após um descanso, marcadores não utilizados são perdidos."
     },
     {
       "id": "Fortified Armor",
@@ -883,7 +883,7 @@
     {
       "id": "Rapid Riposte",
       "name": "Contra-ataque Rápido",
-      "description": "Quando um ataque originado de um ponto em alcance Corpo a Corpo falha contra você, você pode <b>marcar um Estresse</b> e aproveitar a oportunidade para causar o dano de uma de suas armas ativas ao atacante."
+      "description": "Quando um ataque originado de um ponto Adjacente falha contra você, você pode <b>marcar um Estresse</b> e aproveitar a oportunidade para causar o dano de uma de suas armas ativas ao atacante."
     },
     {
       "id": "Bold Presence",
@@ -923,7 +923,7 @@
     {
       "id": "Death Grip",
       "name": "Constrição Mortal",
-      "description": "Faça um <b>Teste de Conjuração</b> contra um alvo Próximo e escolha uma das seguintes opções:<br>• Você puxa o alvo para um ponto Corpo a Corpo ou puxa a si mesmo para um ponto Corpo a Corpo a ele;<br>• Você constringe o alvo e o força a marcar 2 Estresse;<br>• Todos os adversários entre você e o alvo devem ter sucesso em um teste de reação (13) ou são atingidos por vinhas e sofrem 3d6+2 de dano fís.<br>Em um sucesso, vinhas saem de suas mãos, causando o efeito escolhido e <i>Imobilizando</i> o alvo temporariamente."
+      "description": "Faça um <b>Teste de Conjuração</b> contra um alvo Próximo e escolha uma das seguintes opções:<br>• Você puxa o alvo para um ponto Adjacente ou puxa a si mesmo para um ponto Adjacente a ele;<br>• Você constringe o alvo e o força a marcar 2 Estresse;<br>• Todos os adversários entre você e o alvo devem ter sucesso em um teste de reação (13) ou são atingidos por vinhas e sofrem 3d6+2 de dano fís.<br>Em um sucesso, vinhas saem de suas mãos, causando o efeito escolhido e <i>Imobilizando</i> o alvo temporariamente."
     },
     {
       "id": "Deathrun",
@@ -958,7 +958,7 @@
     {
       "id": "Forceful Push",
       "name": "Empurrão Violento",
-      "description": "Ataque um alvo Corpo a Corpo com sua arma principal. Em um sucesso, você causa dano e o empurra para um ponto Próximo. Em um sucesso com Esperança, acrescente 1d6 à rolagem de dano.<br>Além disso, <b>gaste uma Esperança</b> para deixá-lo temporariamente <i>Vulnerável</i>."
+      "description": "Ataque um alvo Adjacente com sua arma principal. Em um sucesso, você causa dano e o empurra para um ponto Próximo. Em um sucesso com Esperança, acrescente 1d6 à rolagem de dano.<br>Além disso, <b>gaste uma Esperança</b> para deixá-lo temporariamente <i>Vulnerável</i>."
     },
     {
       "id": "On the Brink",

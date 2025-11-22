@@ -10,12 +10,7 @@ Diferenças com a tradução oficial:
 Baseado no trabalho do Mestre Digital. https://github.com/brunocalado/daggerheart-ptbr
 
 # Como instalar
-Instale o módulo Daggerheart - Tradução para o Português (Brasil).
-
-Substitua os arquivos do módulo pelos deste repositório, dentro da pasta modules/daggerheart-ptbr.
-<br>- module.json > pasta raiz
-<br>- pt-BR.json > pasta lang
-<br>- demais arquivos > pasta compendiums
+Manifest: https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/modulo/module.json
 
 Aproveite seu jogo traduzido de forma a refletir o jogo original na essência.
 

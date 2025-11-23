@@ -9,3 +9,6 @@ Teste
 
 1.2.8
 Correções MAIORES em Domínios. Melhoria nos nomes das pastas.
+
+1.3.0
+Inclusão de vários outros compendiums, exceto adversários e ambientes.

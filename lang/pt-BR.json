@@ -992,7 +992,7 @@
                 "melee": {
                     "name": "Adjacente",
                     "description": "significa que um personagem está a uma distância de toque do alvo. PJs geralmente podem tocar alvos a até um metro de distância, mas o alcance corpo a corpo pode ser maior para NPCs especialmente grandes.",
-                    "short": "CaC"
+                    "short": "Adj"
                 },
                 "veryClose": {
                     "name": "Muito Próximo",
@@ -1586,11 +1586,11 @@
                 },
                 "sheltering": {
                     "name": "Proteção",
-                    "description": "Ao marcar uma Armadura, ele reduz o dano causado em você e em todos os aliados CaC que receberam o mesmo dano.",
+                    "description": "Ao marcar uma Armadura, ele reduz o dano causado em você e em todos os aliados Adjacentes que receberam o mesmo dano.",
                     "actions": {
                         "shelter": {
                             "name": "Abrigo",
-                            "description": "Ao marcar uma Armadura, ele reduz o dano causado em você e em todos os aliados CaC que receberam o mesmo dano."
+                            "description": "Ao marcar uma Armadura, ele reduz o dano causado em você e em todos os aliados Adjacentes que receberam o mesmo dano."
                         }
                     }
                 },

@@ -22,7 +22,7 @@
     {
       "id": "Health Potion",
       "name": "Poção de Vida",
-      "description": "Limpe 1d4+1 PV."
+      "description": "Limpe 1d4+1 Pontos de Vida."
     },
     {
       "id": "Improved Grindletooth Venom",
@@ -162,7 +162,7 @@
     {
       "id": "Major Health Potion",
       "name": "Poção de Vida Maior",
-      "description": "Limpe 1d4+2 PV."
+      "description": "Limpe 1d4+2 Pontos de Vida."
     },
     {
       "id": "Acidpaste",

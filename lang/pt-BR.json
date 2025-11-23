@@ -402,15 +402,15 @@
                         "name": "Zerar Estresse"
                     },
                     "prepare": {
-                        "description": "Descreva como você está se preparando para a aventura do dia seguinte e ganhe uma Esperança. Se escolher se Preparar com um ou mais membros do seu grupo, cada um de vocês pode pegar dois de Esperança.",
+                        "description": "Descreva como você está se preparando para a aventura do dia seguinte e ganhe uma Esperança. Se escolher se Preparar com um ou mais membros do seu grupo, cada um de vocês pode pegar 2 Esperança.",
                         "name": "Preparar-se"
                     },
                     "repairArmor": {
-                        "description": "Descreva como você passa um tempo reparando sua armadura e recupera toda sua Armadura. Você também pode fazer isso na armadura de um aliado.",
+                        "description": "Descreva como você passa um tempo reparando sua armadura e limpa toda sua Armadura. Você também pode fazer isso na armadura de um aliado.",
                         "name": "Reparar Armadura por Completo"
                     },
                     "tendToWounds": {
-                        "description": "Descreva como você cuida de suas feridas e recupera todos os seus Pontos de Vida. Você também pode fazer isso em um aliado.",
+                        "description": "Descreva como você cuida de suas feridas e limpa todos os seus Pontos de Vida. Você também pode fazer isso em um aliado.",
                         "name": "Tratar Todas as Feridas"
                     },
                     "workOnAProject": {
@@ -423,7 +423,7 @@
                     "moves": "Movimentos de Descanso Curto ({current}/{max})",
                     "tendToWounds": {
                         "name": "Tratar Feridas",
-                        "description": "Descreva como você cuida de seus ferimentos às pressas, então recupere uma quantidade de Pontos de Vida igual a 1d4 + seu patamar. Você pode fazer isso em um aliado."
+                        "description": "Descreva como você cuida de seus ferimentos às pressas, então limpe uma quantidade de Pontos de Vida igual a 1d4 + seu patamar. Você pode fazer isso em um aliado."
                     },
                     "clearStress": {
                         "name": "Limpar Estresse",
@@ -431,11 +431,11 @@
                     },
                     "repairArmor": {
                         "name": "Reparar Armadura",
-                        "description": "Descreva como você conserta sua armadura rapidamente, então recupere um número de Armadura igual a 1d4 + seu patamar. Você pode fazer isso na armadura de um aliado."
+                        "description": "Descreva como você conserta sua armadura rapidamente, então limpe um número de Armadura igual a 1d4 + seu patamar. Você pode fazer isso na armadura de um aliado."
                     },
                     "prepare": {
                         "name": "Preparar-se",
-                        "description": "Descreva como você se prepara para o caminho à frente e ganhe uma Esperança. Se escolher se Preparar com um ou mais membros do seu grupo, cada um de vocês ganha dois de Esperança."
+                        "description": "Descreva como você se prepara para o caminho à frente e ganhe uma Esperança. Se escolher se Preparar com um ou mais membros do seu grupo, cada um de vocês ganha 2  Esperança."
                     }
                 },
                 "refreshable": {
@@ -460,7 +460,7 @@
                     },
                     "bonded": {
                         "name": "Apegado",
-                        "description": "Quando você marca seu último Ponto de Vida, seu companheiro animal vem rapidamente para socorrê-lo. Role um número de d6 igual ao número de Estresse que ele ainda tem disponível e marque-os. Se tirar 6 em qualquer uma dessas rolagens, seu companheiro animal ajuda você. Recupere seu último Ponto de Vida e volte à cena."
+                        "description": "Quando você marca seu último Ponto de Vida, seu companheiro animal vem rapidamente para socorrê-lo. Role um número de d6 igual ao número de Estresse que ele ainda tem disponível e marque-os. Se tirar 6 em qualquer uma dessas rolagens, seu companheiro animal ajuda você. Limpe seu último Ponto de Vida e volte à cena."
                     }
                 },
                 "choiceDescriptions": {
@@ -495,9 +495,9 @@
                     "lightInTheDark": "Seu personagem pode marcar uma Esperança adicional.",
                     "creatureComfort": "Uma vez por descanso, quando você passa um momento de tranquilidade dando carinho e atenção a seu companheiro animal, você pode receber uma Esperança ou cada um de vocês pode limpar um Estresse.",
                     "armored": "Quando seu companheiro animal sofre dano, você pode marcar uma Armadura em vez de marcar um Estresse dele.",
-                    "vicious": "Aumente o dado de dano ou alcance de seu companheiro em um passo (d6 para d8, Corpo a Corpo para Próximo, etc.)",
+                    "vicious": "Aumente o dado de dano ou alcance de seu companheiro em um passo (d6 para d8, Adjacente para Próximo, etc.)",
                     "resilient": "Seu companheiro recebe um Estresse adicional.",
-                    "bonded": "Quando você marca seu último Ponto de Vida, seu companheiro animal vem rapidamente para socorrê-lo. Role um número de d6 igual ao número de Estresse que ele ainda tem disponível e marque-os. Se tirar 6 em qualquer uma dessas rolagens, seu companheiro animal ajuda você. Recupere seu último Ponto de Vida e volte à cena.",
+                    "bonded": "Quando você marca seu último Ponto de Vida, seu companheiro animal vem rapidamente para socorrê-lo. Role um número de d6 igual ao número de Estresse que ele ainda tem disponível e marque-os. Se tirar 6 em qualquer uma dessas rolagens, seu companheiro animal ajuda você. Limpe seu último Ponto de Vida e volte à cena.",
                     "aware": "Seu companheiro animal recebe um bônus permanente de +2 na Evasão."
                 },
                 "selections": {
@@ -572,8 +572,8 @@
         },
         "CLASS": {
             "Feature": {
-                "rallyDice": "Dado de Piquete de Bardo",
-                "short": "Reagrupar"
+                "rallyDice": "Dado de Animar de Bardo",
+                "short": "Animar"
             }
         },
         "CONFIG": {
@@ -625,7 +625,7 @@
                     "description": "Adversários que manobram e exploram oportunidades para emboscar seus oponentes."
                 },
                 "social": {
-                    "label": "Manipulador",
+                    "label": "Social",
                     "description": "Adversários que são principalmente ameaças ou desafios interpessoais."
                 },
                 "solo": {
@@ -644,11 +644,11 @@
             "ArmorFeature": {
                 "burning": {
                     "name": "Ardente",
-                    "description": "Quando um adversário ataca você em alcance Corpo a Corpo, ele marca um Estresse.",
+                    "description": "Quando um adversário Adjacente ataca você, ele marca um Estresse.",
                     "actions": {
                         "burn": {
                             "name": "Queimar",
-                            "description": "Quando um adversário ataca você em alcance Corpo a Corpo, ele marca um Estresse."
+                            "description": "Quando um adversário Adjacente ataca você, ele marca um Estresse."
                         }
                     }
                 },
@@ -774,17 +774,17 @@
                 },
                 "reinforced": {
                     "name": "Reforços",
-                    "description": "Quando marcar sua última Armadura, aumente seus limiares de dano em +2 até você recuperar pelo menos uma Armadura.",
+                    "description": "Quando marcar sua última Armadura, aumente seus limiares de dano em +2 até você limpar pelo menos uma Armadura.",
                     "actions": {
                         "reinforce": {
                             "name": "Reforçar",
-                            "description": "Quando marcar sua última Armadura, aumente seus limiares de dano em +2 até você recuperar pelo menos uma Armadura."
+                            "description": "Quando marcar sua última Armadura, aumente seus limiares de dano em +2 até você limpar pelo menos uma Armadura."
                         }
                     },
                     "effects": {
                         "reinforced": {
                             "name": "Reforços",
-                            "description": "Quando marcar sua última Armadura, aumente seus limiares de dano em +2 até você recuperar pelo menos uma Armadura."
+                            "description": "Quando marcar sua última Armadura, aumente seus limiares de dano em +2 até você limpar pelo menos uma Armadura."
                         }
                     }
                 },
@@ -800,11 +800,11 @@
                 },
                 "sharp": {
                     "name": "Cortante",
-                    "description": "Ao acertar um ataque contra um alvo em alcance Corpo a Corpo, você recebe um bônus de +1d4 na rolagem de dano.",
+                    "description": "Ao acertar um ataque contra um alvo Adjacente, você recebe um bônus de +1d4 na rolagem de dano.",
                     "effects": {
                         "sharp": {
                             "name": "Cortante",
-                            "description": "Ao acertar um ataque contra um alvo em alcance Corpo a Corpo, você recebe um bônus de +1d4 na rolagem de dano."
+                            "description": "Ao acertar um ataque contra um alvo Adjacente, você recebe um bônus de +1d4 na rolagem de dano."
                         }
                     }
                 },
@@ -916,7 +916,7 @@
                 },
                 "riskItAll": {
                     "name": "Arriscar Tudo",
-                    "description": "Role seus Dados de Dualidade. Se o Dado de Esperança for mais alto, seu personagem continua de pé e recupera uma quantidade de Pontos de Vida e/ou Estresse igual ao resultado do Dado de Esperança (divida esse valor entre PV e Estresse como preferir). Se o Dado de Medo for mais alto, seu personagem atravessa o véu da morte. Se os Dados de Dualidade empatarem, seu personagem continua de pé, recupera todos os Pontos de Vida e zera a Estresse."
+                    "description": "Role seus Dados de Dualidade. Se o Dado de Esperança for mais alto, seu personagem continua de pé e limpa uma quantidade de Pontos de Vida e/ou Estresse igual ao resultado do Dado de Esperança (divida esse valor entre PV e Estresse como preferir). Se o Dado de Medo for mais alto, seu personagem atravessa o véu da morte. Se os Dados de Dualidade empatarem, seu personagem continua de pé, limpa todos os Pontos de Vida e zera a Estresse."
                 },
                 "blazeOfGlory": {
                     "name": "Sacrifício Glorioso",
@@ -986,12 +986,12 @@
             "Range": {
                 "self": {
                     "name": "Pessoal",
-                    "description": "significa você mesmo.",
+                    "description": "Significa você mesmo.",
                     "short": "Pessoal"
                 },
                 "melee": {
                     "name": "Adjacente",
-                    "description": "significa que um personagem está a uma distância de toque do alvo. PJs geralmente podem tocar alvos a até um metro de distância, mas o alcance corpo a corpo pode ser maior para NPCs especialmente grandes.",
+                    "description": "Significa que um personagem está a uma distância de toque do alvo. PJs geralmente podem tocar alvos a até um metro de distância, mas esse alcance pode ser maior para NPCs especialmente grandes.",
                     "short": "Adj"
                 },
                 "veryClose": {
@@ -1002,17 +1002,17 @@
                 "close": {
                     "name": "Próximo",
                     "description": "significa uma distância onde se pode ver detalhes proeminentes de um alvo — do outro lado de uma sala ou em uma barraca de mercado vizinha, geralmente de 3 a 9 metros de distância. Em perigo, um PJ geralmente pode alcançar qualquer coisa que esteja próxima como parte de qualquer outra ação que ele tome. Qualquer coisa em um mapa de batalha que esteja dentro do comprimento de uma caneta ou lápis padrão (~13-15 cm) pode geralmente ser considerada próxima.",
-                    "short": "Pto"
+                    "short": "Próx"
                 },
                 "far": {
                     "name": "Distante",
                     "description": "significa uma distância onde se pode ver a aparência de uma pessoa ou objeto, mas provavelmente não em grandes detalhes — do outro lado de um pequeno campo de batalha ou por um corredor grande. Geralmente, é de 9 a 30 metros de distância. Em perigo, um PJ provavelmente terá que fazer um teste de Agilidade para chegar lá em segurança. Qualquer coisa em um mapa de batalha que esteja dentro do comprimento de uma folha de papel padrão (~28-30 cm) pode geralmente ser considerada distante.",
-                    "short": "Lng"
+                    "short": "Dist"
                 },
                 "veryFar": {
                     "name": "Muito Distante",
                     "description": "significa uma distância onde você pode ver a forma de uma pessoa ou objeto, mas provavelmente não consegue distinguir detalhes — do outro lado de um grande campo de batalha ou por uma rua longa, geralmente de 30 a 90 metros de distância. Em perigo, um PJ provavelmente terá que fazer um teste de Agilidade para chegar lá em segurança. Qualquer coisa em um mapa de batalha que esteja além da distância distante, mas ainda à vista dos personagens, pode geralmente ser considerada muito distante.",
-                    "short": "Mto L"
+                    "short": "Mto D"
                 }
             },
             "RollTypes": {
@@ -1254,21 +1254,21 @@
                 },
                 "doubleDuty": {
                     "name": "Dupla Função",
-                    "description": "+1 Armadura; +1 de dano para a arma principal em alvos Corpo a Corpo",
+                    "description": "+1 Armadura; +1 de dano para a arma principal em alvos Adjacentes",
                     "effects": {
                         "doubleDuty": {
                             "name": "Dupla Função",
-                            "description": "+1 Armadura; +1 de dano para a arma principal em alvos Corpo a Corpo"
+                            "description": "+1 Armadura; +1 de dano para a arma principal em alvos Adjacentes"
                         }
                     }
                 },
                 "doubledUp": {
                     "name": "Alvo Duplo",
-                    "description": "Ao fazer um ataque com sua arma principal, você pode causar dano a um outro alvo Corpo a Corpo.",
+                    "description": "Ao fazer um ataque com sua arma principal, você pode causar dano a um outro alvo Adjacente.",
                     "actions": {
                         "doubleUp": {
                             "name": "Dobrar",
-                            "description": "Ao fazer um ataque com sua arma principal, você pode causar dano a um outro alvo Corpo a Corpo."
+                            "description": "Ao fazer um ataque com sua arma principal, você pode causar dano a um outro alvo Adjacente."
                         }
                     }
                 },
@@ -1284,21 +1284,21 @@
                 },
                 "eruptive": {
                     "name": "Impactante",
-                    "description": "Ao acertar um ataque em um alvo Corpo a Corpo, todos os adversários Muito Próximos devem ter sucesso em um teste de reação (14) ou sofrem metade do dano.",
+                    "description": "Ao acertar um ataque em um alvo Adjacente, todos os adversários Muito Próximos devem ter sucesso em um teste de reação (14) ou sofrem metade do dano.",
                     "actions": {
                         "erupt": {
                             "name": "Erupção",
-                            "description": "Ao acertar um ataque em um alvo Corpo a Corpo, todos os adversários Muito Próximos devem ter sucesso em um teste de reação (14) ou sofrem metade do dano."
+                            "description": "Ao acertar um ataque em um alvo Adjacente, todos os adversários Muito Próximos devem ter sucesso em um teste de reação (14) ou sofrem metade do dano."
                         }
                     }
                 },
                 "grappling": {
                     "name": "Agarrar",
-                    "description": "Ao acertar um ataque, você pode gastar uma Esperança para Imobilizar o alvo ou puxá-lo em sua direção para um ponto em alcance Corpo a Corpo.",
+                    "description": "Ao acertar um ataque, você pode gastar uma Esperança para Imobilizar o alvo ou puxá-lo em sua direção para um ponto em alcance Adjacente.",
                     "actions": {
                         "grapple": {
                             "name": "Agarrar",
-                            "description": "Ao acertar um ataque, você pode gastar uma Esperança para Imobilizar o alvo ou puxá-lo em sua direção para um ponto em alcance Corpo a Corpo."
+                            "description": "Ao acertar um ataque, você pode gastar uma Esperança para Imobilizar o alvo ou puxá-lo em sua direção para um ponto em alcance Adjacente."
                         }
                     }
                 },
@@ -1314,11 +1314,11 @@
                 },
                 "healing": {
                     "name": "Vitalizante",
-                    "description": "Em repousos, recupere automaticamente 1 Ponto de Vida.",
+                    "description": "Em repousos, limpe automaticamente 1 Ponto de Vida.",
                     "actions": {
                         "heal": {
                             "name": "Curar",
-                            "description": "Em repousos, recupere automaticamente 1 Ponto de Vida."
+                            "description": "Em repousos, limpe automaticamente 1 Ponto de Vida."
                         }
                     }
                 },
@@ -1334,11 +1334,11 @@
                 },
                 "hooked": {
                     "name": "Gancho",
-                    "description": "Ao acertar um ataque, você pode puxar o alvo para seu alcance Corpo a Corpo.",
+                    "description": "Ao acertar um ataque, você pode puxar o alvo até ficar Adjacente.",
                     "actions": {
                         "hook": {
                             "name": "Enganchar",
-                            "description": "Ao acertar um ataque, você pode puxar o alvo para seu alcance Corpo a Corpo."
+                            "description": "Ao acertar um ataque, você pode puxar o alvo até ficar Adjacente."
                         }
                     }
                 },
@@ -1354,21 +1354,21 @@
                 },
                 "invigorating": {
                     "name": "Revigorante",
-                    "description": "Após um ataque, role 1d4. Se rolar 4, recupere um Estresse.",
+                    "description": "Após um ataque, role 1d4. Se rolar 4, limpe um Estresse.",
                     "actions": {
                         "invigorate": {
                             "name": "Revigorar",
-                            "description": "Após um ataque, role 1d4. Se rolar 4, recupere um Estresse."
+                            "description": "Após um ataque, role 1d4. Se rolar 4, limpe um Estresse."
                         }
                     }
                 },
                 "lifestealing": {
                     "name": "Sorvedoura",
-                    "description": "Ao acertar um ataque, role 1d6. Se rolar 6, recupere 1 Ponto de Vida ou recupere um Estresse.",
+                    "description": "Ao acertar um ataque, role 1d6. Se rolar 6, limpe 1 Ponto de Vida ou limpe um Estresse.",
                     "actions": {
                         "lifesteal": {
                             "name": "Sorver Vida",
-                            "description": "Ao acertar um ataque, role 1d6. Se rolar 6, recupere 1 Ponto de Vida ou recupere um Estresse."
+                            "description": "Ao acertar um ataque, role 1d6. Se rolar 6, limpe 1 Ponto de Vida ou limpe um Estresse."
                         }
                     }
                 },
@@ -1424,17 +1424,17 @@
                 },
                 "paired": {
                     "name": "Par",
-                    "description": "Sua arma principal causa +2 de dano em alvos Corpo a Corpo",
+                    "description": "Sua arma principal causa +2 de dano em alvos Adjacentes",
                     "actions": {
                         "paired": {
                             "name": "Par",
-                            "description": "Sua arma principal causa +2 de dano em alvos Corpo a Corpo"
+                            "description": "Sua arma principal causa +2 de dano em alvos Adjacentes"
                         }
                     },
                     "effects": {
                         "paired": {
                             "name": "Par",
-                            "description": "Sua arma principal causa +2 de dano em alvos Corpo a Corpo"
+                            "description": "Sua arma principal causa +2 de dano em alvos Adjacentes"
                         }
                     }
                 },
@@ -1596,11 +1596,11 @@
                 },
                 "startling": {
                     "name": "Alarmante",
-                    "description": "Marque um Estresse para forçar os adversários Corpo a Corpo a recuar para um ponto em alcance Próximo.",
+                    "description": "Marque um Estresse para forçar os adversários Adjacentes a recuar para um ponto Próximo.",
                     "actions": {
                         "startle": {
                             "name": "Alarmar",
-                            "description": "Marque um Estresse para forçar os adversários Corpo a Corpo a recuar para um ponto em alcance Próximo."
+                            "description": "Marque um Estresse para forçar os adversários Adjacentes a recuar para um ponto Próximo."
                         }
                     }
                 },

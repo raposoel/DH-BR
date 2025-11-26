@@ -72,7 +72,7 @@
     {
       "id": "Attack Of Opportunity",
       "name": "Ataque de Oportunidade",
-      "description": "Se um adversário Adjacente tentar sair desse alcance, faça um teste de reação usando um atributo à sua escolha contra a Dificuldade dele. Em um sucesso, escolha um efeito; em um sucesso crítico, escolha dois:<br>• Ele não pode sair de onde está.<br>• Você causa dano a ele igual ao dano de sua arma principal.<br>• Você se movimenta com ele."
+      "description": "Se um adversário Adjacente tentar sair desse alcance, faça um teste de reação usando um atributo à sua escolha contra a Dificuldade dele. Em um sucesso, escolha um efeito; em um sucesso crítico, escolha dois:<br>• Ele não pode sair de onde está.<br>• Você causa dano a ele igual ao dano de sua arma primária.<br>• Você se movimenta com ele."
     },
     {
       "id": "Cloaked",

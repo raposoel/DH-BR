@@ -20,12 +20,21 @@
             "character": "Personagem",
             "companion": "Companheiro",
             "adversary": "Adversário",
-            "environment": "Ambiente"
+            "environment": "Ambiente",
+            "party": "Grupo"
         }
     },
     "CONTROLS": {
         "inFront": "À Frente"
     },
+    "SCENE": {
+        "TABS": {
+            "SHEET": {
+                "dh": "Daggerheart"
+            }
+        }
+    },
+
     "DAGGERHEART": {
         "ACTIONS": {
             "TYPES": {
@@ -36,6 +45,10 @@
                 "beastform": {
                     "name": "Forma de Fera",
                     "tooltip": "Transforma o usuário em outra forma."
+                },
+                "countdown": {
+                    "name": "Contagem",
+                    "tooltip": "Iniciar uma contagem"
                 },
                 "damage": {
                     "name": "Dano",
@@ -64,6 +77,18 @@
                     "exactHint": "O Patamar do Personagem é usado se estiver vazio",
                     "label": "Forma de Fera"
                 },
+                "countdown": {
+                    "defaultOwnership": "Posse Padrão",
+                    "startCountdown": "Iniciar Contagem"
+                },
+                "damage": {
+                    "multiplier": "Multiplicador",
+                    "flatMultiplier": "Multiplicador Fixo"
+                },
+                "general": {
+                    "customFormula": "Fórmula Personalizada",
+                    "formula": "Fórmula"
+                },
                 "displayInChat": "Exibir no chat"
             },
             "RollField": {
@@ -78,10 +103,10 @@
             "Settings": {
                 "attackBonus": "Bônus de Ataque",
                 "attackName": "Nome do Ataque",
-                "includeBase": {
-                    "label": "Incluir Dano do Item"
-                },
+                "criticalThreshold": "Limiar Crítico",
+                "includeBase": { "label": "Incluir Dano do Item" },
                 "multiplier": "Multiplicador",
+                "saveHint": "Defina um Atributo padrão para habilitar o Teste de Reação. Pode ser alterado posteriormente no Diálogo de Teste de Reação.",
                 "resultBased": {
                     "label": "Fórmula baseada no resultado de Esperança/Medo."
                 },
@@ -106,81 +131,46 @@
             "RangeDependance": {
                 "hint": "Configurações para uma distância opcional na qual este efeito deve ser ativado",
                 "title": "Dependente de Alcance"
-            }
+            },
+            "immuneStatusText": "Imunidade: {status}"
         },
         "ACTORS": {
             "Adversary": {
                 "FIELDS": {
                     "attack": {
-                        "name": {
-                            "label": "Nome"
-                        },
-                        "modifier": {
-                            "label": "Modificador"
-                        },
-                        "range": {
-                            "label": "Alcance"
-                        },
+                        "name": { "label": "Nome" },
+                        "modifier": { "label": "Modificador" },
+                        "range": { "label": "Alcance" },
                         "damage": {
-                            "value": {
-                                "label": "Dano"
-                            },
-                            "type": {
-                                "label": "Tipo de Dano"
-                            }
+                            "value": { "label": "Dano" },
+                            "type": { "label": "Tipo de Dano" }
                         }
                     },
                     "damageThresholds": {
-                        "major": {
-                            "label": "Maior"
-                        },
-                        "severe": {
-                            "label": "Severo"
-                        }
+                        "major": { "label": "Maior" },
+                        "severe": { "label": "Severo" }
                     },
-                    "description": {
-                        "label": "Descrição"
-                    },
-                    "difficulty": {
-                        "label": "Dificuldade"
-                    },
+                    "description": { "label": "Descrição" },
+                    "difficulty": { "label": "Dificuldade" },
                     "experiences": {
                         "element": {
-                            "name": {
-                                "label": "Nome"
-                            },
-                            "value": {
-                                "label": "Modificador"
-                            }
+                            "name": { "label": "Nome" },
+                            "value": { "label": "Modificador" }
                         }
                     },
-                    "motivesAndTactics": {
-                        "label": "Motivações e Táticas"
-                    },
+                    "motivesAndTactics": { "label": "Motivações e Táticas" },
                     "resources": {
                         "hitPoints": {
-                            "value": {
-                                "label": "Atual"
-                            },
-                            "max": {
-                                "label": "Máx"
-                            }
+                            "value": { "label": "Atual" },
+                            "max": { "label": "Máx" }
                         },
                         "stress": {
-                            "value": {
-                                "label": "Atual"
-                            },
-                            "max": {
-                                "label": "Máx"
-                            }
+                            "value": { "label": "Atual" },
+                            "max": { "label": "Máx" }
                         }
                     },
-                    "tier": {
-                        "label": "Patamar"
-                    },
-                    "type": {
-                        "label": "Tipo"
-                    }
+                    "tier": { "label": "Patamar" },
+                    "type": { "label": "Tipo" }
                 },
                 "hordeDamage": "Dano de Horda",
                 "horderHp": "Horda/PV"
@@ -191,7 +181,9 @@
                     "hint": "Adicione palavras únicas ou textos curtos como lembretes e dicas sobre o que um personagem tem vantagem."
                 },
                 "age": "Idade",
+                "backgroundQuestions": "Antecedentes",
                 "companionFeatures": "Habilidades de Companheiro",
+                "connections": "Conexões",
                 "contextMenu": {
                     "consume": "Consumir Item",
                     "equip": "Equipar",
@@ -217,7 +209,7 @@
                 },
                 "experienceDataRemoveConfirmation": {
                     "title": "Remover Dados de Experiência",
-                    "text": "A experiência que você está prestes a remover tem dados de subida de nível vinculados a ela (presumivelmente porque você subiu de nível com a configuração de automação 'levelupAuto' ativada). Removê-la também removerá esses dados de automação. Deseja prosseguir?"
+                    "text": "A experiência que você está prestes a remover tem dados de aumento de nível vinculados a ela (presumivelmente porque você subiu de nível com a configuração de automação 'levelupAuto' ativada). Removê-la também removerá esses dados de automação. Deseja prosseguir?"
                 },
                 "manualMulticlass": {
                     "title": "Multiclasse",
@@ -227,34 +219,30 @@
                     "title": "Subclasse de Multiclasse",
                     "text": "Deseja adicionar esta subclasse como sua subclasse de multiclasse?"
                 },
-                "cannotRemoveCoreExperience": "Você está usando a Subida de Nível Automática. Você não pode remover uma experiência concedida pela progressão das regras."
+                "cannotRemoveCoreExperience": "Você está usando o Aumento de Nível Automática. Você não pode remover uma experiência concedida pela progressão das regras.",
+                "companionLevelup": {
+                    "confirmTitle": "Aumento de Nível do Companheiro",
+                    "confirmText": "Gostaria de aumentar o nível do seu companheiro {name} em {levelChange} níveis agora? (Você pode fazer manualmente depois)"
+                },
+                "viewLevelups": "Ver Aumentos de Nível",
+                "InvalidOldCharacterImportTitle": "Importação de Personagem Antigo",
+                "InvalidOldCharacterImportText": "Dados de personagem exportados antes da versão 1.1 do sistema não gerarão um personagem completo. Deseja continuar?",
+                "cancelBeastform": "Cancelar Forma de Fera"
             },
             "Companion": {
                 "FIELDS": {
                     "attack": {
-                        "name": {
-                            "label": "Nome do Ataque"
-                        }
+                        "name": { "label": "Nome do Ataque" }
                     },
                     "evasion": {
-                        "value": {
-                            "label": "Evasão"
-                        }
+                        "value": { "label": "Evasão" }
                     },
-                    "partner": {
-                        "label": "Parceiro"
-                    },
+                    "partner": { "label": "Parceiro" },
                     "resources": {
                         "stress": {
-                            "value": {
-                                "label": "Estresse"
-                            },
-                            "currentStress": {
-                                "label": "Estresse Atual"
-                            },
-                            "maxStress": {
-                                "label": "Estresse Máx."
-                            }
+                            "value": { "label": "Estresse" },
+                            "currentStress": { "label": "Estresse Atual" },
+                            "maxStress": { "label": "Estresse Máx." }
                         }
                     }
                 },
@@ -282,14 +270,19 @@
             }
         },
         "APPLICATIONS": {
+            "Attribution": {
+                "title": "Atribuição"
+            },
             "CharacterCreation": {
-                "setupTabs": {
+                "tabs": {
                     "ancestry": "Ancestralidade",
                     "community": "Comunidade",
                     "class": "Classe",
                     "experience": "Experiência",
                     "traits": "Atributos",
-                    "domainCards": "Cartas de Domínio"
+                    "domainCards": "Cartas de Domínio",
+                    "equipment": "Equipamento",
+                    "story": "Origem"
                 },
                 "ancestryNamePlaceholder": "O nome da sua ancestralidade",
                 "buttonTitle": "Criação de Personagem",
@@ -310,6 +303,7 @@
                 "selectSubclass": "Selecionar Subclasse",
                 "startingItems": "Itens Iniciais",
                 "story": "Origem",
+                "storyExplanation": "Selecione quais prompts de antecedente e conexão você deseja copiar para o antecedente do seu personagem.",
                 "suggestedArmor": "Armadura Sugerida",
                 "suggestedPrimaryWeapon": "Arma Principal Sugerida",
                 "suggestedSecondaryWeapon": "Arma Secundária Sugerida",
@@ -323,7 +317,7 @@
                 "giveSpotlight": "Dar o Foco",
                 "requestingSpotlight": "Requisitando o Foco",
                 "requestSpotlight": "Requisitar o Foco",
-                "openCountdowns": "Contagens Regressivas"
+                "openCountdowns": "Contagens"
             },
             "ContextMenu": {
                 "disableEffect": "Desabilitar Efeito",
@@ -336,43 +330,63 @@
                 "useItem": "Usar Item"
             },
             "Countdown": {
-                "addCountdown": "Adicionar Contagem Regressiva",
+                "addCountdown": "Adicionar Contagem",
+                "loopingTypes": {
+                    "noLooping": "Sem Repetição",
+                    "looping": "Repetição",
+                    "increasing": "Crescente",
+                    "decreasing": "Decrescente"
+                },
                 "FIELDS": {
                     "countdowns": {
                         "element": {
-                            "name": {
-                                "label": "Nome"
-                            },
+                            "name": { "label": "Nome" },
                             "progress": {
-                                "current": {
-                                    "label": "Atual"
-                                },
-                                "max": {
-                                    "label": "Máx"
-                                },
+                                "current": { "label": "Atual" },
+                                "looping": { "label": "Repetição" },
+                                "start": { "label": "Início" },
+                                "startFormula": { "label": "Fórmula de Início" },
                                 "type": {
-                                    "label": {
-                                        "label": "Rótulo",
-                                        "hint": "Usado para personalizado"
-                                    },
-                                    "value": {
-                                        "label": "Valor"
-                                    }
+                                    "label": { "label": "Rótulo", "hint": "Usado para personalizar" },
+                                    "value": { "label": "Valor" }
                                 }
-                            }
+                            },
+                            "type": { "label": "Tipo de Progressão" }
                         }
                     }
                 },
-                "newCountdown": "Nova Contagem Regressiva",
+                "newCountdown": "Nova Contagem",
                 "openOwnership": "Editar Posse do Jogador",
-                "removeCountdownText": "Tem certeza que deseja remover a contagem regressiva: {name}?",
-                "removeCountdownTitle": "Remover Contagem Regressiva",
-                "title": "Contagens Regressivas de {type}",
+                "removeCountdownText": "Tem certeza que deseja remover a contagem: {name}?",
+                "removeCountdownTitle": "Remover Contagem",
+                "title": "Contagens de {type}",
                 "toggleSimple": "Alternar Visão Simples",
                 "types": {
                     "narrative": "Narrativa",
                     "encounter": "Encontro"
                 }
+            },
+            "CountdownEdit": {
+                "title": "Edição de Contagem",
+                "viewTitle": "Contagens",
+                "editTitle": "Editar Contagens",
+                "newCountdown": "Nova Contagem",
+                "removeCountdownTitle": "Remover Contagem",
+                "removeCountdownText": "Tem certeza que deseja remover a contagem: {name}?",
+                "current": "Valor Atual",
+                "start": "Valor Inicial",
+                "startFormula": "Fórmula de Valor Inicial Aleatório",
+                "currentCountdownCurrent": "Atual: {value}",
+                "currentCountdownStart": "Início: {value}",
+                "category": "Categoria",
+                "progressionType": "Progressão",
+                "decreasing": "Decrescente",
+                "looping": "Repetição",
+                "defaultOwnershipTooltip": "A posse padrão do jogador para contagens",
+                "hideNewCountdowns": "Ocultar Novas Contagens"
+            },
+            "DaggerheartMenu": {
+                "title": "Ferramentas do Mestre"
             },
             "DeleteConfirmation": {
                 "title": "Deletar {type} - {name}",
@@ -386,7 +400,8 @@
                 "stressReduction": "Reduzir com Estresse",
                 "title": "Redução de Dano",
                 "unncessaryStress": "Você não precisa marcar Estresse",
-                "usedMarks": "Pontos Usados"
+                "usedMarks": "Pontos Usados",
+                "reduceSeverity": "Gravidade Reduzida em {nr}"
             },
             "DeathMove": {
                 "selectMove": "Selecionar Movimento",
@@ -435,7 +450,7 @@
                     },
                     "prepare": {
                         "name": "Preparar-se",
-                        "description": "Descreva como você se prepara para o caminho à frente e ganhe uma Esperança. Se escolher se Preparar com um ou mais membros do seu grupo, cada um de vocês ganha 2  Esperança."
+                        "description": "Descreva como você se prepara para o caminho à frente e ganhe uma Esperança. Se escolher se Preparar com um ou mais membros do seu grupo, cada um de vocês ganha 2 Esperança."
                     }
                 },
                 "refreshable": {
@@ -445,8 +460,17 @@
             },
             "HUD": {
                 "tokenHUD": {
-                    "genericEffects": "Efeitos do Foundry"
+                    "genericEffects": "Efeitos do Foundry",
+                    "depositPartyTokens": "Depositar Fichas do Grupo",
+                    "retrievePartyTokens": "Recuperar Fichas do Grupo"
                 }
+            },
+            "ImageSelect": {
+                "title": "Selecionar Imagem",
+                "selectImage": "Selecionar Imagem"
+            },
+            "ItemTransfer": {
+                "transfer": "Transferir"
             },
             "Levelup": {
                 "actions": {
@@ -472,14 +496,14 @@
                     "evasion": "Receba um bônus de +1 em sua Evasão permanentemente.",
                     "proficiency": "Aumente sua Proficiência em +1.",
                     "subclass": "Pegue uma carta de subclasse aprimorada. Em seguida, risque a opção de multiclasse para este patamar.",
-                    "multiclass": "Multiclasse: Escolha uma classe adicional para seu personagem, depois risque uma opção não utilizada de “Pegue uma carta de subclasse aprimorada” e a outra opção de multiclasse nesta ficha."
+                    "multiclass": "Multiclasse: Escolha uma classe adicional para seu personagem, depois risque uma opção não utilizada de 'Pegue uma carta de subclasse aprimorada' e a outra opção de multiclasse nesta ficha."
                 },
                 "delevel": {
                     "content": "Retornar para a seleção de nível anterior removerá todas as seleções feitas para este nível. Deseja prosseguir?",
                     "title": "Voltar para o nível anterior"
                 },
                 "navigateLevel": "Para o Nível {level}",
-                "navigateToLevelup": "Retornar para Subir de Nível",
+                "navigateToLevelup": "Retornar para Aumento de Nível",
                 "navigateToSummary": "Para o Resumo",
                 "options": {
                     "trait": "Receba um bônus de +1 em dois atributos de personagem não marcados e marque-os.",
@@ -490,7 +514,7 @@
                     "evasion": "Receba um bônus de +1 em sua Evasão permanentemente.",
                     "subclass": "Pegue uma carta de subclasse aprimorada. Em seguida, risque a opção de multiclasse para este patamar.",
                     "proficiency": "Aumente sua Proficiência em +1.",
-                    "multiclass": "Multiclasse: Escolha uma classe adicional para seu personagem, depois risque uma opção não utilizada de “Pegue uma carta de subclasse aprimorada” e a outra opção de multiclasse nesta ficha.",
+                    "multiclass": "Multiclasse: Escolha uma classe adicional para seu personagem, depois risque uma opção não utilizada de 'Pegue uma carta de subclasse aprimorada' e a outra opção de multiclasse nesta ficha.",
                     "intelligent": "Seu companheiro recebe um bônus permanente de +1 em uma Experiência de companheiro à sua escolha.",
                     "lightInTheDark": "Seu personagem pode marcar uma Esperança adicional.",
                     "creatureComfort": "Uma vez por descanso, quando você passa um momento de tranquilidade dando carinho e atenção a seu companheiro animal, você pode receber uma Esperança ou cada um de vocês pode limpar um Estresse.",
@@ -527,26 +551,30 @@
                     "rangeIncreased": "Alcance Aumentado: {range}",
                     "simpleFeature": "Habilidade: {feature}"
                 },
-                "takeLevelUp": "Finalizar Subida de Nível",
+                "takeLevelUp": "Finalizar Aumento de Nível",
                 "tier2": {
+                    "name": "Patamar 2",
                     "label": "Níveis 2-4",
                     "infoLabel": "No nível 2, crie uma nova Experiência com +2 e aumente sua Proficiência em +1.",
                     "pretext": "Escolha duas opções da lista abaixo",
                     "posttext": "Pegue uma carta de domínio adicional de seu nível ou inferior de um domínio ao qual você tem acesso."
                 },
                 "tier3": {
+                    "name": "Patamar 3",
                     "label": "Níveis 5-7",
                     "infoLabel": "No nível 5, crie uma nova Experiência com +2 e remova todas as marcações nos atributos.",
                     "pretext": "Ao subir de nível, registre na ficha de personagem, depois escolha duas opções da lista abaixo ou qualquer opção não marcada do patamar anterior.",
                     "posttext": "Pegue uma carta de domínio adicional de seu nível ou inferior de um domínio ao qual você tem acesso."
                 },
                 "tier4": {
+                    "name": "Patamar 4",
                     "label": "Níveis 8-10",
                     "infoLabel": "No nível 8, crie uma nova Experiência e remova todas as marcações nos atributos.",
                     "pretext": "Ao subir de nível, registre na ficha de personagem, depois escolha duas opções da lista abaixo ou qualquer opção não marcada do patamar anterior.",
                     "posttext": "Pegue uma carta de domínio adicional de seu nível ou inferior de um domínio ao qual você tem acesso."
                 },
-                "title": "{actor} - Subir de Nível"
+                "title": "{actor} - Aumento de Nível",
+                "viewModeTitle": "{actor} Aumento de Nível (Modo Visualização)"
             },
             "MulticlassChoice": {
                 "title": "Multiclasse - {actor}",
@@ -568,6 +596,19 @@
             "ResourceDice": {
                 "title": "Recurso de {name}",
                 "rerollDice": "Rolar Dados Novamente"
+            },
+            "TagTeamSelect": {
+                "title": "Rolagem de Equipe",
+                "leaderTitle": "Personagem Iniciador",
+                "membersTitle": "Participantes",
+                "partyTeam": "Equipe do Grupo",
+                "hopeCost": "Custo de Esperança",
+                "initiatingCharacter": "Personagem Iniciador",
+                "linkMessageHint": "Faça uma rolagem da sua ficha de personagem para vinculá-la à Rolagem de Equipe",
+                "damageNotRolled": "Dano não rolado na mensagem do chat ainda",
+                "insufficientHope": "O personagem iniciador não tem Esperança suficiente",
+                "createTagTeam": "Criar Rolagem de Equipe",
+                "chatMessageRollTitle": "Rolagem"
             }
         },
         "CLASS": {
@@ -877,6 +918,10 @@
                     "name": "Morto",
                     "description": "O personagem está morto"
                 },
+                "defeated": {
+                    "name": "Derrotado",
+                    "description": "Este adversário está derrotado."
+                },
                 "hidden": {
                     "name": "Escondido",
                     "description": "Enquanto Escondido, ataques não podem ser feitos diretamente contra ele e quaisquer rolagens contra ele têm desvantagem.\nQuando uma criatura Escondida se move ou ataca, ela não está mais Escondida. No entanto, se uma criatura está Escondida quando começa a fazer um ataque, a rolagem tem vantagem; a condição Escondido não é removida até que o ataque seja resolvido."
@@ -895,9 +940,12 @@
                 }
             },
             "CountdownType": {
-                "spotlight": "Foco",
+                "actionRoll": "Teste de Ação",
+                "characterAttack": "Ataque de Personagem",
+                "characterSpotlight": "Foco no Personagem",
                 "custom": "Personalizada",
-                "characterAttack": "Ataque de Personagem"
+                "fear": "Medo",
+                "spotlight": "Foco"
             },
             "DamageType": {
                 "physical": {
@@ -907,6 +955,11 @@
                 "magical": {
                     "name": "Mágico",
                     "abbreviation": "Mág"
+                },
+                "direct": {
+                    "name": "Dano Direto",
+                    "short": "Direto",
+                    "abbreviation": "Dir"
                 }
             },
             "DeathMoves": {
@@ -956,23 +1009,28 @@
             "HealingType": {
                 "hitPoints": {
                     "name": "Pontos de Vida",
-                    "abbreviation": "PV"
+                    "abbreviation": "PV",
+                    "inChatRoll": "Dano"
                 },
                 "stress": {
                     "name": "Estresse",
-                    "abbreviation": "EST"
+                    "abbreviation": "EST",
+                    "inChatRoll": "Estresse"
                 },
                 "hope": {
                     "name": "Esperança",
-                    "abbreviation": "ESP"
+                    "abbreviation": "ESP",
+                    "inChatRoll": "Esperança"
                 },
                 "armor": {
                     "name": "Armadura",
-                    "abbreviation": "ARM"
+                    "abbreviation": "ARM",
+                    "inChatRoll": "Armadura"
                 },
                 "fear": {
                     "name": "Medo",
-                    "abbreviation": "MED"
+                    "abbreviation": "MED",
+                    "inChatRoll": "Medo"
                 }
             },
             "ItemResourceProgression": {
@@ -981,7 +1039,8 @@
             },
             "ItemResourceType": {
                 "simple": "Simples",
-                "diceValue": "Valor do Dado"
+                "diceValue": "Valor do Dado",
+                "die": "Dado"
             },
             "Range": {
                 "self": {
@@ -1011,7 +1070,7 @@
                 },
                 "veryFar": {
                     "name": "Muito Distante",
-                    "description": "significa uma distância onde você pode ver a forma de uma pessoa ou objeto, mas provavelmente não consegue distinguir detalhes — do outro lado de um grande campo de batalha ou por uma rua longa, geralmente de 30 a 90 metros de distância. Em perigo, um PJ provavelmente terá que fazer um teste de Agilidade para chegar lá em segurança. Qualquer coisa em um mapa de batalha que esteja além da distância distante, mas ainda à vista dos personagens, pode geralmente ser considerada muito distante.",
+                    "description": "significa uma distância onde você pode ver a forma de uma pessoa ou objeto, mas provavelmente não consegue distinguir detalhes — do outro lado de um grande campo de batalha ou por uma rua longe, geralmente de 30 a 90 metros de distância. Em perigo, um PJ provavelmente terá que fazer um teste de Agilidade para chegar lá em segurança. Qualquer coisa em um mapa de batalha que esteja além da distância distante, mas ainda à vista dos personagens, pode geralmente ser considerada muito distante.",
                     "short": "Mto D"
                 }
             },
@@ -1038,6 +1097,12 @@
             "SelectAction": {
                 "selectType": "Selecionar Tipo de Ação",
                 "selectAction": "Seleção de Ação"
+            },
+            "TargetTypes": {
+                "any": "Qualquer",
+                "friendly": "Aliado",
+                "hostile": "Hostil",
+                "self": "Pessoal"
             },
             "TemplateTypes": {
                 "circle": "Círculo",
@@ -1106,11 +1171,11 @@
             "WeaponFeature": {
                 "barrier": {
                     "name": "Barreira",
-                    "description": "+2 de Armadura; –1 na Evasão",
+                    "description": "Ganhe Patamar da Arma + 1 na Armadura; –1 na Evasão",
                     "effects": {
                         "barrier": {
                             "name": "Barreira",
-                            "description": "+2 de Armadura; –1 na Evasão"
+                            "description": "Ganhe Patamar da Arma + 1 na Armadura; –1 na Evasão"
                         }
                     }
                 },
@@ -1136,11 +1201,11 @@
                 },
                 "brave": {
                     "name": "Valente",
-                    "description": "–1 em Evasão; + 3 no limiar de dano severo",
+                    "description": "–1 em Evasão; + Patamar da Arma no limiar de dano severo",
                     "effects": {
                         "brave": {
                             "name": "Valente",
-                            "description": "–1 em Evasão; + 3 no limiar de dano severo"
+                            "description": "–1 em Evasão; + Patamar da Arma no limiar de dano severo"
                         }
                     }
                 },
@@ -1881,16 +1946,16 @@
                             "label": "Ataque Base: Índice de Dados de Dano",
                             "hint": "Índice para os dados de dano usados no ataque básico. 0=d4, 1=d6, 2=d8, 3=d10, 4=d12, 5=d20"
                         },
-                        "bonus": {
-                            "label": "Ataque Base: Bônus de Dano"
-                        }
+                        "bonus": { "label": "Ataque Base: Bônus de Dano" }
                     },
                     "roll": {
-                        "trait": {
-                            "label": "Ataque Base: Atributo"
-                        }
+                        "trait": { "label": "Ataque Base: Atributo" }
                     }
                 }
+            },
+            "SpotlightRequests": {
+                "singular": "Solicitação de Foco",
+                "plural": "Solicitações de Foco"
             },
             "Tabs": {
                 "details": "Detalhes",
@@ -1916,6 +1981,7 @@
                 "story": "Origem",
                 "biography": "Biografia",
                 "general": "Geral",
+                "resources": "Recursos",
                 "foundation": "Fundamental",
                 "specialization": "Especialização",
                 "mastery": "Maestria",
@@ -1930,7 +1996,16 @@
                 "tier3": "Patamar 3",
                 "tier4": "Patamar 4",
                 "domains": "Domínios",
-                "downtime": "Repouso"
+                "downtime": "Repouso",
+                "roll": "Rolagem",
+                "rules": "Regras",
+                "partyMembers": "Membros do Grupo",
+                "projects": "Projetos",
+                "types": "Tipos",
+                "itemFeatures": "Habilidades de Item",
+                "questions": "Perguntas",
+                "configuration": "Configuração",
+                "base": "Base"
             },
             "Tiers": {
                 "singular": "Patamar",
@@ -1947,9 +2022,12 @@
             "amount": "Quantidade",
             "any": "Qualquer",
             "armor": "Armadura",
+            "armorFeatures": "Características de Armadura",
+            "armors": "Armaduras",
             "armorScore": "Armadura",
             "activeEffects": "Efeitos Ativos",
             "armorSlots": "Armadura",
+            "artistAttribution": "Arte Por: {artist}",
             "attack": "Ataque",
             "basics": "Básicos",
             "bonus": "Bônus",
@@ -1957,6 +2035,7 @@
             "continue": "Continuar",
             "criticalSuccess": "Sucesso Crítico",
             "criticalShort": "Crítico",
+            "custom": "Personalizado",
             "d20Roll": "Rolagem de D20",
             "damage": "Dano",
             "damageRoll": "Rolagem de Dano",
@@ -1979,6 +2058,7 @@
             "fear": "Medo",
             "features": "Habilidades",
             "formula": "Fórmula",
+            "gm": "Mestre",
             "healing": "Cura",
             "healingRoll": "Rolagem de Cura",
             "hit": {
@@ -1997,9 +2077,12 @@
             "inactiveEffects": "Efeitos Inativos",
             "inventory": "Inventário",
             "itemResource": "Recurso de Item",
+            "itemQuantity": "Quantidade do Item",
+            "items": "Itens",
             "label": "Rótulo",
             "level": "Nível",
-            "levelUp": "Subir de Nível",
+            "levelShort": "Nv",
+            "levelUp": "Aumento de Nível",
             "loadout": "Mão",
             "max": "Máx",
             "miss": {
@@ -2007,16 +2090,22 @@
                 "plural": "Erros"
             },
             "maxWithThing": "Máx {thing}",
+            "missingDragDropThing": "Arraste {thing} aqui",
             "multiclass": "Multiclasse",
             "newCategory": "Nova Categoria",
             "none": "Nenhum",
             "noTarget": "Nenhum alvo atual",
             "partner": "Parceiro",
+            "player": {
+                "single": "Jogador",
+                "plurial": "Jogadores"
+            },
             "proficiency": "Proficiência",
             "quantity": "Quantidade",
             "range": "Alcance",
             "reactionRoll": "Teste de Reação",
             "recovery": "Recuperação",
+            "refresh": "Recarregar",
             "reroll": "Rolar Novamente",
             "rerollThing": "Rolar {thing} Novamente",
             "resource": "Recurso",
@@ -2027,7 +2116,10 @@
             "save": "Salvar",
             "scalable": "Escalonável",
             "situationalBonus": "Bônus Situacional",
+            "spent": "Gasto",
+            "step": "Passo",
             "stress": "Estresse",
+            "subclasses": "Subclasses",
             "success": "Sucesso",
             "take": "Pegar",
             "Target": {
@@ -2036,44 +2128,36 @@
             },
             "title": "Título",
             "total": "Total",
+            "traitModifier": "Modificador de Atributo",
             "true": "Verdadeiro",
             "type": "Tipo",
             "unarmed": "Desarmado",
-            "unarmedStrike": "Ataque Desarmado",
+            "unarmedAttack": "Ataque Desarmado",
             "unarmored": "Sem Armadura",
             "use": "Usar",
             "used": "Usado",
             "uses": "Usos",
             "value": "Valor",
+            "weaponFeatures": "Características de Arma",
+            "weapons": "Armas",
             "withThing": "Com {thing}"
         },
         "ITEMS": {
             "FIELDS": {
+                "attribution": {
+                    "source": { "label": "Fonte" },
+                    "page": { "label": "Página" },
+                    "artist": { "label": "Artista" }
+                },
                 "resource": {
-                    "amount": {
-                        "label": "Quantidade"
-                    },
-                    "dieFaces": {
-                        "label": "Faces do Dado"
-                    },
-                    "icon": {
-                        "label": "Ícone"
-                    },
-                    "max": {
-                        "label": "Máx"
-                    },
-                    "progression": {
-                        "label": "Progressão"
-                    },
-                    "recovery": {
-                        "label": "Recuperação"
-                    },
-                    "type": {
-                        "label": "Tipo"
-                    },
-                    "value": {
-                        "label": "Valor"
-                    }
+                    "amount": { "label": "Quantidade" },
+                    "dieFaces": { "label": "Faces do Dado" },
+                    "icon": { "label": "Ícone" },
+                    "max": { "label": "Máx" },
+                    "progression": { "label": "Progressão" },
+                    "recovery": { "label": "Recuperação" },
+                    "type": { "label": "Tipo" },
+                    "value": { "label": "Valor" }
                 }
             },
             "Ancestry": {
@@ -2090,54 +2174,26 @@
             },
             "Beastform": {
                 "FIELDS": {
-                    "beastformType": {
-                        "label": "Tipo de Forma de Fera"
-                    },
-                    "tier": {
-                        "label": "Patamar"
-                    },
-                    "mainTrait": {
-                        "label": "Atributo Principal"
-                    },
-                    "examples": {
-                        "label": "Exemplos"
-                    },
-                    "advantageOn": {
-                        "label": "Ganhar Vantagem Em"
-                    },
-                    "tokenImg": {
-                        "label": "Imagem da Ficha"
-                    },
-                    "tokenRingImg": {
-                        "label": "Textura do Anel"
-                    },
+                    "beastformType": { "label": "Tipo de Forma de Fera" },
+                    "tier": { "label": "Patamar" },
+                    "mainTrait": { "label": "Atributo Principal" },
+                    "examples": { "label": "Exemplos" },
+                    "advantageOn": { "label": "Ganhar Vantagem Em" },
+                    "tokenImg": { "label": "Imagem da Ficha" },
+                    "tokenRingImg": { "label": "Textura do Anel" },
                     "tokenSize": {
                         "placeholder": "Usando dimensões do personagem",
-                        "height": {
-                            "label": "Altura"
-                        },
-                        "width": {
-                            "label": "Largura"
-                        }
+                        "height": { "label": "Altura" },
+                        "width": { "label": "Largura" }
                     },
                     "evolved": {
-                        "maximumTier": {
-                            "label": "Patamar Máximo"
-                        },
-                        "mainTraitBonus": {
-                            "label": "Bônus de Atributo Principal"
-                        }
+                        "maximumTier": { "label": "Patamar Máximo" },
+                        "mainTraitBonus": { "label": "Bônus de Atributo Principal" }
                     },
                     "hybrid": {
-                        "beastformOptions": {
-                            "label": "Nº de Formas de Fera"
-                        },
-                        "advantages": {
-                            "label": "Nº de Vantagens"
-                        },
-                        "features": {
-                            "label": "Nº de Habilidades"
-                        }
+                        "beastformOptions": { "label": "Nº de Formas de Fera" },
+                        "advantages": { "label": "Nº de Vantagens" },
+                        "features": { "label": "Nº de Habilidades" }
                     }
                 },
                 "attackName": "Ataque de Fera",
@@ -2167,7 +2223,8 @@
                 }
             },
             "Consumable": {
-                "consumeOnUse": "Consumir ao Usar"
+                "consumeOnUse": "Consumir ao Usar",
+                "destroyOnEmpty": "Destruir ao Esvaziar"
             },
             "DomainCard": {
                 "type": "Tipo",
@@ -2191,12 +2248,44 @@
                     "displayFear": {
                         "label": "Exibição de Medo"
                     },
-                    "dualityColorScheme": {
-                        "label": "Estilo do Chat"
+                    "displayCountdownUI": {
+                        "label": "Exibir UI de Contagem"
                     },
                     "showGenericStatusEffects": {
                         "label": "Mostrar Efeitos de Status do Foundry"
-                    }
+                    },
+                    "hideAttribution": {
+                        "label": "Ocultar Atribuição"
+                    },
+                    "expandedTitle": "Auto-expandir Descrições",
+                    "extendCharacterDescriptions": {
+                        "label": "Personagens"
+                    },
+                    "extendAdversaryDescriptions": {
+                        "label": "Adversários"
+                    },
+                    "extendEnvironmentDescriptions": {
+                        "label": "Ambientes"
+                    },
+                    "extendItemDescriptions": {
+                        "label": "Itens"
+                    },
+                    "expandRollMessage": {
+                        "title": "Auto-expandir Seções de Mensagem",
+                        "desc": {
+                            "label": "Descrição"
+                        },
+                        "roll": {
+                            "label": "Fórmula"
+                        },
+                        "damage": {
+                            "label": "Dano/Cura"
+                        },
+                        "target": {
+                            "label": "Alvo"
+                        }
+                    },
+                    "useResourcePips": { "label": "Exibição de Pontos para Recursos" }
                 },
                 "fearDisplay": {
                     "token": "Fichas",
@@ -2214,18 +2303,25 @@
                         "label": "Padrão de Regras de Redução de Dano",
                         "hint": "Se o uso de armadura e reduções tem regras ativadas por padrão"
                     },
+                    "defeated": {
+                        "enabled": { "label": "Habilitado" },
+                        "overlay": { "label": "Efeito de Sobreposição" },
+                        "characterDefault": { "label": "Status de Derrotado Padrão do Personagem" },
+                        "adversaryDefault": { "label": "Status de Derrotado Padrão do Adversário" },
+                        "companionDefault": { "label": "Status de Derrotado Padrão do Companheiro" }
+                    },
                     "hopeFear": {
                         "label": "Esperança e Medo",
-                        "gm": {
-                            "label": "Mestre"
-                        },
-                        "players": {
-                            "label": "Jogadores"
-                        }
+                        "gm": { "label": "Mestre" },
+                        "players": { "label": "Jogadores" }
+                    },
+                    "countdownAutomation": {
+                        "label": "Automação de Contagem",
+                        "hint": "Progressão automática de contagens baseada em suas configurações de progressão"
                     },
                     "levelupAuto": {
-                        "label": "Automação de Subida de Nível",
-                        "hint": "Quando você faz suas escolhas e finaliza a subida de nível, as mudanças numéricas são aplicadas automaticamente ao seu personagem."
+                        "label": "Automação de Aumento de Nível",
+                        "hint": "Quando você faz suas escolhas e finaliza o aumento de nível, as mudanças numéricas são aplicadas automaticamente ao seu personagem."
                     },
                     "actionPoints": {
                         "label": "Pontos de Ação",
@@ -2248,33 +2344,61 @@
                     "playerCanEditSheet": {
                         "label": "Jogadores Podem Editar Manualmente as Configurações do Personagem",
                         "hint": "Jogadores têm permissão para acessar as Configurações manuais do Personagem e alterar suas estatísticas além das regras."
+                    },
+                    "roll": {
+                        "roll": {
+                            "label": "Rolagem",
+                            "hint": "Comportamento automático para rolagens como Ataque, Conjuração, etc."
+                        },
+                        "damage": {
+                            "label": "Rolagem de Dano/Cura",
+                            "hint": "Comportamento automático para rolagens de Dano & Cura após o Ataque/Conjuração."
+                        },
+                        "save": {
+                            "label": "Teste de Reação",
+                            "hint": "Comportamento automático se um Teste de Reação for necessário. Alvos devem ser selecionados antes da ação ser feita"
+                        },
+                        "damageApply": {
+                            "label": "Aplicar Dano/Cura",
+                            "hint": "Aplicar automaticamente danos & curas. Alvos devem ser selecionados antes da ação ser feita e a Automação de Teste de Reação deve ser diferente de Nunca. Ignora permissões de usuários."
+                        },
+                        "effect": {
+                            "label": "Aplicar Efeitos",
+                            "hint": "Aplicar automaticamente efeitos. Alvos devem ser selecionados antes da ação ser feita e a Automação de Teste de Reação deve ser diferente de Nunca. Ignora permissões de usuários."
+                        }
+                    },
+                    "summaryMessages": {
+                        "label": "Mensagens de Resumo"
                     }
+                },
+                "defeated": {
+                    "title": "Manipulação de Derrotado"
+                },
+                "roll": {
+                    "title": "Ações"
                 }
             },
             "Homebrew": {
                 "newDowntimeMove": "Movimento de Repouso",
+                "downtimeMove": "Movimento de Repouso",
+                "armorFeature": "Característica de Armadura",
+                "weaponFeature": "Característica de Arma",
+                "newFeature": "Nova Característica de Item",
                 "downtimeMoves": "Movimentos de Repouso",
-                "nrChoices": "Nº de Movimentos por Descanso",
+                "itemFeatures": "Características de Item",
+                "nrChoices": "# Movimentos por Descanso",
                 "resetMovesTitle": "Resetar Movimentos de Repouso de {type}",
                 "resetMovesText": "Tem certeza que deseja resetar?",
                 "FIELDS": {
-                    "maxFear": {
-                        "label": "Medo Máximo"
-                    },
-                    "traitArray": {
-                        "label": "Modificadores de Atributo Iniciais"
-                    },
+                    "maxFear": { "label": "Medo Máximo" },
+                    "traitArray": { "label": "Modificadores de Atributo Iniciais" },
                     "maxLoadout": {
                         "label": "Máx. de Cartas na Mão",
                         "hint": "Deixe em branco ou 0 para máximo ilimitado"
                     },
-                    "maxDomains": {
-                        "label": "Máx. de Domínios de Classe",
-                        "hint": "Máximo de domínios que você pode definir em uma classe"
-                    }
+                    "maxDomains": { "label": "Máx. de Domínios de Classe", "hint": "Máximo de domínios que você pode definir em uma classe" }
                 },
                 "currency": {
-                    "enabled": "Habilitar Substituições",
                     "title": "Substituições de Moeda",
                     "currencyName": "Nome da Moeda",
                     "coinName": "Nome da Moeda (singular)",
@@ -2293,6 +2417,10 @@
                     "deleteDomain": "Deletar Domínio",
                     "deleteDomainText": "Tem certeza que deseja deletar o domínio {name}? Ele será imediatamente removido de todos os Personagens neste mundo onde é usado atualmente. Compêndios não são limpos.",
                     "duplicateDomain": "Já existe um domínio com esta identificação."
+                },
+                "adversaryType": {
+                    "title": "Tipos de Adversário Personalizados",
+                    "newType": "Tipo de Adversário"
                 }
             },
             "Menu": {
@@ -2313,10 +2441,8 @@
                     "hint": "Configuração da régua do sistema para exibir alcances em Daggerheart"
                 },
                 "appearance": {
-                    "title": "Configurações de Aparência",
                     "label": "Configurações de Aparência",
                     "hint": "Modifique a aparência de várias partes do sistema",
-                    "name": "Configurações de Aparência",
                     "duality": "Rolagens de Dualidade",
                     "diceSoNice": {
                         "title": "Dice So Nice",
@@ -2328,7 +2454,8 @@
                         "texture": "Textura",
                         "colorset": "Tema",
                         "material": "Material",
-                        "system": "Predefinição de Dado"
+                        "system": "Predefinição de Dado",
+                        "font": "Fonte"
                     }
                 },
                 "variantRules": {
@@ -2348,18 +2475,23 @@
             "VariantRules": {
                 "FIELDS": {
                     "actionTokens": {
-                        "enabled": {
-                            "label": "Habilitado"
-                        },
-                        "tokens": {
-                            "label": "Marcadores"
-                        }
+                        "enabled": { "label": "Habilitado" },
+                        "tokens": { "label": "Marcadores" }
                     }
                 }
             },
             "ResetSettings": {
                 "resetConfirmationTitle": "Resetar Configurações",
                 "resetConfirmationText": "Tem certeza que deseja resetar as {settings}?"
+            },
+            "Scene": {
+                "FIELDS": {
+                    "rangeMeasurement": {
+                        "setting": { "label": "Configuração" }
+                    }
+                },
+                "disabledText": "Medições Daggerheart estão desativadas em Configurações do Sistema - Regras Variantes",
+                "rangeMeasurement": "Medição de Alcance"
             }
         },
         "UI": {
@@ -2367,6 +2499,7 @@
                 "action": {
                     "title": "Ação"
                 },
+                "appliedTo": "Aplicado A",
                 "applyEffect": {
                     "title": "Aplicar Efeitos - {name}"
                 },
@@ -2375,6 +2508,11 @@
                     "rollDamage": "Rolar Dano",
                     "rollHealing": "Rolar Cura",
                     "applyEffect": "Aplicar Efeitos"
+                },
+                "clearResource": "Limpar {quantity} {resource}",
+                "damageSummary": {
+                    "title": "Dano Aplicado",
+                    "healingTitle": "Cura Aplicada"
                 },
                 "damageRoll": {
                     "title": "Dano - {damage}",
@@ -2397,11 +2535,31 @@
                 "dualityRoll": {
                     "abilityCheckTitle": "Teste de {ability}"
                 },
+                "effectSummary": {
+                    "title": "Efeitos Aplicados",
+                    "immunityTo": "Imunidade: {immunities}"
+                },
                 "featureTitle": "Habilidade de Classe",
+                "groupRoll": {
+                    "title": "Rolagem em Grupo",
+                    "leader": "Líder",
+                    "partyTeam": "Equipe do Grupo",
+                    "team": "Equipe",
+                    "selectLeader": "Selecionar um Líder",
+                    "selectMember": "Selecionar um Membro",
+                    "rerollTitle": "Rolar Novamente Rolagem em Grupo",
+                    "rerollContent": "Tem certeza que deseja rolar novamente seu teste de {trait}?",
+                    "rerollTooltip": "Rolar Novamente"
+                },
                 "healingRoll": {
                     "title": "Curar - {damage}",
                     "heal": "Curar",
                     "applyHealing": "Aplicar Cura"
+                },
+                "markResource": "Marcar {quantity} {resource}",
+                "refreshMessage": {
+                    "title": "Recarregar Habilidade",
+                    "header": "Recarregado"
                 },
                 "reroll": {
                     "confirmTitle": "Rolar Dados Novamente",
@@ -2409,6 +2567,64 @@
                 },
                 "resourceRoll": {
                     "playerMessage": "{user} rolou novamente seu {name}"
+                },
+                "tagTeam": {
+                    "title": "Equipe",
+                    "membersTitle": "Membros"
+                }
+            },
+            "ChatLog": {
+                "rerollDamage": "Rolar Dano Novamente",
+                "assignTagRoll": "Atribuir como Rolagem de Equipe"
+            },
+            "Countdowns": {
+                "title": "Contagens",
+                "toggleIconMode": "Alternar Modo Ícone",
+                "noPlayerAccess": "Esta contagem não é visível para nenhum jogador",
+                "loop": "Repetição",
+                "decreasingLoop": "Repetição Decrescente",
+                "increasingLoop": "Repetição Crescente"
+            },
+            "ItemBrowser": {
+                "title": "Navegador de Compêndio Daggerheart",
+                "hint": "Selecione uma Pasta na barra lateral para começar a navegar pelo compêndio",
+                "searchPlaceholder": "Pesquisar...",
+                "columnName": "Nome",
+                "tooltipFilters": "Filtros",
+                "tooltipErase": "Apagar",
+                "difficultyMin": "Dificuldade (Mín)",
+                "difficultyMax": "Dificuldade (Máx)",
+                "hitPointsMin": "Pontos de Vida (Mín)",
+                "hitPointsMax": "Pontos de Vida (Máx)",
+                "stressMin": "Estresse (Mín)",
+                "stressMax": "Estresse (Máx)",
+                "armorScoreMin": "Armadura (Mín)",
+                "armorScoreMax": "Armadura (Máx)",
+                "levelMin": "Nível (Mín)",
+                "levelMax": "Nível (Máx)",
+                "recallCostMin": "Custo de Troca (Mín)",
+                "recallCostMax": "Custo de Troca (Máx)",
+                "evasionMin": "Evasão (Mín)",
+                "evasionMax": "Evasão (Máx)",
+                "subtype": "Subtipo",
+                "missing": "<i>Faltando</i>",
+                "folders": {
+                    "characters": "Personagens",
+                    "adversaries": "Adversários",
+                    "ancestries": "Ancestralidades",
+                    "equipment": "Equipamento",
+                    "classes": "Classes",
+                    "subclasses": "Subclasses",
+                    "domainCards": "Cartas de Domínio",
+                    "communities": "Comunidades",
+                    "environments": "Ambientes",
+                    "beastforms": "Formas de Fera",
+                    "features": "Habilidades",
+                    "items": "Itens",
+                    "weapons": "Armas",
+                    "armors": "Armaduras",
+                    "consumables": "Consumíveis",
+                    "loots": "Tesouros"
                 }
             },
             "Notifications": {
@@ -2416,6 +2632,7 @@
                 "beastformInapplicable": "Uma forma de fera só pode ser aplicada a um Personagem.",
                 "beastformAlreadyApplied": "O personagem já tem uma forma de fera aplicada!",
                 "noTargetsSelected": "Nenhum alvo selecionado.",
+                "noTargetsSelectedOrPerm": "Nenhum alvo selecionado ou com permissão de atualização.",
                 "attackTargetDoesNotExist": "A ficha do alvo não existe mais",
                 "insufficentAdvancements": "Você não tem avanços suficientes restantes.",
                 "noAssignedPlayerCharacter": "Você não tem um personagem atribuído.",
@@ -2443,6 +2660,8 @@
                 "wrongDomain": "A carta não é de um dos domínios da sua classe.",
                 "cardTooHighLevel": "A carta é de nível muito alto!",
                 "duplicateCard": "Você não pode selecionar a mesma carta mais de uma vez.",
+                "duplicateCharacter": "Este ator já está registrado na lista de membros do grupo.",
+                "onlyCharactersInPartySheet": "Você só pode arrastar personagens, companheiros e adversários para a ficha do grupo.",
                 "notPrimary": "A arma não é uma arma principal!",
                 "notSecondary": "A arma não é uma arma secundária!",
                 "itemTooHighTier": "O item deve ser do Patamar 1",
@@ -2470,10 +2689,24 @@
                 "beastformEquipWeapon": "Você não pode usar armas enquanto estiver em uma Forma de Fera.",
                 "loadoutMaxReached": "Você atingiu o máximo de cartas na mão. Mova pelo menos uma carta de domínio para o cofre, ou aumente o limite nas configurações caseiras, se desejar.",
                 "domainMaxReached": "Você atingiu o máximo de domínios para a classe. Aumente o limite nas configurações caseiras, se desejar.",
-                "insufficientResources": "Você tem recursos insuficientes",
+                "insufficientResources": "Você tem recursos insuficientes para usar essa ação.",
+                "actionNoUsesRemaining": "Essa ação não tem usos restantes.",
                 "multiclassAlreadyPresent": "Você já tem uma classe e uma multiclasse",
                 "subclassesAlreadyPresent": "Você já tem uma subclasse de classe e de multiclasse",
-                "noDiceSystem": "Seu sistema de dados selecionado {system} não tem um dado de {faces} faces"
+                "noDiceSystem": "Seu sistema de dados selecionado {system} não tem um dado de {faces} faces",
+                "gmMenuRefresh": "Você recarregou todas as ações e recursos {types}",
+                "subclassAlreadyLinked": "{name} já é uma subclasse na classe {class}. Remova-a de lá se quiser que seja uma subclasse desta classe.",
+                "gmRequired": "Esta ação requer um Mestre online",
+                "gmOnly": "Isso só pode ser acessado pelo Mestre",
+                "noActorOwnership": "Você não tem permissões para este personagem",
+                "documentIsMissing": "O {documentType} está faltando no mundo."
+            },
+            "Sidebar": {
+                "daggerheartMenu": {
+                    "title": "Menu Daggerheart",
+                    "startSession": "Iniciar Sessão",
+                    "startScene": "Iniciar Cena"
+                }
             },
             "Tooltip": {
                 "disableEffect": "Desabilitar Efeito",
@@ -2499,7 +2732,11 @@
                 "rulesOn": "Regras Ativadas",
                 "rulesOff": "Regras Desativadas",
                 "remainingUses": "Usos recuperados em {type}",
-                "rightClickExtand": "Clique com o botão direito para expandir"
+                "rightClickExtand": "Clique com o botão direito para expandir",
+                "companionPartnerLevelBlock": "O companheiro precisa de um parceiro atribuído para subir de nível.",
+                "configureAttribution": "Configurar Atribuição",
+                "deleteItem": "Deletar Item",
+                "immune": "Imune"
             }
         }
     }

@@ -12,3 +12,6 @@ Correções MAIORES em Domínios. Melhoria nos nomes das pastas.
 
 1.3.0
 Inclusão de vários outros compendiums, exceto adversários e ambientes.
+
+1.4.0
+Massiva correção de termos no básico, mais atualização da tradução de termos novo na atualização 1.2.5 do Foundryborne.

@@ -298,14 +298,14 @@
                 "selectArmor": "Selecionar Armadura",
                 "selectClass": "Selecionar Classe",
                 "selectCommunity": "Selecionar Comunidade",
-                "selectPrimaryWeapon": "Selecionar Arma Principal",
+                "selectPrimaryWeapon": "Selecionar Arma Primária",
                 "selectSecondaryWeapon": "Selecionar Arma Secundária",
                 "selectSubclass": "Selecionar Subclasse",
                 "startingItems": "Itens Iniciais",
                 "story": "Origem",
                 "storyExplanation": "Selecione quais prompts de antecedente e conexão você deseja copiar para o antecedente do seu personagem.",
                 "suggestedArmor": "Armadura Sugerida",
-                "suggestedPrimaryWeapon": "Arma Principal Sugerida",
+                "suggestedPrimaryWeapon": "Arma Primária Sugerida",
                 "suggestedSecondaryWeapon": "Arma Secundária Sugerida",
                 "suggestedTraits": "Atributos Sugeridos",
                 "suggestedWeapons": "Arma Sugerida",
@@ -1231,17 +1231,17 @@
                 },
                 "charged": {
                     "name": "Carregar",
-                    "description": "Marque um Estresse para receber um bônus de +1 em sua Proficiência em um ataque feito com sua arma principal.",
+                    "description": "Marque um Estresse para receber um bônus de +1 em sua Proficiência em um ataque feito com sua arma primária.",
                     "actions": {
                         "markStress": {
                             "name": "Carregar",
-                            "description": "Marque um Estresse para receber um bônus de +1 em sua Proficiência em um ataque feito com sua arma principal."
+                            "description": "Marque um Estresse para receber um bônus de +1 em sua Proficiência em um ataque feito com sua arma primária."
                         }
                     },
                     "effects": {
                         "charged": {
                             "name": "Carregado",
-                            "description": "Receba um bônus de +1 em sua Proficiência em um ataque feito com sua arma principal."
+                            "description": "Receba um bônus de +1 em sua Proficiência em um ataque feito com sua arma primária."
                         }
                     }
                 },
@@ -1319,21 +1319,21 @@
                 },
                 "doubleDuty": {
                     "name": "Dupla Função",
-                    "description": "+1 Armadura; +1 de dano para a arma principal em alvos Adjacentes",
+                    "description": "+1 Armadura; +1 de dano para a arma primária em alvos Adjacentes",
                     "effects": {
                         "doubleDuty": {
                             "name": "Dupla Função",
-                            "description": "+1 Armadura; +1 de dano para a arma principal em alvos Adjacentes"
+                            "description": "+1 Armadura; +1 de dano para a arma primária em alvos Adjacentes"
                         }
                     }
                 },
                 "doubledUp": {
                     "name": "Alvo Duplo",
-                    "description": "Ao fazer um ataque com sua arma principal, você pode causar dano a um outro alvo Adjacente.",
+                    "description": "Ao fazer um ataque com sua arma primária, você pode causar dano a um outro alvo Adjacente.",
                     "actions": {
                         "doubleUp": {
                             "name": "Dobrar",
-                            "description": "Ao fazer um ataque com sua arma principal, você pode causar dano a um outro alvo Adjacente."
+                            "description": "Ao fazer um ataque com sua arma primária, você pode causar dano a um outro alvo Adjacente."
                         }
                     }
                 },
@@ -1439,11 +1439,11 @@
                 },
                 "lockedOn": {
                     "name": "Concentração",
-                    "description": "Ao acertar um ataque, seu próximo ataque contra o mesmo alvo com sua arma principal tem sucesso automático.",
+                    "description": "Ao acertar um ataque, seu próximo ataque contra o mesmo alvo com sua arma primária tem sucesso automático.",
                     "actions": {
                         "lockOn": {
                             "name": "Travar Mira",
-                            "description": "Ao acertar um ataque, seu próximo ataque contra o mesmo alvo com sua arma principal tem sucesso automático."
+                            "description": "Ao acertar um ataque, seu próximo ataque contra o mesmo alvo com sua arma primária tem sucesso automático."
                         }
                     }
                 },
@@ -1489,17 +1489,17 @@
                 },
                 "paired": {
                     "name": "Par",
-                    "description": "Sua arma principal causa +2 de dano em alvos Adjacentes",
+                    "description": "Sua arma primária causa +2 de dano em alvos Adjacentes",
                     "actions": {
                         "paired": {
                             "name": "Par",
-                            "description": "Sua arma principal causa +2 de dano em alvos Adjacentes"
+                            "description": "Sua arma primária causa +2 de dano em alvos Adjacentes"
                         }
                     },
                     "effects": {
                         "paired": {
                             "name": "Par",
-                            "description": "Sua arma principal causa +2 de dano em alvos Adjacentes"
+                            "description": "Sua arma primária causa +2 de dano em alvos Adjacentes"
                         }
                     }
                 },
@@ -1774,7 +1774,7 @@
                 "allDamage": "Todo Dano",
                 "physicalDamage": "Dano Físico",
                 "magicalDamage": "Dano Mágico",
-                "primaryWeapon": "Dano de Arma Principal",
+                "primaryWeapon": "Dano de Arma Primária",
                 "secondaryWeapon": "Dano de Arma Secundária"
             },
             "DamageResistance": {
@@ -1903,7 +1903,7 @@
                 "attack": "Teste de Ataque",
                 "basic": "Teste",
                 "difficulty": "Teste (Dificuldade {difficulty})",
-                "primaryWeaponAttack": "Teste de Ataque com Arma Principal",
+                "primaryWeaponAttack": "Teste de Ataque com Arma Primária",
                 "secondaryWeaponAttack": "Teste de Ataque com Arma Secundária",
                 "spellcast": "Teste de Conjuração",
                 "trait": "Teste de Atributo",
@@ -2213,7 +2213,7 @@
                 "classFeatures": "Habilidades de Classe",
                 "guide": {
                     "suggestedEquipment": "Equipamentos Sugeridos",
-                    "suggestedPrimaryWeaponTitle": "Arma Principal",
+                    "suggestedPrimaryWeaponTitle": "Arma Primária",
                     "suggestedSecondaryWeaponTitle": "Arma Secundária",
                     "suggestedArmorTitle": "Armadura",
                     "inventory": {
@@ -2238,7 +2238,7 @@
             },
             "Weapon": {
                 "weaponType": "Tipo de Arma",
-                "primaryWeapon": "Arma Principal",
+                "primaryWeapon": "Arma Primária",
                 "secondaryWeapon": "Arma Secundária"
             }
         },
@@ -2662,10 +2662,10 @@
                 "duplicateCard": "Você não pode selecionar a mesma carta mais de uma vez.",
                 "duplicateCharacter": "Este ator já está registrado na lista de membros do grupo.",
                 "onlyCharactersInPartySheet": "Você só pode arrastar personagens, companheiros e adversários para a ficha do grupo.",
-                "notPrimary": "A arma não é uma arma principal!",
+                "notPrimary": "A arma não é uma arma primária!",
                 "notSecondary": "A arma não é uma arma secundária!",
                 "itemTooHighTier": "O item deve ser do Patamar 1",
-                "primaryIsTwoHanded": "Não é possível selecionar uma arma secundária com uma principal de duas mãos!",
+                "primaryIsTwoHanded": "Não é possível selecionar uma arma secundária com uma primária de duas mãos!",
                 "noMoreMoves": "Você não pode selecionar mais movimentos de repouso",
                 "damageAlreadyNone": "O dano já foi reduzido a nenhum",
                 "noAvailableArmorMarks": "Você não tem mais pontos de armadura disponíveis",

@@ -15,3 +15,6 @@ Inclusão de vários outros compendiums, exceto adversários e ambientes.
 
 1.4.0
 Massiva correção de termos no básico, mais atualização da tradução de termos novo na atualização 1.2.5 do Foundryborne.
+
+1.4.2
+Correções de imagens. Incluído script para criação dos Domínios do Pavor e do Sangue automaticamente.

@@ -2580,10 +2580,6 @@
                         "label": "Mostrar Textos de Mudança de Recurso",
                         "hint": "Quando um personagem é danificado, usa armadura etc., um texto flutuante aparecerá brevemente perto da ficha para indicar isso."
                     },
-                    "playerCanEditSheet": {
-                        "label": "Jogadores Podem Editar Manualmente as Configurações do Personagem",
-                        "hint": "Jogadores têm permissão para acessar as Configurações manuais do Personagem e alterar suas estatísticas além das regras."
-                    },
                     "roll": {
                         "roll": {
                             "label": "Rolagem",
@@ -2604,7 +2600,8 @@
                         "effect": {
                             "label": "Aplicar Efeitos",
                             "hint": "Aplicar automaticamente efeitos. Alvos devem ser selecionados antes da ação ser feita e a Automação de Teste de Reação deve ser diferente de Nunca. Ignora permissões de usuários."
-                        },
+			}
+		    },
                     "triggers": {
                         "enabled": {
                             "label": "Ativado",
@@ -2616,7 +2613,7 @@
                     }
                 },
                 "defeated": {
-                    "title": "Manipulação de Derrotado"
+                    "title": "Manejar Derrotados"
                 },
                 "roll": {
                     "title": "Ações"
@@ -2739,7 +2736,8 @@
                     "massiveDamage": {
                         "title": "Dano Massivo",
                         "enabled": { "label": "Ativado" }
-                }
+                  }
+               }
             },
             "ResetSettings": {
                 "resetConfirmationTitle": "Resetar Configurações",

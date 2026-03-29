@@ -70,10 +70,19 @@
                 "summon": {
                     "name": "Invocar",
                     "tooltip": "Cria fichas na cena.",
-"error": "Você não tem permissão para invocar fichas ou não há nenhuma cena ativa.",
+		    "error": "Você não tem permissão para invocar fichas ou não há nenhuma cena ativa.",
                     "invalidDrop": "Você só pode soltar entidades tipo Ator para invocá-las.",
                     "chatMessageTitle": "Test2",
                     "chatMessageHeaderTitle": "Invocando"
+                },
+                "transform": {
+                    "name": "Transformar",
+                    "tooltip": "Transformar um ator em outro.",
+                    "noTransformActor": "Não há nenhum ator designado para se transformar.",
+                    "transformActorMissing": "O ator atribuído para a transformação não existe. Provavelmente foi excluído ou movido para dentro/fora de um compêndio.",
+                    "canvasError": "Não há cena ativa.",
+                    "prototypeError": "Você só pode usar uma ação de transformação a partir de um Token.",
+                    "actorLinkError": "Não é possível transformar um token com o \"Linkado ao Ator\" definido como verdadeiro."
                 }
             },
             "Config": {
@@ -129,6 +138,12 @@
                 },
                 "summon": {
                     "dropSummonsHere": "Solte a Invocação aqui"
+                },
+                "transform": {
+                    "dropTransformHere": "Solte a Transformação aqui",
+                    "actorIsMissing": "O ator vinculado está faltando. Você deve excluir este link.",
+                    "clearHitPoints": "Limpar Pontos de Vida",
+                    "clearStress": "Limpar Estresse"
                 }
             }
         },
@@ -191,12 +206,12 @@
                     "hint": "Adicione palavras únicas ou textos curtos como lembretes e dicas sobre o que um personagem tem vantagem."
                 },
                 "age": "Idade",
-                "backgroundQuestions": "Antecedentes",
+                "backgroundQuestions": "Origem",
                 "burden": {
                     "ignore": { "label": "Empunhadura: Ignorar", "hint": "Ignore regras de Empunhadura" }
                 },
                 "companionFeatures": "Habilidades de Companheiro",
-                "connections": "Conexões",
+                "connections": "Vínculos",
                 "contextMenu": {
                     "consume": "Consumir Item",
                     "equip": "Equipar",
@@ -214,8 +229,8 @@
                 },
                 "faith": "Fé",
                 "levelUp": "Você pode subir de nível",
-                "maxEvasionBonus": "Aumento Máx. de Evasão",
-                "maxHPBonus": "Aumento Máx. de PV",
+                "maxEvasionBonus": "Aumentar Máx. de Evasão",
+                "maxHPBonus": "Aumentar Máx. de PV",
                 "pronouns": "Pronomes",
                 "roll": {
                     "guaranteedCritical": {
@@ -510,8 +525,8 @@
             "HUD": {
                 "tokenHUD": {
                     "genericEffects": "Efeitos do Foundry",
-                    "depositPartyTokens": "Depositar Fichas do Grupo",
-                    "retrievePartyTokens": "Recuperar Fichas do Grupo",
+                    "depositPartyTokens": "Depositar Tokens do Grupo",
+                    "retrievePartyTokens": "Recuperar Tokens do Grupo",
                     "depositCompanionTokens": "Depositar Token do Companheiro",
                     "retrieveCompanionTokens": "Recuperar Token do Companheiro"
                 }
@@ -555,6 +570,7 @@
                 },
                 "navigateLevel": "Para o Nível {level}",
                 "navigateToLevelup": "Retornar para Aumento de Nível",
+                "finishLevelup": "Finalizar Aumento de Nível",
                 "navigateToSummary": "Para o Resumo",
                 "options": {
                     "trait": "Receba um bônus de +1 em dois atributos de personagem não marcados e marque-os.",
@@ -658,16 +674,16 @@
                 "finalTitle": "Recursos Finais do Personagem"
             },
             "TagTeamSelect": {
-                "title": "Rolagem de Equipe",
-                "leaderTitle": "Personagem Iniciador",
+                "title": "Teste em Dupla",
+                "leaderTitle": "Personagem que Inicia",
                 "membersTitle": "Participantes",
                 "partyTeam": "Equipe do Grupo",
                 "hopeCost": "Custo de Esperança",
-                "initiatingCharacter": "Personagem Iniciador",
+                "initiatingCharacter": "Personagem que Inicia",
                 "linkMessageHint": "Faça uma rolagem da sua ficha de personagem para vinculá-la à Rolagem de Equipe",
-                "damageNotRolled": "Dano não rolado na mensagem do chat ainda",
-                "insufficientHope": "O personagem iniciador não tem Esperança suficiente",
-                "createTagTeam": "Criar Rolagem de Equipe",
+                "damageNotRolled": "Dano ainda não rolado na mensagem do chat",
+                "insufficientHope": "O personagem que iniciou não tem Esperança suficiente",
+                "createTagTeam": "Criar Teste em Dupla",
                 "chatMessageRollTitle": "Rolagem"
             },
             "TokenConfig": {
@@ -699,8 +715,8 @@
                 },
                 "minion": {
                     "name": "Lacaio",
-                    "description": "Para cada X de dano que um PJ causa a este adversário, ele também causa 1 PV a um lacaio adicional dentro do alcance de seu ataque.",
-                    "tip": "O movimento Lacaio é útil quando você quer colocar muitos inimigos pequenos no campo de batalha, sabendo que o grupo pode eliminá-los muito facilmente. Este movimento significa que, se um PJ atingir um lacaio e causar dano suficiente, ele também atinge vários outros que estão ao alcance. Por causa disso, muitas vezes é melhor ter lacaios cercando um PJ — parecerá avassalador e perigoso até que eles consigam fazer um ataque contra eles. Se você quer aquela sensação cinematográfica dos PJs eliminando ondas de inimigos com uma única rolagem de ataque, os lacaios são uma ótima ferramenta para isso."
+                    "description": "Para cada X de dano que um personagem causa a este adversário, ele também causa 1 PV a um lacaio adicional dentro do alcance de seu ataque.",
+                    "tip": "O movimento Lacaio é útil quando você quer colocar muitos inimigos pequenos no campo de batalha, sabendo que o grupo pode eliminá-los muito facilmente. Este movimento significa que, se um personagem atingir um lacaio e causar dano suficiente, ele também atinge vários outros que estão ao alcance. Por causa disso, muitas vezes é melhor ter lacaios cercando um personagem — parecerá avassalador e perigoso até que eles consigam fazer um ataque contra eles. Se você quer aquela sensação cinematográfica dos personagens eliminando ondas de inimigos com uma única rolagem de ataque, os lacaios são uma ótima ferramenta para isso."
                 }
             },
             "AdversaryType": {
@@ -1046,6 +1062,10 @@
                 "fear": "Medo",
                 "spotlight": "Foco"
             },
+            "DaggerheartDiceAnimationEvents": {
+                "critical": { "name": "Crítico" },
+                "higher": { "name": "Maior rolagem" }
+            },
             "DamageType": {
                 "physical": {
                     "name": "Físico",
@@ -1083,19 +1103,19 @@
             "EnvironmentType": {
                 "exploration": {
                     "label": "Exploração",
-                    "description": ""
+                    "description": "Ambientes de Exploração são lugares cheios de mistérios e maravilhas a serem descobertas."
                 },
                 "social": {
                     "label": "Social",
-                    "description": ""
+                    "description": "Ambientes Sociais são lugares que costumam apresentar desafios interpessoais."
                 },
                 "traversal": {
                     "label": "Travessia",
-                    "description": ""
+                    "description": "Ambientes de Travessia são locais perigosos nos quais se mover através do espaço já é um desafio por si só."
                 },
                 "event": {
                     "label": "Evento",
-                    "description": ""
+                    "description": "Ambientes de Evento são definidos mais pelas atividades que acontecem do que pelo lugar em si."
                 }
             },
             "FeatureForm": {
@@ -1155,27 +1175,27 @@
                 },
                 "melee": {
                     "name": "Adjacente",
-                    "description": "Significa que um personagem está a uma distância de toque do alvo. PJs geralmente podem tocar alvos a até um metro de distância, mas esse alcance pode ser maior para NPCs especialmente grandes.",
+                    "description": "Significa que um personagem está a uma distância de toque do alvo. Personagens geralmente podem tocar alvos a até um metro de distância, mas esse alcance pode ser maior para NPCs especialmente grandes.",
                     "short": "Adj"
                 },
                 "veryClose": {
                     "name": "Muito Próximo",
-                    "description": "significa uma distância onde se pode ver detalhes finos de um alvo — a momentos de alcance, se necessário. Geralmente, é de cerca de 1,5 a 3 metros de distância. Em perigo, um PJ geralmente pode alcançar qualquer coisa que esteja muito próxima como parte de qualquer outra ação que ele tome. Qualquer coisa em um mapa de batalha que esteja dentro do comprimento mais curto de uma carta de jogo (~5-8 cm) pode geralmente ser considerada muito próxima.",
+                    "description": "significa uma distância onde se pode ver detalhes finos de um alvo — a momentos de alcance, se necessário. Geralmente, é de cerca de 1,5 a 3 metros de distância. Em perigo, um personagem geralmente pode alcançar qualquer coisa que esteja muito próxima como parte de qualquer outra ação que ele tome. Qualquer coisa em um mapa de batalha que esteja dentro do comprimento mais curto de uma carta de jogo (~5-8 cm) pode geralmente ser considerada muito próxima.",
                     "short": "Mto P"
                 },
                 "close": {
                     "name": "Próximo",
-                    "description": "significa uma distância onde se pode ver detalhes proeminentes de um alvo — do outro lado de uma sala ou em uma barraca de mercado vizinha, geralmente de 3 a 9 metros de distância. Em perigo, um PJ geralmente pode alcançar qualquer coisa que esteja próxima como parte de qualquer outra ação que ele tome. Qualquer coisa em um mapa de batalha que esteja dentro do comprimento de uma caneta ou lápis padrão (~13-15 cm) pode geralmente ser considerada próxima.",
+                    "description": "significa uma distância onde se pode ver detalhes proeminentes de um alvo — do outro lado de uma sala ou em uma barraca de mercado vizinha, geralmente de 3 a 9 metros de distância. Em perigo, um personagem geralmente pode alcançar qualquer coisa que esteja próxima como parte de qualquer outra ação que ele tome. Qualquer coisa em um mapa de batalha que esteja dentro do comprimento de uma caneta ou lápis padrão (~13-15 cm) pode geralmente ser considerada próxima.",
                     "short": "Próx"
                 },
                 "far": {
                     "name": "Distante",
-                    "description": "significa uma distância onde se pode ver a aparência de uma pessoa ou objeto, mas provavelmente não em grandes detalhes — do outro lado de um pequeno campo de batalha ou por um corredor grande. Geralmente, é de 9 a 30 metros de distância. Em perigo, um PJ provavelmente terá que fazer um teste de Agilidade para chegar lá em segurança. Qualquer coisa em um mapa de batalha que esteja dentro do comprimento de uma folha de papel padrão (~28-30 cm) pode geralmente ser considerada distante.",
+                    "description": "significa uma distância onde se pode ver a aparência de uma pessoa ou objeto, mas provavelmente não em grandes detalhes — do outro lado de um pequeno campo de batalha ou por um corredor grande. Geralmente, é de 9 a 30 metros de distância. Em perigo, um personagem provavelmente terá que fazer um teste de Agilidade para chegar lá em segurança. Qualquer coisa em um mapa de batalha que esteja dentro do comprimento de uma folha de papel padrão (~28-30 cm) pode geralmente ser considerada distante.",
                     "short": "Dist"
                 },
                 "veryFar": {
                     "name": "Muito Distante",
-                    "description": "significa uma distância onde você pode ver a forma de uma pessoa ou objeto, mas provavelmente não consegue distinguir detalhes — do outro lado de um grande campo de batalha ou por uma rua longe, geralmente de 30 a 90 metros de distância. Em perigo, um PJ provavelmente terá que fazer um teste de Agilidade para chegar lá em segurança. Qualquer coisa em um mapa de batalha que esteja além da distância distante, mas ainda à vista dos personagens, pode geralmente ser considerada muito distante.",
+                    "description": "significa uma distância onde você pode ver a forma de uma pessoa ou objeto, mas provavelmente não consegue distinguir detalhes — do outro lado de um grande campo de batalha ou por uma rua longe, geralmente de 30 a 90 metros de distância. Em perigo, um personagem provavelmente terá que fazer um teste de Agilidade para chegar lá em segurança. Qualquer coisa em um mapa de batalha que esteja além da distância distante, mas ainda à vista dos personagens, pode geralmente ser considerada muito distante.",
                     "short": "Mto D"
                 }
             },
@@ -1292,7 +1312,7 @@
                     "label": "Teste de Dualidade"
                 },
                 "fearRoll": {
-                    "label": "Rolagem de Medo"
+                    "label": "Rolagem com Medo"
                 },
                 "triggerTexts": {
                     "strangePatternsContentTitle": "{nr} correspondências.",
@@ -1881,21 +1901,21 @@
                     "downtimeAction": "Movimento de Repouso",
                     "shortRest": {
                         "shortRestMoves": {
-                            "label": "Descanso Curto: Bônus de Movimentos de Descanso Curto",
+                            "label": "Descanso Curto: Movimentos de Descanso Curto Bônus",
                             "hint": "O número de Movimentos de Descanso Curto extras que o personagem pode fazer durante um Descanso Curto."
                         },
                         "longRestMoves": {
-                            "label": "Descanso Curto: Bônus de Movimentos de Descanso Longo",
+                            "label": "Descanso Curto: Movimentos de Descanso Longo Bônus",
                             "hint": "O número de Movimentos de Descanso Longo extras que o personagem pode fazer durante um Descanso Curto."
                         }
                     },
                     "longRest": {
                         "shortRestMoves": {
-                            "label": "Descanso Longo: Bônus de Movimentos de Descanso Curto",
+                            "label": "Descanso Longo: Movimentos de Descanso Curto Bônus",
                             "hint": "O número de Movimentos de Descanso Curto extras que o personagem pode fazer durante um Descanso Longo."
                         },
                         "longRestMoves": {
-                            "label": "Descanso Longo: Bônus de Movimentos de Descanso Longo",
+                            "label": "Descanso Longo: Movimentos de Descanso Longo Bônus",
                             "hint": "O número de Movimentos de Descanso Longo extras que o personagem pode fazer durante um Descanso Longo."
                         }
                     },
@@ -1903,7 +1923,7 @@
                     "targetSelf": "Você"
                 },
                 "maxLoadout": {
-                    "label": "Bônus Máx. de Cartas na Mão"
+                    "label": "Máx. de Cartas na Mão Bônus"
                 }
             },
             "Character": {
@@ -2066,7 +2086,7 @@
                     "vulnerable": "Imunidade à Condição: Vulnerável"
                 },
                 "damageReduction": {
-                    "disabledArmor": { "label": "Aramdura Desabilitada" },
+                    "disabledArmor": { "label": "Armadura Desabilitada" },
                     "increasePerArmorMark": {
                         "label": "Redução de Dano por Armadura",
                         "hint": "Um ponto de armadura usado normalmente reduz o dano em um limiar. Este valor aumenta o número de limiares que o dano é reduzido."
@@ -2266,6 +2286,7 @@
             "identify": "Identidade",
             "imagePath": "Caminho da Imagem",
             "inactiveEffects": "Efeitos Inativos",
+            "initial": "Inicial",
             "inventory": "Inventário",
             "itemResource": "Recurso de Item",
             "itemQuantity": "Quantidade do Item",
@@ -2292,6 +2313,7 @@
                 "plurial": "Jogadores"
             },
             "portrait": "Imagem",
+            "preview": "Preview",
             "proficiency": "Proficiência",
             "quantity": "Quantidade",
             "range": "Alcance",
@@ -2299,6 +2321,7 @@
             "recovery": "Recuperação",
             "refresh": "Recarregar",
             "reroll": "Rolar Novamente",
+            "rerolled": "Rolado Novamente",
             "rerollThing": "Rolar {thing} Novamente",
             "resource": "Recurso",
             "roll": "Rolar",
@@ -2463,6 +2486,14 @@
                 "secondaryWeapon": "Arma Secundária"
             }
         },
+        "MACROS": {
+            "Spotlight": {
+                "errors": {
+                    "noActiveCombat": "Não há nenhum encontro ativo.",
+                    "noCombatantSelected": "Para destacar um token de combatente, é necessário selecioná-lo ou passar o cursor sobre ele."
+                }
+            }
+        },
         "ROLLTABLES": {
             "FIELDS": {
                 "formulaName": { "label": "Nome da Fórmula" }
@@ -2554,6 +2585,10 @@
                         "gm": { "label": "Mestre" },
                         "players": { "label": "Jogadores" }
                     },
+                    "vulnerableAutomation": {
+                        "label": "Automação p/ Vulnerável",
+                        "hint": "Aplicar automaticamente a condição Vulnerável quando um ator atingir o nível máximo de estresse."
+                    },
                     "countdownAutomation": {
                         "label": "Automação de Contagem",
                         "hint": "Progressão automática de contagens baseada em suas configurações de progressão"
@@ -2622,6 +2657,14 @@
                     "title": "Gatilhos"
                 }
             },
+            "Metagaming": {
+                "FIELDS": {
+                    "hideObserverPermissionInChat": {
+                        "label": "Ocultar informações do chat dos jogadores",
+                        "hint": "Informações como acertos/erros em testes de ataque contra adversários serão ocultadas."
+                    }
+                }
+            },
             "Homebrew": {
                 "newDowntimeMove": "Movimento de Repouso",
                 "downtimeMove": "Movimento de Repouso",
@@ -2632,9 +2675,12 @@
                 "itemFeatures": "Habilidades de Item",
                 "nrChoices": "# Movimentos por Descanso",
                 "resetMovesTitle": "Resetar Movimentos de Repouso de {type}",
+                "resetItemFeaturesTitle": "Resetar {type}",
                 "resetMovesText": "Tem certeza que deseja resetar?",
                 "deleteItemTitle": "Deletar Item Caseiro",
                 "deleteItemText": "Tem certeza que deseja deletar o item?",
+                "deleteResourceTitle": "Deletar Recurso Caseiro",
+                "deleteResourceText": "Tem certeza de que deseja excluir o recurso?",
                 "FIELDS": {
                     "maxFear": { "label": "Medo Máximo" },
                     "maxHope": { "label": "Esperança Máxima" },
@@ -2642,6 +2688,13 @@
                     "maxLoadout": {
                         "label": "Máx. de Cartas na Mão",
                         "hint": "Deixe em branco ou 0 para máximo ilimitado"
+                    },
+                    "resources": {
+                        "resources": {
+                            "value": { "label": "Ícone" },
+                            "isIcon": { "label": "Ícone do Font Awesome" },
+                            "noColorFilter": { "label": "Desativar Filtro de Cor" }
+                        }
                     },
                     "maxDomains": { "label": "Máx. de Domínios de Classe", "hint": "Máximo de domínios que você pode definir em uma classe" }
                 },
@@ -2671,6 +2724,19 @@
                 "adversaryType": {
                     "title": "Tipos de Adversário Personalizados",
                     "newType": "Tipo de Adversário"
+                },
+                "resources": {
+                    "typeTitle": "Recursos {type}",
+                    "filledIcon": "Ícone Cheio",
+                    "emptyIcon": "Ícone Vazio",
+                    "resourceIdentifier": "Identificador de Recurso",
+                    "setResourceIdentifier": "Definir Identificador de Recurso"
+                }
+            },
+            "Keybindings": {
+                "spotlight": {
+                    "name": "Dar foco ao Combatente",
+                    "hint": "Mova o foco para um token selecionado ou sobre o qual o cursor esteja posicionado e que esteja em um encontro ativo."
                 }
             },
             "Menu": {
@@ -2679,6 +2745,11 @@
                     "name": "Configurações de Automação",
                     "label": "Configurar Automação",
                     "hint": "Várias configurações automatizando gerenciamento de recursos e mais"
+                },
+                "metagaming": {
+                    "name": "Configurações de Metajogo",
+                    "label": "Configurar Metajogo",
+                    "hint": "Diversas configurações controlam o fluxo de informações para os jogadores."
                 },
                 "homebrew": {
                     "name": "Configurações Caseiras",
@@ -2916,7 +2987,7 @@
                 "insufficentAdvancements": "Você não tem avanços suficientes restantes.",
                 "noAssignedPlayerCharacter": "Você não tem um personagem atribuído.",
                 "noSelectedToken": "Você não tem uma ficha selecionada",
-                "onlyUseableByPC": "Isso só pode ser usado com uma ficha de PJ",
+                "onlyUseableByPC": "Isso só pode ser usado com uma ficha de personagem",
                 "dualityParsing": "Rolagem de dualidade não formatada corretamente",
                 "fateParsing": "Teste de Destino formatada incorretamente",
                 "fateTypeParsing": "O Teste de Destino não está formatado corretamente, tipo de Destino inválido. Os tipos válidos são 'Esperança' e 'Medo'.",
@@ -2984,7 +3055,8 @@
                 "tokenActorMissing": "{name} está faltando um Ator",
                 "tokenActorsMissing": "[{names}] faltando Atores",
                 "domainTouchRequirement": "Esta carta de Domínio requer {nr} cartas de {domain} na sua Mão para ser usada.",
-                "knowTheTide": "Conhecer a Maré ganhou um token"
+                "knowTheTide": "Conhecer a Maré ganhou um token",
+                "lackingItemTransferPermission": "Usuário {user} sem permissão necessária para tranferir itens para {target}"
             },
             "Sidebar": {
                 "actorDirectory": {

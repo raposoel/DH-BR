@@ -7,7 +7,7 @@ Um projeto de tradução paralelo para o Foundry, deixando o jogo mais próximo 
 - Ajuste de termos traduzidos de maneira duvidosa, como "Fadiga".
 - Preservar o estilo do texto original para manter a integridade da obra.
 
-Atualizado para a versão 1.7.2
+Atualizado para a versão 1.9.6
 
 # Como instalar
 Manifest: https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json

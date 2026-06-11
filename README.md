@@ -34,7 +34,7 @@ As magias que invocam seres/coisas foram melhoradas, atribuindo um Ator genéric
 
 O sistema acaba por limitar duplicatas ou cópias, então só funciona dessa maneira.
 
-### Para melhores resultados, delete os compêndios de Players Option em inglês no seu mundo.
+### Para melhores resultados, delete os compêndios de "Character Options" em inglês no seu mundo.
 
 # Como instalar
 Manifest: https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json

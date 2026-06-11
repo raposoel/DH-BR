@@ -14,7 +14,7 @@ Atualizado para a versão 1.9+
 Criados compêndios com a tradução, uma vez que os Itens não estavam mais sendo traduzidos via script.
 
 ## 1ª Versão 
-Como todo os compêndios para criação de personagens (ancestralidades, comunidades, classes e subs, domínios, armas e armaduras)
+Com todo os compêndios para criação de personagens (ancestralidades, comunidades, classes e subs, domínios, armas e armaduras)
 Tudo foi melhorado dentro do possível. Feedback é apreciado.
 
 Ainda pendentes: Adversários, Ambientes, Diários e Tabelas.

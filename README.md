@@ -24,7 +24,9 @@ Ainda pendentes: Adversários, Ambientes, Diários e Tabelas.
 ### A Forma de Fera do Druida.
 Para que a tradução funcione, é preciso manual colocar as pastas do compêndio Formas de Fera na aba de Itens. 
 
-(Imagem)
+![Passo 01](https://github.com/raposoel/DH-BR/blob/main/imagens/ex01.webp?raw=true)
+![Passo 02](https://github.com/raposoel/DH-BR/blob/main/imagens/ex02.webp?raw=true)
+![Passo 03](https://github.com/raposoel/DH-BR/blob/main/imagens/ex03.webp?raw=true)
 
 Esses mesmos Itens de forma de fera ali podem ser usados para a troca de imagens para o druida.
 Na versão final, haverá uma Macro para fazer isso automaticamente.

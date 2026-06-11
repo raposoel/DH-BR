@@ -2,7 +2,7 @@
   "id": "daggerheart-br",
   "title": "Daggerheart - Tradução Corrigida para Brasileiro",
   "description": "<p>Adiciona o idioma Brasileiro corrigido para o sistema de jogo Daggerheart. Sem Inventar, só traduzido.</p>",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -32,9 +32,6 @@
       "flags": {}
     }
   ],
-  "esmodules": [
-    "scripts/babele.js"
-  ],
   "languages": [
     {
       "lang": "pt-BR",
@@ -46,5 +43,28 @@
   "url": "https://github.com/raposoel/DH-BR",
   "manifest": "https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json",
   "download": "https://codeload.github.com/raposoel/DH-BR/zip/main",
-  "flags": {}
+  "packs": [
+    { "name": "adversarios-br", "label": "Adversários", "path": "packs/adversarios-br", "type": "Actor", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "ambientes-br", "label": "Ambientes", "path": "packs/ambientes-br", "type": "Actor", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "invoca-br", "label": "Invocações", "path": "packs/invoca-br", "type": "Actor", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "diarios-br", "label": "Diários", "path": "packs/diarios-br", "type": "JournalEntry", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "tabelas-br", "label": "Tabelas", "path": "packs/tabelas-br", "type": "RollTable", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "classes-br", "label": "Classes", "path": "packs/classes-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "subclasses-br", "label": "Subclasses", "path": "packs/subclasses-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "dominios-br", "label": "Domínios", "path": "packs/dominios-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "ancestralidades-br", "label": "Ancestralidades", "path": "packs/ancestralidades-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "comunidades-br", "label": "Comunidades", "path": "packs/comunidades-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "formas-de-fera-br", "label": "Formas de Fera", "path": "packs/formas-de-fera-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "armas-br", "label": "Armas", "path": "packs/armas-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "armaduras-br", "label": "Armaduras", "path": "packs/armaduras-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "consumiveis-br", "label": "Consumíveis", "path": "packs/consumiveis-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
+    { "name": "tesouro-br", "label": "Tesouro", "path": "packs/tesouro-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} }
+  ],
+  "packFolders": [
+    { "name": "DAGGERHEART BÁSICO", "sorting": "a", "color": "#08718c", "packs": ["adversarios-br", "ambientes-br", "diarios-br", "tabelas-br"], "folders": [
+    { "name": "OPÇÕES DE PERSONAGENS", "sorting": "a", "packs": ["classes-br", "subclasses-br", "dominios-br", "invoca-br", "ancestralidades-br", "comunidades-br", "formas-de-fera-br"] },
+    { "name": "ITEMS", "sorting": "a", "packs": ["armas-br", "armaduras-br", "consumiveis-br", "tesouro-br"] }
+    ]
+    }
+  ]
 }

@@ -14,13 +14,16 @@
             "beastform": "Forma de Fera"
         },
         "ActiveEffect": {
-            "beastform": "Forma de Fera"
+            "base": "Padrão",
+            "beastform": "Forma de Fera",
+            "horde": "Horda"
         },
         "Actor": {
             "character": "Personagem",
             "companion": "Companheiro",
             "adversary": "Adversário",
             "environment": "Ambiente",
+            "npc": "NPC",
             "party": "Grupo"
         }
     },
@@ -71,9 +74,7 @@
                     "name": "Invocar",
                     "tooltip": "Cria fichas na cena.",
 		    "error": "Você não tem permissão para invocar fichas ou não há nenhuma cena ativa.",
-                    "invalidDrop": "Você só pode soltar entidades tipo Ator para invocá-las.",
-                    "chatMessageTitle": "Test2",
-                    "chatMessageHeaderTitle": "Invocando"
+                    "invalidDrop": "Você só pode soltar entidades tipo Ator para invocá-las."
                 },
                 "transform": {
                     "name": "Transformar",
@@ -87,10 +88,15 @@
             },
             "Config": {
                 "beastform": {
-                    "exact": "Patamar Máximo da Forma de Fera",
-                    "exactHint": "O Patamar do Personagem é usado se estiver vazio",
-                    "label": "Forma de Fera"
-                },
+                    "exact": { "label": "Patamar Máximo da Forma de Fera", "hint": "O Patamar do Personagem é usado se estiver vazio" },
+                    "modifications": {
+                        "traitBonuses": {
+                            "label": { "single": "Bônus de Atributo", "plural": "Bônus de Atributos" },
+                            "hint": "Escolha bônus para aplicar a atributos escolhidos livremente no momento da transformação",
+                            "bonus": "Valor do Bônus"
+			}
+		  }
+               },
                 "countdown": {
                     "defaultOwnership": "Posse Padrão",
                     "startCountdown": "Iniciar Contagem"
@@ -103,9 +109,17 @@
                     "customFormula": "Fórmula Personalizada",
                     "formula": "Fórmula"
                 },
+                "area": {
+                    "sectionTitle": "Áreas",
+                    "shape": "Forma",
+                    "size": "Tamanho"
+                },
                 "displayInChat": "Exibir no chat",
                 "deleteTriggerTitle": "Excluir Gatilho",
-                "deleteTriggerContent": "Tem certeza de que deseja excluir o gatilho {trigger}?"
+                "deleteTriggerContent": "Tem certeza de que deseja excluir o gatilho {trigger}?",
+                "advantageState": "Estado de Vantagem",
+                "damageOnSave": "Dano se Passar",
+                "useDefaultItemValues": "Usar valores padrão do Item"
             },
             "RollField": {
                 "diceRolling": {
@@ -121,6 +135,7 @@
                 "attackName": "Nome do Ataque",
                 "criticalThreshold": "Limiar Crítico",
                 "includeBase": { "label": "Incluir Dano do Item" },
+                "groupAttack": { "label": "Ataque em Grupo" },
                 "multiplier": "Multiplicador",
                 "saveHint": "Defina um Atributo padrão para habilitar o Teste de Reação. Pode ser alterado posteriormente no Diálogo de Teste de Reação.",
                 "resultBased": {
@@ -151,7 +166,9 @@
             "Config": {
                 "rangeDependence": {
                     "title": "Dependência de Alcance"
-                }
+                },
+                "stacking": { "title": "Acumula" },
+                "targetDispositions": "Atitude Afetada"
             },
             "RangeDependance": {
                 "hint": "Configurações para uma distância opcional na qual este efeito deve ser ativado",
@@ -198,7 +215,13 @@
                     "type": { "label": "Tipo" }
                 },
                 "hordeDamage": "Dano de Horda",
-                "horderHp": "Horda/PV"
+                "horderHp": "Horda/PV",
+                "adversaryReactionRoll": {
+                    "headerTitle": "Teste de Reação de Adversário"
+                }
+            },
+            "Base": {
+                "CannotAddType": "Não pode adicionar itens {itemType} aos atores {actorType}."
             },
             "Character": {
                 "advantageSources": {
@@ -223,6 +246,8 @@
                 },
                 "defaultHopeDice": "Dado de Esperança Padrão",
                 "defaultFearDice": "Dado de Medo Padrão",
+                "defaultAdvantageDice": "Dado de Vantagem Padrão",
+                "defaultDisadvantageDice": "Dado de Desvantagem Padrão",
                 "disadvantageSources": {
                     "label": "Fontes de Desvantagem",
                     "hint": "Adicione palavras únicas ou textos curtos como lembretes e dicas sobre o que um personagem tem desvantagem."
@@ -307,6 +332,27 @@
                     }
                 },
                 "newAdversary": "Novo Adversário"
+            },
+            "NPC": {
+                "FIELDS": {
+                    "motives": { "label": "Motivações" }
+                }
+        },
+            "Party": {
+                "Subtitle": {
+                    "character": "{community} {ancestry} | {subclass} {class}",
+                    "companion": "Companheiro de {partner}"
+                },
+                "RemoveConfirmation": {
+                    "title": "Remover o membro {name}",
+                    "text": "Tem certeza que deseja remover {name} do grupo?"
+                },
+                "Thresholds": {
+                    "minor": "MEN",
+                    "major": "MAI",
+                    "severe": "SEV"
+                },
+                "triggerRestContent": "Isso abrirá uma caixa de diálogo para que os jogadores realizem seus movimentos de repouso. Você tem certeza?"
             }
         },
         "APPLICATIONS": {
@@ -365,7 +411,11 @@
                 "giveSpotlight": "Dar o Foco",
                 "requestingSpotlight": "Requisitando o Foco",
                 "requestSpotlight": "Requisitar o Foco",
-                "openCountdowns": "Contagens"
+                "openCountdowns": "Contagens",
+                "adversaryCategories": {
+                    "friendly": "Aliados",
+                    "adversaries": "Adversários"
+		}
             },
             "CompendiumBrowserSettings": {
                 "title": "Ativar Compêndios",
@@ -440,9 +490,14 @@
                 "defaultOwnershipTooltip": "A posse padrão do jogador para contagens",
                 "hideNewCountdowns": "Ocultar Novas Contagens"
             },
+            "CreateItemDialog": {
+                "createItem": "Criar Item",
+                "browseCompendium": "Explorar o Compêndio"
+            },
             "DaggerheartMenu": {
                 "title": "Ferramentas do Mestre",
-                "refreshFeatures": "Atualizar Habilidades"
+                "refreshFeatures": "Atualizar Habilidades",
+                "fallingAndCollision": "Dano de Queda ou Colisão"
             },
             "DeleteConfirmation": {
                 "title": "Deletar {type} - {name}",
@@ -450,14 +505,15 @@
             },
             "DamageReduction": {
                 "armorMarks": "Armadura",
-                "armorWithStress": "Marque um Estresse para usar um ponto extra",
+                "maxUseableArmor": "Armadura Usável",
+                "armorWithStress": "Marque um Estresse para marcar mais uma",
                 "thresholdImmunities": "Imunidades a Limiar",
                 "stress": "Estresse",
-                "stressReduction": "Reduzir com Estresse",
+                "stressReduction": "Reduzido por Estresse",
                 "title": "Redução de Dano",
                 "unncessaryStress": "Você não precisa marcar Estresse",
                 "usedMarks": "Pontos Usados",
-                "reduceSeverity": "Gravidade Reduzida em {nr}"
+                "reduceSeverity": "Severidade Reduzida em {nr}"
             },
             "DeathMove": {
                 "selectMove": "Selecionar Movimento",
@@ -525,10 +581,10 @@
             "HUD": {
                 "tokenHUD": {
                     "genericEffects": "Efeitos do Foundry",
-                    "depositPartyTokens": "Depositar Tokens do Grupo",
-                    "retrievePartyTokens": "Recuperar Tokens do Grupo",
-                    "depositCompanionTokens": "Depositar Token do Companheiro",
-                    "retrieveCompanionTokens": "Recuperar Token do Companheiro"
+                    "depositPartyTokens": "Colocar Tokens do Grupo",
+                    "retrievePartyTokens": "Recolher Tokens do Grupo",
+                    "depositCompanionTokens": "Colocar Token do Companheiro",
+                    "retrieveCompanionTokens": "Recolher Token do Companheiro"
                 }
             },
             "ImageSelect": {
@@ -653,6 +709,12 @@
                 "noPlayers": "Sem jogadores para assinalar posse",
                 "default": "Posse Padrão"
             },
+            "PendingReactionsDialog": {
+                "title": "Testes de Reação Pendentes Encontrados",
+                "unfinishedRolls": "Alguns Tokens não fizeram seus Testes de Reação.",
+                "warning": "Testes de Reação não concluídos serão considerados falhas.",
+                "confirmation": "Tem certeza de que deseja continuar?"
+            },
             "ReactionRoll": {
                 "title": "Teste de Reação: {trait}"
             },
@@ -674,20 +736,57 @@
                 "finalTitle": "Recursos Finais do Personagem"
             },
             "TagTeamSelect": {
-                "title": "Teste em Dupla",
+                "title": "Tag Team Roll",
+                "FIELDS": {
+                    "initiator": {
+                        "memberId": { "label": "Personagem que Inicia" },
+                        "cost": { "label": "Custo de Esperança" }
+                    }
+                },
                 "leaderTitle": "Personagem que Inicia",
                 "membersTitle": "Participantes",
                 "partyTeam": "Equipe do Grupo",
                 "hopeCost": "Custo de Esperança",
                 "initiatingCharacter": "Personagem que Inicia",
-                "linkMessageHint": "Faça uma rolagem da sua ficha de personagem para vinculá-la à Rolagem de Equipe",
+                "selectParticipants": "Selecione a dupla",
+                "startTagTeamRoll": "Iniciar Teste em Dupla",
+                "openDialogForAll": "Abrir Caixa de Diálogo para Todos",
+                "rollType": "Tipo de Teste",
+                "makeYourRoll": "Faça seu Teste",
+                "cancelTagTeamRoll": "Cancelar Teste em Dupla",
+                "finishTagTeamRoll": "Finalizar Teste em Dupla",
+                "linkMessageHint": "Faça uma rolagem da sua ficha de personagem para vinculá-la à Rolagem em Dupla",
                 "damageNotRolled": "Dano ainda não rolado na mensagem do chat",
                 "insufficientHope": "O personagem que iniciou não tem Esperança suficiente",
                 "createTagTeam": "Criar Teste em Dupla",
-                "chatMessageRollTitle": "Rolagem"
+                "chatMessageRollTitle": "Rolar",
+                "cancelConfirmTitle": "Cancelar Teste em Dupla",
+                "cancelConfirmText": "Tem certeza de que deseja cancelar o Teste em Dupla? Também vai encerrar para os jogadores.",
+                "hints": {
+                    "completeRolls": "Prepare e realize as rolagens para os personagens",
+                    "selectRoll": "Selecione qual rolagem será usada para o Teste em Dupla"
+                }
+            },
+            "GroupRollSelect": {
+                "cancelConfirmText": "Tem certeza de que deseja cancelar o Teste em Grupo? Também vai encerrar para os jogadores.",
+                "cancelConfirmTitle": "Cancelar Teste em Grupo",
+                "initializationTitle": "Seleção de Personagens",
+                "finishGroupRoll": "Finalizar Teste em Grupo",
+                "leader": "Líder",
+                "leaderRoll": "Rolagem do Líder",
+                "members": "Membros",
+                "openDialogForAll": "Abrir Caixa de Diálogo para Todos",
+                "removeRoll": "Remover Rolagem",
+                "resultsHint": "Resultados aparecerão quando os personagens rolarem.",
+                "selectLeaderHint": "Selecione um Personagem para ser o líder",
+                "selectParticipantsHint": "Selecione um Personagem para ser o líder",
+                "startGroupRoll": "Iniciar Teste em Grupo",
+                "title": "Teste em Grupo"
             },
             "TokenConfig": {
-                "actorSizeUsed": "O tamanho do Ator está definido, determinando as dimensões."
+                "actorSizeUsed": "O tamanho do Ator está definido, determinando as dimensões.",
+                "tokenSize": "Tamanho do Token",
+                "sizeCategory": "Categoria de Tamanho"
             }
         },
         "CLASS": {
@@ -701,6 +800,20 @@
                 "passive": "Passiva",
                 "action": "Ação",
                 "reaction": "Reação"
+            },
+            "ActiveEffectDuration": {
+                "temporary": "Temporário",
+                "act": "Próximo Foco",
+                "scene": "Próxima Cena",
+                "shortRest": "Próximo Descanso",
+                "longRest": "Próximo Descanso Longo",
+                "session": "Próxima Sessão",
+                "custom": "Personalizado"
+            },
+            "ActionAutomationChoices": {
+                "never": "Nunca",
+                "showDialog": "Mostrar Apenas Caixa de Diálogo",
+                "always": "Sempre"
             },
             "AdversaryTrait": {
                 "relentless": {
@@ -768,6 +881,11 @@
                 "leader": "para cada adversário Líder.",
                 "bruiser": "para cada adversário Brutamontes.",
                 "solo": "para cada adversário Solo."
+            },
+            "ArmorInteraction": {
+                "none": { "label": "Ignora Armadura" },
+                "active": { "label": "Ativo c/ Armadura" },
+                "inactive": { "label": "Inativo c/ Armadura" }
             },
             "ArmorFeature": {
                 "burning": {
@@ -1054,13 +1172,17 @@
                     "description": "Enquanto uma criatura está Vulnerável, todas as rolagens contra ela têm vantagem.\nUma criatura que já está Vulnerável não pode receber a condição novamente."
                 }
             },
-            "CountdownType": {
+            "CountdownProgressType": {
                 "actionRoll": "Teste de Ação",
                 "characterAttack": "Ataque de Personagem",
                 "characterSpotlight": "Foco no Personagem",
-                "custom": "Personalizada",
+                "custom": "Personalizado",
                 "fear": "Medo",
                 "spotlight": "Foco"
+            },
+            "CountdownType": {
+                "encounter": { "label": "Prazo Curto", "shortLabel": "Curto" },
+                "narrative": { "label": "Prazo Longo", "shortLabel": "Longo" }
             },
             "DaggerheartDiceAnimationEvents": {
                 "critical": { "name": "Crítico" },
@@ -1117,6 +1239,12 @@
                     "label": "Evento",
                     "description": "Ambientes de Evento são definidos mais pelas atividades que acontecem do que pelo lugar em si."
                 }
+            },
+            "fallAndCollision": {
+                "veryClose": { "label": "Muito Próximo", "chatTitle": "Dano de Queda: Muito Próximo" },
+                "close": { "label": "Próximo", "chatTitle": "Dano de Queda: Próximo" },
+                "far": { "label": "Distante", "chatTitle": "Dano de Queda: Distante" },
+                "collision": { "label": "Colisão", "chatTitle": "Colisão Perigosa" }
             },
             "FeatureForm": {
                 "label": "Tipo de Habilidade",
@@ -1219,9 +1347,19 @@
                 "on": "Ligado",
                 "onWithToggle": "Ligado com Alternador"
             },
+            "SceneRangeMeasurementTypes": {
+                "disable": "Desativar Medição de Alcance de Daggerheart",
+                "default": "Padrão",
+                "custom": "Personalizado"
+            },
             "SelectAction": {
                 "selectType": "Selecionar Tipo de Ação",
                 "selectAction": "Seleção de Ação"
+            },
+            "TagTeamRollTypes": {
+                "trait": "Atributo",
+                "ability": "Habilidade",
+                "damageAbility": "Dano de Habilidade"
             },
             "TargetTypes": {
                 "any": "Qualquer",
@@ -1849,6 +1987,17 @@
                     "name": "Rolagem de Cura"
                 }
             },
+            "ChangeTypes": {
+                "armor": {
+                    "newArmorEffect": "Efeito de Armadura",
+                    "FIELDS": {
+                        "interaction": {
+                            "label": "Interação com Armadura",
+                            "hint": "O Personagem vestir armadura anula esse efeito?"
+                        }
+                    }
+                }
+            },
             "Duration": {
                 "passive": "Passivo",
                 "temporary": "Temporário"
@@ -1873,6 +2022,10 @@
             }
         },
         "GENERAL": {
+            "Ability": {
+                "single": "Habilidade",
+                "plural": "Habilidades"
+            },
             "Action": {
                 "single": "Ação",
                 "plural": "Ações"
@@ -1895,6 +2048,10 @@
                     "label": "Multiplicador de Dano Recebido em PV",
                     "hint": "Multiplique qualquer dano causado a você por esse número"
                 }
+            },
+            "Battlepoints": {
+                "full": "Pontos de Batalha",
+                "short": "PB"
             },
             "Bonuses": {
                 "rest": {
@@ -2076,7 +2233,7 @@
                 "secondaryWeaponAttack": "Teste de Ataque com Arma Secundária",
                 "spellcast": "Teste de Conjuração",
                 "trait": "Teste de Atributo",
-                "action": "Teste de Movimento",
+                "action": "Teste de Ação",
                 "reaction": "Teste de Reação"
             },
             "Rules": {
@@ -2254,6 +2411,7 @@
             "duality": "Dualidade",
             "dualityDice": "Dado de Dualidade",
             "dualityRoll": "Rolagem de Dualidade",
+            "effect": "Efeito",
             "enabled": "Habilitado",
             "evasion": "Evasão",
             "equipment": "Equipamento",
@@ -2267,6 +2425,7 @@
             "fear": "Medo",
             "features": "Habilidades",
             "formula": "Fórmula",
+            "general": "Geral",
             "gm": "Mestre",
             "guaranteedCriticalSuccess": "Sucesso Crítico Garantido",
             "healing": "Cura",
@@ -2301,12 +2460,17 @@
                 "single": "Erro",
                 "plural": "Erros"
             },
+            "missingX": "Faltando {x}",
             "maxWithThing": "Máx {thing}",
             "missingDragDropThing": "Arraste {thing} aqui",
             "multiclass": "Multiclasse",
+            "name": "Nome",
             "newCategory": "Nova Categoria",
+            "newThing": "Novo/a {thing}",
+            "next": "Próximo",
             "none": "Nenhum",
             "noTarget": "Nenhum alvo atual",
+            "optionalThing": "{thing} opcional",
             "partner": "Parceiro",
             "player": {
                 "single": "Jogador",
@@ -2324,14 +2488,20 @@
             "rerolled": "Rolado Novamente",
             "rerollThing": "Rolar {thing} Novamente",
             "resource": "Recurso",
+            "result": {
+                "single": "Resultado",
+                "plural": "Resultados"
+            },
             "roll": "Rolar",
             "rollAll": "Rolar Tudo",
             "rollDamage": "Rolar Dano",
             "rollWith": "Teste de {roll}",
             "save": "Salvar",
+            "saveSettings": "Salvar Configurações",
             "scalable": "Escalonável",
             "scars": "Cicatrizes",
             "situationalBonus": "Bônus Situacional",
+            "searchPlaceholder": "Buscar...",
             "spent": "Gasto",
             "step": "Passo",
             "stress": "Estresse",
@@ -2403,13 +2573,14 @@
                     "mainTrait": { "label": "Atributo Principal" },
                     "examples": { "label": "Exemplos" },
                     "advantageOn": { "label": "Ganhar Vantagem Em" },
-                    "tokenImg": { "label": "Imagem da Ficha" },
-                    "tokenRingImg": { "label": "Textura do Anel" },
+                    "tokenImg": { "label": "Imagem do Token" },
+                    "tokenRingImg": { "label": "Textura do Contorno" },
                     "tokenSize": {
                         "placeholder": "Usando dimensões do personagem",
-                        "disabledPlaceholder": "Set by character size",
+                        "disabledPlaceholder": "Definido pelo Tamanho do Personagem",
                         "height": { "label": "Altura" },
                         "width": { "label": "Largura" },
+                        "depth": { "label": "Profundidade" },
                         "scale": { "label": "Escala do Token" }
                     },
                     "evolved": {
@@ -2425,7 +2596,7 @@
                 "attackName": "Ataque de Fera",
                 "beastformEffect": "Transformação em Fera",
                 "dialogTitle": "Seleção de Forma de Fera",
-                "tokenTitle": "Ficha de Forma de Fera",
+                "tokenTitle": "Token de Forma de Fera",
                 "transform": "Transformar",
                 "evolve": "Evoluir",
                 "evolvedFeatureTitle": "Evoluída",
@@ -2444,6 +2615,7 @@
                 "classItems": "Itens de Classe",
                 "hopeFeatureLabel": "Habilidade de Esperança de {class}",
                 "hopeFeatures": "Habilidade de Esperança",
+                "classFeature": "Habilidade de Classe",
                 "classFeatures": "Habilidades de Classe",
                 "guide": {
                     "suggestedEquipment": "Equipamentos Sugeridos",
@@ -2468,7 +2640,7 @@
                 "recallCost": "Custo de Troca",
                 "vaultActive": "Ativa na Reserva",
                 "loadoutIgnore": "Ignora Limite da Mão",
-                "domainTouched": "Tocado pelo Domínio",
+                "domainTouched": "Dom do Domínio",
                 "foundationTitle": "Fundamento",
                 "specializationTitle": "Especialização",
                 "masteryTitle": "Maestria"
@@ -2482,15 +2654,22 @@
             },
             "Weapon": {
                 "weaponType": "Tipo de Arma",
-                "primaryWeapon": "Arma Primária",
-                "secondaryWeapon": "Arma Secundária"
+                "primaryWeapon": {
+                    "full": "Arma Primária",
+                    "short": "Primária"
+                },
+                "secondaryWeapon": {
+                    "full": "Arma Secundária",
+                    "short": "Secundária"
+                }
             }
         },
         "MACROS": {
             "Spotlight": {
                 "errors": {
                     "noActiveCombat": "Não há nenhum encontro ativo.",
-                    "noCombatantSelected": "Para destacar um token de combatente, é necessário selecioná-lo ou passar o cursor sobre ele."
+                    "noCombatantSelected": "Para destacar um token de combatente, é necessário selecioná-lo ou passar o cursor sobre ele.",
+                    "noTokenSelected": "Um token na tela deve estar selecionado ou com o cursor sobre ele para ser posto em Foco."
                 }
             }
         },
@@ -2565,6 +2744,10 @@
                     "hint": "Aumentar automaticamente a reserva de medo do Mestre em um resultado de rolagem de dualidade de medo."
                 },
                 "FIELDS": {
+                    "autoExpireActiveEffects": {
+                        "label": "Expirar Automaticamente Efeitos Ativos",
+                        "hint": "Efeitos Ativos com durações definidas serão removidos automaticamente quando terminarem."
+                    },
                     "damageReductionRulesDefault": {
                         "label": "Padrão de Regras de Redução de Dano",
                         "hint": "Se o uso de armadura e reduções tem regras ativadas por padrão"
@@ -2572,9 +2755,9 @@
                     "defeated": {
                         "enabled": { "label": "Habilitado" },
                         "overlay": { "label": "Efeito de Sobreposição" },
-                        "characterDefault": { "label": "Status de Derrotado Padrão do Personagem" },
-                        "adversaryDefault": { "label": "Status de Derrotado Padrão do Adversário" },
-                        "companionDefault": { "label": "Status de Derrotado Padrão do Companheiro" },
+                        "characterDefault": { "label": "Status de Derrotado Padrão para Personagens" },
+                        "adversaryDefault": { "label": "Status de Derrotado Padrão para Adversários" },
+                        "companionDefault": { "label": "Status de Derrotado Padrão para Companheiros" },
                         "deathMove": { "label": "Movimento de Morte" },
                         "dead": { "label": "Morto" },
                         "defeated": { "label": "Derrotado" },
@@ -2662,6 +2845,15 @@
                     "hideObserverPermissionInChat": {
                         "label": "Ocultar informações do chat dos jogadores",
                         "hint": "Informações como acertos/erros em testes de ataque contra adversários serão ocultadas."
+                    },
+                    "hidePartyStats": {
+                        "label": "Ocultar Atributos do Grupo",
+                        "hint": "Recursos e Atributos dos membros da ficha do grupo ficarão ocultos para os seguintes usuários, mesmo que o usuário faça parte do grupo.",
+                        "choices": {
+                            "never": "Nunca, sempre mostrar",
+                            "players": "Ocultar para Jogadores",
+                            "always": "Ocultar para Todos"
+                        }
                     }
                 }
             },
@@ -2734,13 +2926,17 @@
                 }
             },
             "Keybindings": {
+                "partySheet": {
+                    "name": "Abrir/Fechar Ficha do Grupo",
+                    "hint": "Abra ou Feche a Ficha do Grupo ativo."
+                },
                 "spotlight": {
                     "name": "Dar foco ao Combatente",
                     "hint": "Mova o foco para um token selecionado ou sobre o qual o cursor esteja posicionado e que esteja em um encontro ativo."
                 }
             },
             "Menu": {
-                "title": "Configurações de Jogo Daggerheart",
+                "title": "Configurações de Jogo - Daggerheart",
                 "automation": {
                     "name": "Configurações de Automação",
                     "label": "Configurar Automação",
@@ -2767,7 +2963,7 @@
                     "duality": "Rolagens de Dualidade",
                     "diceSoNice": {
                         "title": "Dice So Nice",
-                        "hint": "Coloração dos dados de Dualidade se o módulo Dice So Nice for usado.",
+                        "hint": "Coloração dos Dados de Dualidade, caso o módulo Dice So Nice esteja ativo.",
                         "foreground": "Primeiro Plano",
                         "background": "Plano de Fundo",
                         "outline": "Contorno",
@@ -2776,7 +2972,13 @@
                         "colorset": "Tema",
                         "material": "Material",
                         "system": "Predefinição de Dado",
-                        "font": "Fonte"
+                        "font": "Fonte",
+                        "critical": "Animação de Crítico",
+                        "muted": "Mutado",
+                        "diceAppearance": "Aparência do Dado",
+                        "animations": "Animações",
+                        "defaultAnimations": "Definir Animações como Padrão para Jogadores",
+                        "previewAnimation": "Visualizar Animação"
                     }
                 },
                 "variantRules": {
@@ -2881,18 +3083,6 @@
                     "immunityTo": "Imunidade: {immunities}"
                 },
                 "featureTitle": "Habilidade de Classe",
-                "groupRoll": {
-                    "title": "Rolagem em Grupo",
-                    "leader": "Líder",
-                    "partyTeam": "Equipe do Grupo",
-                    "team": "Equipe",
-                    "selectLeader": "Selecionar um Líder",
-                    "selectMember": "Selecionar um Membro",
-                    "rerollTitle": "Rolar Novamente Rolagem em Grupo",
-                    "rerollContent": "Tem certeza que deseja rolar novamente seu teste de {trait}?",
-                    "rerollTooltip": "Rolar Novamente",
-                    "wholePartySelected": "Todo o grupo está selecionado"
-                },
                 "healingRoll": {
                     "title": "Curar - {damage}",
                     "heal": "Curar",
@@ -2910,12 +3100,16 @@
                 "resourceRoll": {
                     "playerMessage": "{user} rolou novamente seu {name}"
                 },
+                "saveRoll": {
+                    "reactionRollAllTargets": "Teste de Reação de Todos os Alvos"
+                },
                 "tagTeam": {
                     "title": "Equipe",
                     "membersTitle": "Membros"
                 }
             },
             "ChatLog": {
+                "rerollActionRoll": "Rolar Teste Novamente",
                 "rerollDamage": "Rolar Dano Novamente",
                 "assignTagRoll": "Atribuir como Rolagem de Equipe"
             },
@@ -2924,7 +3118,7 @@
             },
             "Countdowns": {
                 "title": "Contagens",
-                "toggleIconMode": "Alternar Modo Ícone",
+                "toggleIconMode": "Ícone de Alternar Modo",
                 "noPlayerAccess": "Esta contagem não é visível para nenhum jogador",
                 "loop": "Repetição",
                 "decreasingLoop": "Repetição Decrescente",
@@ -2932,6 +3126,8 @@
             },
             "EffectsDisplay": {
                 "removeThing": "[Right Click] Remove {thing}",
+                "increaseStacks": "[Left Click] Aumentar Acúmulo",
+                "decreaseStacks": "[Right Click] Diminuir Acúmulo",
                 "appliedBy": "Aplicado por: {by}"
             },
             "ItemBrowser": {
@@ -3056,7 +3252,12 @@
                 "tokenActorsMissing": "[{names}] faltando Atores",
                 "domainTouchRequirement": "Esta carta de Domínio requer {nr} cartas de {domain} na sua Mão para ser usada.",
                 "knowTheTide": "Conhecer a Maré ganhou um token",
-                "lackingItemTransferPermission": "Usuário {user} sem permissão necessária para tranferir itens para {target}"
+                "lackingItemTransferPermission": "Usuário {user} sem permissão necessária para tranferir itens para {target}",
+                "noTokenTargeted": "Nenhum Token como alvo",
+                "behaviorRegionRequiresGM": "Criar uma Região com um Comportamento associado requer um Mestre online."
+            },
+            "Progress": {
+                "migrationLabel": "Realizando migração do sistema. Por favor, aguarde e não feche o Foundry."
             },
             "Sidebar": {
                 "actorDirectory": {
@@ -3065,6 +3266,9 @@
                     "companion": "Nível {level} - {partner}",
                     "companionNoPartner": "Sem Parceiro",
                     "duplicateToNewTier": "Duplicar em Novo Patamar",
+                    "activateParty": "Fazer Grupo Ativo",
+                    "partyIsActive": "Ativar",
+                    "createAdversary": "Criar Adversário",
                     "pickTierTitle": "Escolha um novo patamar para este adversário"
                 },
                 "daggerheartMenu": {
@@ -3076,6 +3280,7 @@
             "Tooltip": {
                 "disableEffect": "Desabilitar Efeito",
                 "enableEffect": "Habilitar Efeito",
+                "edit": "Editar",
                 "openItemWorld": "Abrir Item no Mundo",
                 "openActorWorld": "Abrir Personagem no Mundo",
                 "sendToChat": "Enviar para o Chat",

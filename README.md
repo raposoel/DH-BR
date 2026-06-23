@@ -7,15 +7,15 @@ Um projeto de tradução paralelo para o Foundry, deixando o jogo mais próximo 
 - Ajuste de termos traduzidos de maneira duvidosa, como "Fadiga".
 - Preservar o estilo do texto original para manter a integridade da obra.
 
-Atualizado para a versão 1.9+
+Atualizado para a versão 2.4.0
 
 # Update Imenso!
 
 Criados compêndios com a tradução, uma vez que os Itens não estavam mais sendo traduzidos via script.
 
-## 1ª Versão 
+## *2ª* Versão 
 Com todo os compêndios para criação de personagens (ancestralidades, comunidades, classes e subs, domínios, armas e armaduras)
-Tudo foi melhorado dentro do possível. Feedback é apreciado.
+Tudo foi melhorado dentro do possível. Coreções diversas e atualizado o léxico para a última versão. Feedback é apreciado.
 
 Ainda pendentes: Adversários, Ambientes, Diários e Tabelas.
 
@@ -36,7 +36,9 @@ As magias que invocam seres/coisas foram melhoradas, atribuindo um Ator genéric
 
 O sistema acaba por limitar duplicatas ou cópias, então só funciona dessa maneira.
 
-### Para melhores resultados, delete os compêndios de "Character Options" em inglês no seu mundo.
+Copie a pasta de invocações do Compendium para a aba de atores, e coloque os jogadores como donos da pasta.
+
+### Para melhores resultados, delete os compêndios de "Character Options" em inglês no seu mundo, caso possível.
 
 # Como instalar
 Manifest: https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json

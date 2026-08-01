@@ -7,7 +7,7 @@ Um projeto de tradução paralelo para o Foundry, deixando o jogo mais próximo 
 - Ajuste de termos traduzidos de maneira duvidosa, como "Fadiga".
 - Preservar o estilo do texto original para manter a integridade da obra.
 
-Atualizado para a versão 2.4.0
+Atualizado para a versão 2.6.4
 
 # Update Imenso!
 

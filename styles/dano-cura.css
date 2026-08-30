@@ -1,0 +1,72 @@
+/* dano-cura.css (v4)
+   Estiliza a linha de botões injetada por dano-cura.js logo abaixo do
+   cabeçalho "Dano"/"Cura" do card de rolagem do Daggerheart. Fica numa
+   linha própria, separada do cabeçalho nativo (que não é mais alterado -
+   as linhas decorativas nativas continuam do jeito que sempre foram) e
+   permanece visível tanto com a seção aberta quanto fechada. */
+
+.daggerheart .chat-message .dc-buttons-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 4px 0;
+}
+
+.daggerheart .chat-message .dc-btn {
+    width: 28px;
+    height: 28px;
+    min-height: 28px;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.daggerheart .chat-message .dc-btn i {
+    font-size: 13px;
+}
+
+.daggerheart .chat-message .dc-btn.dc-damage {
+    border: 1px solid #a32d2d;
+    background: rgba(163, 45, 45, 0.15);
+    color: #e24b4a;
+}
+
+.daggerheart .chat-message .dc-btn.dc-damage:hover {
+    background: rgba(163, 45, 45, 0.35);
+}
+
+.daggerheart .chat-message .dc-btn.dc-heal {
+    border: 1px solid #3b6d11;
+    background: rgba(59, 109, 17, 0.15);
+    color: #63a922;
+}
+
+.daggerheart .chat-message .dc-btn.dc-heal:hover {
+    background: rgba(59, 109, 17, 0.35);
+}
+
+/* Esconde o botão nativo "Causar Dano"/"Aplicar Cura" (rodapé do card) -
+   essa ação já vive nos ícones da linha logo abaixo de "Dano"/"Cura".
+   Não mexe em ".duality-action-damage" (Rolar Dano, pré-rolagem) nem em
+   ".duality-action-effect" (Aplicar Efeito) - esses continuam normais. */
+.daggerheart .chat-message .roll-buttons .main-buttons .damage-button {
+    display: none;
+}
+
+.pa-buttons-row {
+    display: flex;
+    justify-content: center;
+    margin: 2px 0;
+}
+.pa-btn {
+    font-size: 0.85em;
+    padding: 2px 8px;
+}

@@ -1,0 +1,22 @@
+<section
+    class='tab {{tabs.questions.cssClass}} {{tabs.questions.id}}'
+    data-tab='{{tabs.questions.id}}'
+    data-group='{{tabs.questions.group}}'
+>
+    <div class="questions-container">
+        <fieldset>
+            <legend>{{localize "TRANSFORMACAO.Questions.legend"}}</legend>
+
+            <div class="transformation-questions-list">
+                {{#each source.system.questions as | question index |}}
+                    <div class="transformation-question-item">
+                        <textarea
+                            name="{{concat "system.questions." index}}"
+                            rows="2"
+                        >{{question}}</textarea>
+                    </div>
+                {{/each}}
+            </div>
+        </fieldset>
+    </div>
+</section>

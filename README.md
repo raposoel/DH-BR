@@ -24,7 +24,7 @@ você me passou. Ver a lista de perguntas no final desta entrega (fora deste arq
 Tradução **Brasileira** completa para o sistema **Daggerheart** (Foundryborne) no
 Foundry VTT — interface, itens de compêndio e um conjunto de automações extras
 pensadas pra deixar a mesa mais rápida de rodar. Sem inventar: a
-prioridade é ficar o mais próximo possível do texto original.
+prioridade é ficar o mais próximo possível do original.
 
 ---
 

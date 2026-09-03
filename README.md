@@ -170,4 +170,4 @@ monetizado** enquanto for conteúdo de playtest.
 **"Daggerheart™ Compatible"**, não afiliado nem endossado pela Darrington
 Press.
 <p align="center">
-  <img src="imagens/dh-cgl-logos-final-white-full-color.webp" alt="daggerheart_compatible"/></p>
+  <img src="imagens/dh-cgl-logos-final-white-full-color.webp" alt="daggerheart_compatible" width="500" /></p>

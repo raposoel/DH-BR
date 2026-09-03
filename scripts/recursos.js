@@ -1,9 +1,12 @@
 /**
  * recursos.js
  *
- * Automatiza consumo e restauração de recursos de itens "Geradores de Recurso"
- * (ex: Foco, Decocções Tóxicas, Favor) a partir de ações que vivem em OUTROS
- * itens, e padroniza a mensagem de chat mesmo quando o custo já é nativo.
+ * Duas responsabilidades neste arquivo:
+ *
+ * PARTE 1 — Automatiza consumo e restauração de recursos de itens
+ * "Geradores de Recurso" (hoje só Decocções Tóxicas) a partir de ações que
+ * vivem em OUTROS itens, e padroniza a mensagem de chat mesmo quando o
+ * custo já é nativo.
  *
  * Cobre 5 padrões:
  *
@@ -33,64 +36,56 @@
  * bateram nenhum prefixo esperado.
  *
  * Além disso, oculta visualmente nas fichas o pip/barra de Recurso "dummy"
- * dos 4 itens de Favor que precisam dele só pra evitar o crash de custo
- * escalonável quebrado do sistema 2.7.3 (ver DUMMY_RESOURCE_ITEMS abaixo).
+ * dos 4 itens que precisam dele só pra evitar o crash de custo escalonável
+ * quebrado do sistema 2.7.3 (ver DUMMY_RESOURCE_ITEMS abaixo). ATENÇÃO:
+ * esses 4 itens eram os mesmos do Favor por consumeByActionId — como Favor
+ * saiu daqui (ver PARTE 2), reconfirmar se esse workaround ainda é
+ * necessário depois que o Custo desses 4 itens for reapontado pra "Favor"
+ * nativo na própria ficha da ação.
+ *
+ * PARTE 2 — Favor e Foco (a partir da build 2.8+ do sistema, que passou a
+ * ter os dois nativamente via CONFIG.DH.RESOURCE.optionalResources) NÃO
+ * são mais rastreados por aqui — viraram Recurso do Ator nativo, com
+ * gasto/cura pelo próprio motor do sistema. O que sobra de trabalho nosso:
+ *
+ *  - Sobrescrever o ícone do Favor pra bater com a identidade visual de
+ *    vocês (Foco já usa o ícone nativo certo, não mexe).
+ *  - Filtrar o campo "Recurso do Ator" (multi-select) na ficha de
+ *    Habilidade pra só mostrar Favor/Foco — mesmo que o sistema adicione
+ *    um recurso novo numa atualização futura, ele não aparece pra escolher
+ *    sem querer.
+ *  - Exibir os dois numa seção própria entre Limiares e Equipamento na
+ *    ficha do Personagem (a exibição nativa fica escondida atrás da
+ *    setinha ao lado da Esperança).
+ *
+ * IMPORTANTE: cada Habilidade que hoje gasta/cura Favor precisa ser
+ * reconfigurada na PRÓPRIA ficha da ação (menu de Custo/Cura, escolhendo
+ * "Favor" direto) — não é mais o script que decide por nome/ID de ação.
  */
 
 const MODULE_TAG = 'recursos.js';
+const MODULE_ID = 'daggerheart-br';
 const DEBUG = true;
 
 // -----------------------------------------------------------------------
-// Itens "Geradores de Recurso"
+// PARTE 1 — Itens "Geradores de Recurso" (rastreados manualmente)
 // -----------------------------------------------------------------------
 const RESOURCE_GENERATORS = {
-    foco: 'Compendium.daggerheart-br.classes-hef.Item.fGTKszJ3D5t37Qpo',
-    decoccoesToxicas: 'Compendium.daggerheart-br.classes-hef.Item.35q8YEZyETaWe1ll',
-    favor: 'Compendium.daggerheart-br.classes-hef.Item.whZ54E1dx9izU8R8'
+    decoccoesToxicas: 'Compendium.daggerheart-br.classes-hef.Item.35q8YEZyETaWe1ll'
 };
 
 // -----------------------------------------------------------------------
 // Itens rastreados que possuem Actions consumidoras "por nome"
 // -----------------------------------------------------------------------
-const FOCO_TRACKED_ITEMS = [
-    'Compendium.daggerheart-br.classes-hef.Item.qEQbpRDw1F6Z2tU0', // Postura Revigorante
-    'Compendium.daggerheart-br.classes-hef.Item.fJpRckmq9Ej9qvan', // Postura Confiável
-    'Compendium.daggerheart-br.classes-hef.Item.DBCQzSxemj8Oba5R', // Postura Favorecida
-    'Compendium.daggerheart-br.classes-hef.Item.ERxPOUQaNA81BepM', // Postura Rápida
-    'Compendium.daggerheart-br.classes-hef.Item.P7JGlTEu0k6wmENN', // Postura Agressiva
-    'Compendium.daggerheart-br.classes-hef.Item.QuKrnQbunTVEBuM8', // Postura Ancorada
-    'Compendium.daggerheart-br.classes-hef.Item.ypYSByvGTTKvJweA', // Postura Defensiva
-    'Compendium.daggerheart-br.classes-hef.Item.7OYIlS0FqgXerOD0', // Postura Sobrenatural
-    'Compendium.daggerheart-br.classes-hef.Item.RtgkiyR1cbls7Evt', // Postura Agarrante
-    'Compendium.daggerheart-br.classes-hef.Item.DeVn5GW1KI4PhIdD', // Postura Vigilante
-    'Compendium.daggerheart-br.classes-hef.Item.PRUIUkIUPjfKLbnR', // Postura Estável
-    'Compendium.daggerheart-br.classes-hef.Item.rDVp3zM2EMyvgcb7', // Postura Assustadora
-    'Compendium.daggerheart-br.classes-hef.Item.93YXhJHn3aiySZRZ', // Postura Afiada
-    'Compendium.daggerheart-br.classes-hef.Item.s2H3Bdt6CQFGEJtT', // Postura Precisa
-    'Compendium.daggerheart-br.classes-hef.Item.r3rzoK492hK2oDoo', // Postura Isolante
-    'Compendium.daggerheart-br.classes-hef.Item.HgI3tH4XLMctS5Kh'  // Postura Esmagadora
-];
-
 const DECOCCOES_TRACKED_ITEMS = [
     'Compendium.daggerheart-br.classes-hef.Item.VSOoDQOP7CMoMSkI', // Compêndio de Venenos
     'Compendium.daggerheart-br.classes-hef.Item.VhvNzKHXmgkvaUIS'  // Venomante
 ];
 
-const FAVOR_TRACKED_ITEMS = [
-    'Compendium.daggerheart-br.classes-hef.Item.iHw92ObUSWpdMmVo', // Absorção de Dano
-    'Compendium.daggerheart-br.classes-hef.Item.OIcmBruiWc4mezmx', // Aegis Negra
-    'Compendium.daggerheart-br.classes-hef.Item.4aImHfeLrAFFjhP7', // Alcance Ameaçador
-    'Compendium.daggerheart-br.classes-hef.Item.wHVbrBluDWm3HzQO', // Ataque Temível
-    'Compendium.daggerheart-br.classes-hef.Item.hf8RZndJpJhgu4Bc', // Fúria do Patrono
-    'Compendium.daggerheart-br.classes-hef.Item.d6l1PWTDaXFNME7Z', // Invocação Lancinante
-    'Compendium.daggerheart-br.classes-hef.Item.Z0wThIeyKHbcdkIs', // Manto do Patrono
-    'Compendium.daggerheart-br.classes-hef.Item.KYQ1ke29wsFLpyfs'  // Perdição Drenante
-];
-
 // -----------------------------------------------------------------------
 // Itens cujo Recurso é "dummy" — existe só pra evitar o crash do sistema em
-// custo escalonável quebrado (ver consumeByActionId do Favor abaixo), sem
-// relação nenhuma com o Favor real. O pip/barra desse recurso é escondido
+// custo escalonável quebrado (workaround antigo, ligado ao Favor — ver nota
+// no cabeçalho do arquivo). O pip/barra desse recurso é escondido
 // visualmente na ficha (ver hideDummyResources mais abaixo).
 // -----------------------------------------------------------------------
 const DUMMY_RESOURCE_ITEMS = [
@@ -104,33 +99,6 @@ const DUMMY_RESOURCE_ITEMS = [
 // Vínculos de recurso
 // -----------------------------------------------------------------------
 const RESOURCE_LINKS = [
-    // === FOCO ===
-    {
-        type: 'consumeByName',
-        trackedItems: FOCO_TRACKED_ITEMS,
-        namePrefixes: ['Assumir Postura', 'Gastar Foco'],
-        resourceUuid: RESOURCE_GENERATORS.foco,
-        amount: 1
-    },
-    {
-        type: 'restore',
-        resourceUuid: RESOURCE_GENERATORS.foco,
-        actionId: 'fiwGpLwFSUEYLtCK', // "Recuperar Foco"
-        readFrom: 'weaponResource'
-    },
-    {
-        type: 'restoreOnSuccess',
-        resourceUuid: RESOURCE_GENERATORS.foco,
-        actionId: 'ESDlKvwCfUSUXALW', // "Role 1d4" (Postura Revigorante)
-        amount: 1
-    },
-    {
-        type: 'notifyOnly',
-        actionIds: ['EMMkElWHaloTM2vs'], // "Gastar Foco" nativo, dentro do próprio Foco
-        resourceUuid: RESOURCE_GENERATORS.foco,
-        amount: 1
-    },
-
     // === DECOCÇÕES TÓXICAS ===
     {
         type: 'consumeByName',
@@ -155,64 +123,6 @@ const RESOURCE_LINKS = [
         ],
         resourceUuid: RESOURCE_GENERATORS.decoccoesToxicas,
         amount: 1
-    },
-
-    // === FAVOR ===
-    {
-        // "Gastar Favor" nativo dentro do próprio Favor. Custo real funciona
-        // sozinho (aponta pro recurso certo), só falta a mensagem de chat.
-        type: 'notifyOnly',
-        actionIds: ['5a3tCJ2mlXeIAYel'], // "Gastar Favor" (dentro do item Favor)
-        resourceUuid: RESOURCE_GENERATORS.favor,
-        scalable: true,
-        amount: 1 // fallback se não achar o valor escalonável em config.costs
-    },
-    {
-        // Ações com nome "Gastar Favor" em itens próprios, custo nativo VAZIO
-        // (sem nenhum custo configurado) — desconta valor fixo de 1.
-        type: 'consumeByName',
-        trackedItems: FAVOR_TRACKED_ITEMS,
-        namePrefixes: ['Gastar Favor'],
-        resourceUuid: RESOURCE_GENERATORS.favor,
-        amount: 1
-    },
-    {
-        // 4 itens com Custo "Recurso" escalonável CONFIGURADO, mas quebrado:
-        // aponta pro próprio item (que não tem resource real), então não
-        // desconta Favor de verdade. Aqui a gente lê quanto foi ESCOLHIDO
-        // (config.costs) e desconta manualmente do Favor de verdade.
-        type: 'consumeByActionId',
-        actionId: 'eKvKjELegZGqPzg4', // "Dados do Patrono" (Abraço Imortal)
-        resourceUuid: RESOURCE_GENERATORS.favor,
-        scalable: true,
-        amount: 1
-    },
-    {
-        type: 'consumeByActionId',
-        actionId: 'T7xiUZPKb7MNxHwo', // "Gastar Favor" (Diminua meus Inimigos)
-        resourceUuid: RESOURCE_GENERATORS.favor,
-        scalable: true,
-        amount: 1
-    },
-    {
-        type: 'consumeByActionId',
-        actionId: '3ulSDAytkiN2bq6E', // "Gastar Favor" (Ira do Outro Mundo)
-        resourceUuid: RESOURCE_GENERATORS.favor,
-        scalable: true,
-        amount: 1
-    },
-    {
-        type: 'consumeByActionId',
-        actionId: '81VICS6SIep75U3N', // "Gastar Favor" (Vingança Mortal)
-        resourceUuid: RESOURCE_GENERATORS.favor,
-        scalable: true,
-        amount: 1
-    },
-    {
-        type: 'restore',
-        resourceUuid: RESOURCE_GENERATORS.favor,
-        actionId: 'D04Nbo9tjsXbFHOI', // "Prestar Tributo"
-        readFrom: 'weaponResource'
     }
 
     // Adicione novos vínculos aqui.
@@ -408,9 +318,129 @@ function hideDummyResources(app, html) {
     }
 }
 
+// -----------------------------------------------------------------------
+// PARTE 2 — Favor e Foco via Recurso do Ator nativo
+// -----------------------------------------------------------------------
+
+// Chaves de CONFIG.DH.RESOURCE.optionalResources que o módulo reconhece e
+// permite escolher na Habilidade. Adicionar uma chave nova aqui é o único
+// passo pra liberar mais um recurso desses no futuro (contanto que ela já
+// exista em optionalResources, nativa ou registrada por nós).
+const CUSTOM_RESOURCE_KEYS = ['favor', 'focus'];
+
+function applyResourceVisualOverrides() {
+    const favor = CONFIG.DH.RESOURCE.optionalResources.favor;
+    if (favor) {
+        favor.images = {
+            full: { value: 'fa-solid fa-skull', isIcon: true, opacity: 1 },
+            empty: { value: 'fa-solid fa-skull', isIcon: true, opacity: 0.6 }
+        };
+    }
+    // Foco já usa fa-solid fa-yin-yang nativamente — nada a fazer.
+}
+
+// Filtra o <multi-select> "Recurso do Ator" na ficha da Habilidade pra só
+// mostrar as chaves em CUSTOM_RESOURCE_KEYS.
+function filterActorResourceOptions(app, html) {
+    const item = app.document;
+    if (!item || item.type !== 'feature') return;
+    if (!(html instanceof HTMLElement)) return;
+
+    const select = html.querySelector('multi-select[name="system.actorResources"]');
+    if (!select) return;
+
+    select.querySelectorAll('option').forEach(option => {
+        if (!CUSTOM_RESOURCE_KEYS.includes(option.value)) option.remove();
+    });
+}
+
+// Desenha a seção de Favor/Foco entre Limiares e Equipamento na ficha do
+// Personagem, lendo direto de system.resources (dado nativo).
+function renderActorResourceTrackers(actor, html) {
+    if (!(html instanceof HTMLElement)) return;
+    if (!actor || actor.type !== 'character') return;
+
+    html.querySelectorAll(`.br-resource-section[data-module="${MODULE_ID}"]`).forEach(el => el.remove());
+
+    const anchor = html.querySelector('.shortcut-items-section');
+    if (!anchor) return;
+
+    // availableExtraResources já é o próprio sistema dizendo "esse ator tem
+    // esse recurso disponível agora" (via Habilidade concedida) — usamos
+    // exatamente esse cálculo pra não duvidar do que o sistema já decidiu.
+    const available = actor.system.availableExtraResources ?? {};
+
+    // Se TODO recurso extra do ator for um dos nossos (Favor/Foco), esconde
+    // a setinha nativa que abre o painel escondido ao lado da Esperança —
+    // a exibição daqui embaixo já cobre isso. Se existir algum recurso
+    // extra que a gente NÃO cobre (ex: um Homebrew de outro tipo), deixa a
+    // setinha visível pra esse caso continuar acessível.
+    const availableKeys = Object.keys(available);
+    const allCovered = availableKeys.length > 0 && availableKeys.every(k => CUSTOM_RESOURCE_KEYS.includes(k));
+    const resourceManagerButton = html.querySelector('.resource-manager');
+    if (resourceManagerButton) resourceManagerButton.style.display = allCovered ? 'none' : '';
+
+    for (const key of CUSTOM_RESOURCE_KEYS) {
+        if (!(key in available)) continue;
+
+        const resource = actor.system.resources?.[key];
+        if (!resource || !resource.max) continue;
+
+        const def = CONFIG.DH.RESOURCE.optionalResources[key];
+        const icon = def?.images?.full?.value ?? 'fa-solid fa-circle';
+
+        const section = document.createElement('div');
+        section.className = 'br-resource-section';
+        section.dataset.module = MODULE_ID;
+        section.dataset.key = key;
+
+        const title = document.createElement('h4');
+        title.className = 'br-resource-label';
+        title.textContent = game.i18n.localize(resource.label ?? def?.label ?? key);
+        section.appendChild(title);
+
+        const pips = document.createElement('div');
+        pips.className = 'br-resource-pips';
+
+        for (let i = 1; i <= resource.max; i++) {
+            const pip = document.createElement('span');
+            pip.className = 'br-resource-pip' + (i > (resource.value ?? 0) ? ' empty' : '');
+            pip.innerHTML = `<i class="${icon}"></i>`;
+            pip.addEventListener('click', async () => {
+                const currentValue = actor.system.resources?.[key]?.value ?? 0;
+                const next = Math.max(0, Math.min(i === currentValue ? i - 1 : i, resource.max));
+                // Passa pelo MESMO método nativo que o sistema usa pra
+                // gastar/curar Favor e Foco em qualquer ação — em vez de
+                // escrever direto em system.resources (que tem validação
+                // de chave própria e pode simplesmente ignorar o update).
+                await actor.modifyResource([{ key, value: next - currentValue }]);
+            });
+            pips.appendChild(pip);
+        }
+
+        section.appendChild(pips);
+        anchor.insertAdjacentElement('beforebegin', section);
+    }
+}
+
+// -----------------------------------------------------------------------
+// Setup
+// -----------------------------------------------------------------------
+
 Hooks.once('ready', () => {
+    if (game.system.id !== 'daggerheart') return;
+
+    applyResourceVisualOverrides();
+
     Hooks.on('renderCharacterSheet', (app, html) => {
-        hideDummyResources(app, html instanceof HTMLElement ? html : html?.[0]);
+        const root = html instanceof HTMLElement ? html : html?.[0];
+        hideDummyResources(app, root);
+        renderActorResourceTrackers(app.document, root);
+    });
+
+    Hooks.on('renderItemSheet', (app, html) => {
+        const root = html instanceof HTMLElement ? html : html?.[0];
+        filterActorResourceOptions(app, root);
     });
 
     Hooks.on('daggerheart.postUseAction', async (action, config) => {
@@ -429,6 +459,7 @@ Hooks.once('ready', () => {
 
     console.log(
         `[${MODULE_TAG}] ${RESOURCE_LINKS.length} vínculo(s) de recurso registrado(s); ` +
-        `${DUMMY_RESOURCE_ITEMS.length} item(ns) com recurso dummy serão ocultados nas fichas.`
+        `${DUMMY_RESOURCE_ITEMS.length} item(ns) com recurso dummy serão ocultados nas fichas; ` +
+        `${CUSTOM_RESOURCE_KEYS.length} recurso(s) do Ator nativo(s) habilitado(s) (${CUSTOM_RESOURCE_KEYS.join(', ')}).`
     );
 });

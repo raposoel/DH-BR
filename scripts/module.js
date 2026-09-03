@@ -110,8 +110,7 @@ async function registrarConteudoCaseiro() {
             const novaConfig = {
                 ...configHomebrew,
                 domains: dominiosAtuais,
-                adversaryTypes: tiposAtuais,
-                }
+                adversaryTypes: tiposAtuais
             };
 
             await game.settings.set('daggerheart', chaveConfig, novaConfig);

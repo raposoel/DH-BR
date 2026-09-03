@@ -254,6 +254,240 @@ const EXP_STRESS_KEY = `flags.${MODULE_ID}.expUsaEstresse`;
  */
 const EXP_STRESS_DOUBLE_KEY = `flags.${MODULE_ID}.expEstresseDobraBonus`;
 
+/**
+ * "Range de Arma Customizado" — sobrescreve o alcance (range) da ação de
+ * ataque BASE de qualquer arma equipada, não importa o range original dela.
+ *
+ * Valores aceitos (número de 1 a 5, texto):
+ *   1 = Adjacente   (melee)
+ *   2 = Muito Próximo (veryClose)
+ *   3 = Próximo     (close)
+ *   4 = Distante    (far)
+ *   5 = Muito Distante (veryFar)
+ *
+ * Descoberta: o range de uma arma vive em `attack.range` da action de ataque
+ * base da arma (`DHWeapon.system.attack`, uma instância de DHAttackAction —
+ * mesma classe usada por qualquer ataque, não só o base). Essa action é
+ * recalculada em `DHAttackAction.prototype.prepareData()` toda vez que os
+ * embedded documents do item são preparados, então interceptar esse método
+ * (via WRAPPER) garante que a mudança aparece sempre que a ficha/ator for
+ * recalculado — sem precisar mexer em nenhum outro lugar do fluxo de ataque.
+ *
+ * Só se aplica quando a action pertence a uma arma (`this.item?.type ===
+ * 'weapon'`) — isso deixa de fora ataques de spellcast/domain card, cujo
+ * range normalmente já é definido pela própria carta/feature. Se um dia
+ * quiser que valha pra qualquer ataque, é só remover essa checagem.
+ *
+ * Se houver mais de um Active Effect com essa flag ativo ao mesmo tempo, só
+ * o PRIMEIRO encontrado é aplicado (diferente do Dano Extra, que soma —
+ * aqui não faz sentido somar dois ranges).
+ *
+ * Isso só troca a ETIQUETA/valor de range usado pelo sistema (o que aparece
+ * no card de chat, no ataque em grupo, etc.) — o Daggerheart não impede
+ * fisicamente um ataque fora do alcance declarado; alcance é mais uma
+ * convenção narrativa/tag do que uma trava mecânica.
+ *
+ * NÃO é consumível — permanente enquanto o efeito existir na ficha, igual
+ * às outras flags "passivas" deste arquivo.
+ *
+ * Como conceder (teste rápido, no console):
+ *
+ *   const actor = game.actors.getName("Nome do Personagem");
+ *   await actor.createEmbeddedDocuments('ActiveEffect', [{
+ *       name: 'Alcance Estendido',
+ *       img: 'icons/skills/ranged/arrow-flying-broadhead-metal.webp',
+ *       changes: [{
+ *           key: 'flags.daggerheart-br.rangeArma',
+ *           mode: CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+ *           value: '4' // Distante
+ *       }]
+ *   }]);
+ */
+const RANGE_ARMA_KEY = `flags.${MODULE_ID}.rangeArma`;
+
+const RANGE_ARMA_MAP = {
+    '1': 'melee',
+    '2': 'veryClose',
+    '3': 'close',
+    '4': 'far',
+    '5': 'veryFar'
+};
+
+/**
+ * "Range de Arma Customizado — Incremento" — variante que NÃO sobrescreve o
+ * alcance pra um valor absoluto; em vez disso, SOMA N passos ao alcance que
+ * a arma já tiver (nativo, ou já sobrescrito por RANGE_ARMA_KEY acima, se as
+ * duas flags estiverem no mesmo Ator), subindo/descendo na escala:
+ *
+ *   melee -> veryClose -> close -> far -> veryFar
+ *
+ * Valor aceito: número inteiro (positivo sobe passos, negativo desce).
+ * Resultado sempre travado nas pontas da escala — nunca desce além de
+ * "melee" nem sobe além de "veryFar" — mesmo espírito do travamento do
+ * Limiar Extra.
+ *
+ * Se houver mais de um Active Effect com essa flag ativo ao mesmo tempo, os
+ * valores SOMAM (diferente da sobrescrita acima, que só aplica o primeiro
+ * encontrado — aqui faz sentido somar incrementos, igual ao Dano Extra e ao
+ * Limiar Extra).
+ *
+ * Se o alcance atual da arma (antes deste incremento) não estiver na escala
+ * acima — ex.: uma action com range "self" — a flag não faz nada nela, já
+ * que não há "passo" pra calcular a partir de um alcance fora da escala.
+ *
+ * NÃO é consumível — permanente enquanto o efeito existir na ficha, igual às
+ * outras flags "passivas" deste arquivo.
+ *
+ * Como conceder (teste rápido, no console):
+ *
+ *   const actor = game.actors.getName("Nome do Personagem");
+ *   await actor.createEmbeddedDocuments('ActiveEffect', [{
+ *       name: 'Alcance +1 Passo',
+ *       img: 'icons/skills/ranged/arrow-flying-broadhead-metal.webp',
+ *       changes: [{
+ *           key: 'flags.daggerheart-br.rangeArmaBonus',
+ *           mode: CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+ *           value: '1' // sobe 1 passo na escala de alcance
+ *       }]
+ *   }]);
+ */
+const RANGE_ARMA_BONUS_KEY = `flags.${MODULE_ID}.rangeArmaBonus`;
+const RANGE_ARMA_ORDER = Object.values(RANGE_ARMA_MAP); // ['melee','veryClose','close','far','veryFar']
+
+/**
+ * "Tipo de Dano Forçado" — sobrescreve o(s) tipo(s) de dano de uma rolagem de
+ * dano (`physical`/`magical`) pelo valor configurado na flag, não importa o
+ * que estava marcado originalmente na arma/ação.
+ *
+ * Valores aceitos (string, uma letra):
+ *   "f" = força o dano a ser considerado Físico  (physical)
+ *   "m" = força o dano a ser considerado Mágico  (magical)
+ *
+ * Funciona nas duas direções: se o dano originalmente é Físico e a flag diz
+ * "m", vira Mágico; se o dano é Mágico e a flag diz "f", vira Físico. Não é
+ * uma troca automática physical<->magical — é uma sobrescrita direta pro
+ * valor configurado, então também não faz nada se o dano já for do tipo pra
+ * onde a flag aponta.
+ *
+ * Descoberta: o(s) tipo(s) de dano de uma rolagem vivem em
+ * `formulaData.damageTypes` (um `Set`), construído em
+ * `DamageField.formatFormulas()` a partir do `system.attack.damage.main.type`
+ * (ou do dano de qualquer action de dano/ataque) ANTES da fórmula da rolagem
+ * ser montada. Esse mesmo objeto (`config.damageFormula`) é reutilizado, por
+ * referência, tanto pro cálculo de bônus (`applyBaseBonus`, que lê
+ * `system.bonuses.damage.<tipo>`) quanto pro `options.damageTypes` final da
+ * Roll avaliada — que é o que `Actor#calculateDamage`/`getResistanceStatus`
+ * usam pra decidir resistência/imunidade. Por isso interceptar
+ * `DamageRoll.prototype.constructFormula()` e mutar `formulaData.damageTypes`
+ * ANTES de chamar o `wrapped(...)` nativo já propaga a mudança pros dois
+ * lugares de uma vez, sem precisar tocar em mais nada.
+ *
+ * SELECIONÁVEL no diálogo de dano: aparece como chip clicável na seção
+ * "Efeitos", igual o Dano Extra Mágico/Físico — não é uma sobrescrita
+ * sempre-ligada. O estado inicial do chip vem do próprio Active Effect
+ * (`selected: !effect.disabled`), e o jogador pode marcar/desmarcar antes de
+ * rolar. Só se aplica quando o chip está MARCADO no momento da rolagem.
+ *
+ * DESMARCAR RESTAURA o tipo original da arma/ação (bug real encontrado e
+ * corrigido): o objeto que carrega o tipo de dano é reaproveitado em toda
+ * re-renderização do diálogo — se a gente só sobrescrevesse o tipo quando o
+ * chip estivesse marcado, e não fizesse nada quando desmarcado, o tipo
+ * original já teria sido perdido de vez na primeira vez que o chip foi
+ * marcado (o Set antigo já não existe mais em lugar nenhum). Por isso o tipo
+ * ORIGINAL é guardado na primeira passagem por esse código, e toda vez que o
+ * chip está desmarcado, o tipo é restaurado a partir dessa cópia — nunca
+ * fica "grudado" no último tipo forçado.
+ *
+ * Só se aplica ao parâmetro `isDamage === true` da chamada (ou seja, só ao
+ * dano PRINCIPAL — `damage.main`, que é o único que carrega tipo de dano de
+ * verdade; `damage.resources` — estresse, esperança, armadura — nunca tem
+ * `.type`, então não há necessidade de filtrar isso à parte).
+ *
+ * Se houver mais de um Active Effect com essa flag marcado ao mesmo tempo,
+ * só o PRIMEIRO encontrado é aplicado — igual ao Range de Arma Customizado,
+ * não faz sentido "somar" dois tipos de dano forçados.
+ *
+ * O Active Effect em si NÃO é consumível (não é apagado ao usar) — o que
+ * controla se ele tem efeito é o chip estar marcado ou não a cada rolagem,
+ * igual ao Dano Extra.
+ *
+ * O modo do change (Custom/Sobrepor/etc.) NÃO importa pra essa flag — lemos
+ * o valor direto de `change.value`/`chip.value`, sem passar pela resolução
+ * nativa de modo nenhum. "Custom" é a recomendação só por convenção (mesmo
+ * modo usado em todas as outras flags deste arquivo), não por necessidade.
+ *
+ * Como conceder (teste rápido, no console):
+ *
+ *   const actor = game.actors.getName("Nome do Personagem");
+ *   await actor.createEmbeddedDocuments('ActiveEffect', [{
+ *       name: 'Punhos Arcanos',
+ *       img: 'icons/magic/unholy/hand-claw-fire-blue.webp',
+ *       changes: [{
+ *           key: 'flags.daggerheart-br.tipoDanoForcado',
+ *           mode: CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+ *           value: 'm' // qualquer dano desse personagem passa a ser Mágico
+ *       }]
+ *   }]);
+ */
+const TIPO_DANO_FORCADO_KEY = `flags.${MODULE_ID}.tipoDanoForcado`;
+
+const TIPO_DANO_FORCADO_MAP = {
+    f: 'physical',
+    m: 'magical'
+};
+
+/**
+ * "Limiar Extra" — faz o dano recebido pelo Ator já ser considerado 1 (ou
+ * mais) limiar(es) acima do que o valor bruto normalmente indicaria.
+ *
+ * Descoberta: o cálculo de limiar mora inteiro num único método,
+ * `DhpActor#convertDamageToThreshold(damage)`:
+ *
+ *     return damage >= this.system.damageThresholds.severe ? 3
+ *          : damage >= this.system.damageThresholds.major ? 2
+ *          : 1;
+ *     // (ou 4, se "dano maciço" estiver habilitado e o dano for >= severo*2)
+ *
+ * Não existe, nativamente, nenhuma chave de Active Effect que empurre o
+ * RESULTADO desse cálculo pra cima — só dá pra mexer nos NÚMEROS dos
+ * limiares (`system.damageThresholds.major`/`.severe`, nativas), o que muda
+ * o cálculo indiretamente. Esta flag faz o "+1 limiar" de verdade, direto no
+ * resultado, interceptando esse método via libWrapper.
+ *
+ * Valor aceito: número inteiro (string), positivo. "1" = sobe um limiar
+ * (Menor vira Maior, Maior vira Severo, Severo vira Maciço — se a regra
+ * variante de dano maciço estiver ligada; senão trava em Severo). "2" sobe
+ * dois de uma vez, etc. Resultado sempre travado entre 1 e 4 — nunca deixa
+ * "subir" além de Maciço nem descer abaixo de Menor.
+ *
+ * Se houver mais de um Active Effect com essa flag ativo ao mesmo tempo, os
+ * valores SOMAM (mesmo espírito do Dano Extra Mágico/Físico) — dois efeitos
+ * de "+1" juntos equivalem a um "+2".
+ *
+ * NÃO é consumível — permanente enquanto o efeito existir na ficha, igual às
+ * outras flags "passivas" deste arquivo. Modo do change: Custom (mesma
+ * convenção das outras flags numéricas lidas direto de appliedEffects, como
+ * o Range de Arma Customizado) — o valor "aplicado" pelo modo nativo não é
+ * usado, só a presença do change e o `.value` bruto.
+ *
+ * Como conceder (teste rápido, no console):
+ *
+ *   const actor = game.actors.getName("Nome do Personagem");
+ *   await actor.createEmbeddedDocuments('ActiveEffect', [{
+ *       name: 'Marcado pela Perdição',
+ *       img: 'icons/magic/unholy/silhouette-evil-horned-giant.webp',
+ *       changes: [{
+ *           key: 'flags.daggerheart-br.limiarBonus',
+ *           mode: CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+ *           value: '1'
+ *       }]
+ *   }]);
+ *
+ * Depois disso, qualquer dano que esse Ator sofrer é calculado como se
+ * estivesse 1 limiar acima do que o valor bruto indicaria.
+ */
+const LIMIAR_BONUS_KEY = `flags.${MODULE_ID}.limiarBonus`;
+
 Hooks.once('init', () => {
     if (!game.modules.get('lib-wrapper')?.active) {
         console.error(
@@ -299,8 +533,8 @@ Hooks.once('init', () => {
         'WRAPPER'
     );
 
-    /* 3a) Faz nossas duas flags aparecerem como chip clicável na seção
-     *     "Efeitos" do diálogo de dano, não importa o tipo de dano da arma.
+    /* 3a) Faz nossas flags aparecerem como chip clicável na seção "Efeitos"
+     *     do diálogo de dano, não importa o tipo de dano da arma.
      *     Nativamente essas chaves só incluiriam bônus do MESMO tipo da arma
      *     (ex.: "system.bonuses.damage.physical" se a arma for física) — por
      *     isso extendemos em vez de deixar como está.
@@ -310,7 +544,7 @@ Hooks.once('init', () => {
         'game.system.api.dice.DamageRoll.prototype.getActionChangeKeys',
         function (wrapped, ...args) {
             const keys = wrapped(...args);
-            keys.push(EXTRA_MAGIC_KEY, EXTRA_PHYSICAL_KEY);
+            keys.push(EXTRA_MAGIC_KEY, EXTRA_PHYSICAL_KEY, TIPO_DANO_FORCADO_KEY);
             return keys;
         },
         'WRAPPER'
@@ -354,10 +588,162 @@ Hooks.once('init', () => {
         'WRAPPER'
     );
 
-    /* 4) Acrescenta nossas cinco flags (Matança + os dois Danos Extras +
-     *    Experiência Usa Estresse + Estresse Dobra Bônus) na lista de
-     *    sugestões do autocomplete de "Chave do Atributo" na configuração de
-     *    Active Effects, agrupadas sob "Customizado DH-BR".
+    /* 3c) Sobrescreve (RANGE_ARMA_KEY) e/ou incrementa (RANGE_ARMA_BONUS_KEY)
+     *     o range (alcance) da action de ataque base da arma, lendo direto
+     *     de appliedEffects (mesmo padrão das outras flags — o sistema não
+     *     resolve sozinho o modo CUSTOM de Active Effect, então só a
+     *     PRESENÇA do change é confiável, não o valor "aplicado").
+     *
+     *     prepareData() roda toda vez que os embedded documents do item são
+     *     preparados, então isso recalcula sozinho sempre que o Active
+     *     Effect for ligado/desligado, sem precisar reabrir a ficha.
+     *
+     *     Ordem: primeiro aplica a sobrescrita absoluta (se houver), depois
+     *     soma o incremento relativo em cima do que sobrar — assim as duas
+     *     flags podem coexistir no mesmo Ator sem conflito.
+     */
+    libWrapper.register(
+        MODULE_ID,
+        'game.system.api.models.actions.actionsTypes.attack.prototype.prepareData',
+        function (wrapped, ...args) {
+            wrapped(...args);
+
+            if (this.item?.type !== 'weapon') return;
+            if (!this.actor) return;
+
+            const changes = (this.actor.appliedEffects ?? [])
+                .flatMap(effect => effect.system.changes);
+
+            // Sobrescrita absoluta (valor 1-5 -> range fixo, primeiro efeito vence)
+            const overrideChange = changes.find(c => c.key === RANGE_ARMA_KEY);
+            if (overrideChange) {
+                const newRange = RANGE_ARMA_MAP[String(overrideChange.value).trim()];
+                if (newRange) this.range = newRange;
+            }
+
+            // Incremento relativo (soma passos na escala de alcance)
+            const steps = changes
+                .filter(c => c.key === RANGE_ARMA_BONUS_KEY)
+                .reduce((total, c) => total + (Number(c.value) || 0), 0);
+            if (steps) {
+                const currentIndex = RANGE_ARMA_ORDER.indexOf(this.range);
+                if (currentIndex !== -1) {
+                    const newIndex = Math.max(0, Math.min(RANGE_ARMA_ORDER.length - 1, currentIndex + steps));
+                    this.range = RANGE_ARMA_ORDER[newIndex];
+                }
+            }
+        },
+        'WRAPPER'
+    );
+
+    /* 3d) Sobrescreve o(s) tipo(s) de dano (physical/magical) de uma rolagem
+     *     de dano — SELECIONÁVEL como chip na seção "Efeitos" (igual o Dano
+     *     Extra), não uma sobrescrita sempre-ligada. Por isso lemos de
+     *     `this.options.bonusEffects` (o dado que getBonus() consulta
+     *     internamente pra saber quais chips estão marcados) em vez de
+     *     `appliedEffects` cru: só queremos aplicar quando o chip estiver
+     *     marcado, não sempre que o Active Effect existir na ficha.
+     *
+     *     CONFIRMADO NA FONTE REAL DO SISTEMA (daggerheart.js,
+     *     DHRoll.bonusEffectBuilder): `this.options.bonusEffects` é um objeto
+     *     simples indexado por id de efeito (`acc[effect.id] = {...}`), nunca
+     *     array. Cada entrada NÃO é um change isolado com `key`/`value`
+     *     soltos — é o Active Effect INTEIRO ({ id, name, changes: [...],
+     *     selected, origEffect, ... }), com um array `changes` contendo
+     *     TODAS as mudanças daquele efeito que bateram com
+     *     getActionChangeKeys(). O `key`/`value` do nosso change ficam
+     *     DENTRO de `changes`, não na entrada em si — por isso o filtro
+     *     abaixo primeiro pega as entradas selecionadas, depois "achata"
+     *     (`flatMap`) os `changes` de todas elas, e só então procura pela
+     *     nossa chave. Tudo isso roda dentro de um try/catch: se o sistema
+     *     mudar esse formato numa atualização futura, a flag é ignorada
+     *     naquela rolagem (com um aviso no console) em vez de quebrar TODA
+     *     rolagem de dano do jogo.
+     *
+     *     Não reaproveitamos getBonus() aqui porque ele resolve o valor via
+     *     DhActiveEffect.getChangeValue(), pensado pra número/dado/fórmula —
+     *     nosso valor é a string "f"/"m" (não "physical"/"magical" — só a
+     *     letra é gravada na flag, TIPO_DANO_FORCADO_MAP traduz pro nome
+     *     interno do tipo), então lemos o `.value` do change casado
+     *     diretamente e traduzimos pelo mapa, sem passar por essa resolução.
+     *
+     *     Interceptamos ANTES de chamar o wrapped() nativo, porque
+     *     constructFormula() usa formulaData.damageTypes tanto pra calcular
+     *     bônus de dano por tipo (system.bonuses.damage.<tipo>) quanto,
+     *     depois, pro options.damageTypes final da Roll avaliada — que é o
+     *     que decide resistência/imunidade em Actor#calculateDamage. Mutar
+     *     o mesmo objeto antes do wrapped() propaga a mudança pros dois
+     *     lugares de uma vez.
+     *
+     *     BUG REAL ENCONTRADO E CORRIGIDO: como `formulaData` é reaproveitado
+     *     em toda re-renderização do diálogo, só sobrescrever quando o chip
+     *     está marcado (sem restaurar quando desmarcado) fazia o tipo forçado
+     *     "grudar" pra sempre depois da primeira vez que o chip era marcado —
+     *     desmarcar não voltava ao tipo original, porque o Set original já
+     *     tinha sido perdido. Por isso guardamos uma cópia do tipo original
+     *     (`formulaData.matanzaOriginalDamageTypes`) na primeira passagem, e
+     *     toda chamada seguinte decide entre o tipo forçado (chip marcado) ou
+     *     essa cópia guardada (chip desmarcado) — nunca deixa o valor antigo
+     *     perdido de vez.
+     */
+    libWrapper.register(
+        MODULE_ID,
+        'game.system.api.dice.DamageRoll.prototype.constructFormula',
+        function (wrapped, formulaData, config, isDamage) {
+            try {
+                if (isDamage && formulaData?.damageTypes instanceof Set) {
+                    // CONFIRMADO na fonte real do sistema (DHRoll.bonusEffectBuilder,
+                    // daggerheart.js): this.options.bonusEffects é um objeto simples
+                    // indexado por id de efeito — `acc[effect.id] = {...}` — nunca
+                    // array nem Set. Cada valor é
+                    // { id, name, changes: [...], selected, origEffect, ... }; o
+                    // `key`/`value` do NOSSO change ficam DENTRO de `changes`, junto
+                    // com quaisquer outras mudanças daquele mesmo efeito que também
+                    // bateram com getActionChangeKeys() — não soltos na entrada.
+                    const match = Object.values(this.options?.bonusEffects ?? {})
+                        .filter(e => e?.selected)
+                        .flatMap(e => (Array.isArray(e.changes) ? e.changes : []))
+                        .find(c => c?.key === TIPO_DANO_FORCADO_KEY);
+
+                    const forcedType = match
+                        ? TIPO_DANO_FORCADO_MAP[String(match.value).trim().toLowerCase()]
+                        : null;
+
+                    // formulaData é o MESMO objeto reaproveitado em toda
+                    // re-renderização do diálogo (confirmado na fonte: é
+                    // montado uma única vez, antes do diálogo abrir, por
+                    // DamageField.formatFormulas). Por isso guardamos o tipo
+                    // ORIGINAL na primeira vez que passamos por aqui — sem
+                    // isso, ao desmarcar o chip depois de já ter forçado o
+                    // tipo, não haveria pra onde voltar: o Set original já
+                    // teria sido sobrescrito e perdido de vez.
+                    if (!formulaData.matanzaOriginalDamageTypes) {
+                        formulaData.matanzaOriginalDamageTypes = new Set(formulaData.damageTypes);
+                    }
+
+                    formulaData.damageTypes = forcedType
+                        ? new Set([forcedType])
+                        : new Set(formulaData.matanzaOriginalDamageTypes);
+                }
+            } catch (err) {
+                console.error(
+                    `[${MODULE_ID}] Tipo de Dano Forçado falhou ao ler bonusEffects — flag ignorada` +
+                    ` nesta rolagem, dano segue normal. Reporte este erro:`,
+                    err
+                );
+            }
+
+            return wrapped(formulaData, config, isDamage);
+        },
+        'WRAPPER'
+    );
+
+
+    /* 4) Acrescenta nossas oito flags (Matança + os dois Danos Extras +
+     *    Experiência Usa Estresse + Estresse Dobra Bônus + Range de Arma
+     *    Customizado + Tipo de Dano Forçado + Limiar Extra) na lista de
+     *    sugestões do autocomplete de "Chave do Atributo" na configuração
+     *    de Active Effects, agrupadas sob "Customizado DH-BR".
      */
     libWrapper.register(
         MODULE_ID,
@@ -394,9 +780,67 @@ Hooks.once('init', () => {
                     label: 'Estresse Dobra Bônus da Experiência',
                     hint: 'Só tem efeito junto com Experiência Usa Estresse: dobra o bônus da Experiência quando ela é paga com Estresse.',
                     group: 'Customizado DH-BR'
+                },
+                {
+                    value: RANGE_ARMA_KEY,
+                    label: 'Range de Arma Customizado',
+                    hint: 'Sobrescreve o alcance da arma equipada. Valor: 1=Adjacente 2=Muito Próximo 3=Próximo 4=Distante 5=Muito Distante.',
+                    group: 'Customizado DH-BR'
+                },
+                {
+                    value: RANGE_ARMA_BONUS_KEY,
+                    label: 'Range de Arma - Incremento',
+                    hint: 'Soma N passos ao alcance que a arma já tem, sem travar num valor fixo (positivo sobe, negativo desce). Valor: número inteiro (ex: "1").',
+                    group: 'Customizado DH-BR'
+                },
+                {
+                    value: TIPO_DANO_FORCADO_KEY,
+                    label: 'Tipo de Dano Forçado',
+                    hint: 'Sobrescreve o tipo do dano principal, independente do que estiver marcado na arma/ação. Valor: "f" (Físico) ou "m" (Mágico).',
+                    group: 'Customizado DH-BR'
+                },
+                {
+                    value: LIMIAR_BONUS_KEY,
+                    label: 'Limiar Extra',
+                    hint: 'Todo dano recebido por este Ator é calculado como se estivesse N limiares acima do valor bruto. Valor: número inteiro (ex: "1").',
+                    group: 'Customizado DH-BR'
                 }
             );
             return choices;
+        },
+        'WRAPPER'
+    );
+
+    /* 4b) "Limiar Extra" — intercepta o cálculo de limiar do dano recebido
+     *     (ver comentário completo junto de LIMIAR_BONUS_KEY, acima do
+     *     Hooks.once('init'). Alvo diferente dos itens 1-4: não é a
+     *     Action/DamageRoll de quem ATACA, é o próprio Ator que RECEBE o
+     *     dano — por isso mora em CONFIG.Actor.documentClass.prototype, não
+     *     em game.system.api.dice/fields como os outros.
+     */
+    libWrapper.register(
+        MODULE_ID,
+        'CONFIG.Actor.documentClass.prototype.convertDamageToThreshold',
+        function (wrapped, damage) {
+            const baseTier = wrapped(damage);
+
+            try {
+                const bonus = (this.appliedEffects ?? [])
+                    .flatMap(effect => effect.changes)
+                    .filter(change => change.key === LIMIAR_BONUS_KEY)
+                    .reduce((total, change) => total + (Number(change.value) || 0), 0);
+
+                if (!bonus) return baseTier;
+
+                return Math.max(1, Math.min(4, baseTier + bonus));
+            } catch (err) {
+                console.error(
+                    `[${MODULE_ID}] Limiar Extra falhou ao ler appliedEffects — flag ignorada` +
+                    ` neste cálculo, limiar segue normal. Reporte este erro:`,
+                    err
+                );
+                return baseTier;
+            }
         },
         'WRAPPER'
     );
@@ -482,7 +926,7 @@ Hooks.once('init', () => {
      *            element.value = `system.${item.value}`;
      *        }
      *
-     *    Isso deixa nossas 5 flags (todas começando com 'flags.') inutilizáveis
+     *    Isso deixa nossas 8 flags (todas começando com 'flags.') inutilizáveis
      *    quando escolhidas pela listagem — viram 'system.flags.daggerheart-br...',
      *    que não bate com nenhuma flag real (flags nunca ficam dentro de
      *    'system' em documento nenhum do Foundry).
@@ -527,8 +971,86 @@ Hooks.once('init', () => {
         },
         'WRAPPER'
     );
-});
 
+    /* 7) Contador Dinâmico de Cartas de Domínio — intercepta prepareDerivedData
+     *    do Ator pra calcular em tempo real a quantidade de cartas, os
+     *    domínios e a matemática dos níveis. Os valores ficam disponíveis
+     *    como Roll Data (@cartas...) em qualquer fórmula.
+     */
+    libWrapper.register(
+        MODULE_ID,
+        'Actor.prototype.prepareDerivedData',
+        function (wrapped, ...args) {
+            wrapped(...args); // Garante que o cálculo nativo rode primeiro
+
+            // Só nos interessa calcular isso para Personagens (Jogadores)
+            if (this.type !== 'character') return;
+
+            // O HTML da build Foundryborne revelou que o sistema já separa as cartas:
+            const handCards = this.system?.domainCards?.loadout || [];
+            const vaultCards = this.system?.domainCards?.vault || [];
+
+            // Juntando as duas para termos o cálculo de TODAS as cartas
+            const allCards = [...handCards, ...vaultCards];
+
+            // Função interna para fazer a matemática do array de cartas
+            function analyzeCards(cards) {
+                const countByDomain = {};
+                const levels = [];
+
+                cards.forEach(c => {
+                    // O item pode vir como Document completo ou só os dados
+                    const systemData = c.system || c;
+
+                    const dom = (systemData.domain || 'unknown').toLowerCase();
+                    countByDomain[dom] = (countByDomain[dom] || 0) + 1;
+
+                    const lvl = parseInt(systemData.level, 10);
+                    if (!isNaN(lvl)) {
+                        levels.push(lvl);
+                    }
+                });
+
+                levels.sort((a, b) => a - b);
+                const uniqueLevels = [...new Set(levels)];
+
+                const totalNiveis = levels.reduce((acc, val) => acc + val, 0);
+                const min = uniqueLevels[0] || 0;
+                const max = uniqueLevels[uniqueLevels.length - 1] || 0;
+
+                const isDirectSeq = uniqueLevels.length > 1 && ((max - min) === (uniqueLevels.length - 1));
+                const isIndirectSeq = uniqueLevels.length > 1 && !isDirectSeq;
+
+                return {
+                    total: cards.length,
+                    por_dominio: countByDomain,
+                    niveis: {
+                        total: totalNiveis,
+                        min: min,
+                        max: max,
+                        sequencia_direta: isDirectSeq ? 1 : 0,
+                        sequencia_indireta: isIndirectSeq ? 1 : 0
+                    }
+                };
+            }
+
+            const statusCartas = {
+                mao: analyzeCards(handCards),
+                reserva: analyzeCards(vaultCards),
+                todas: analyzeCards(allCards) // Soma de mão e reserva
+            };
+
+            // Injeta na Flag (pra debug e armazenamento seguro)
+            foundry.utils.setProperty(this, `flags.${MODULE_ID}.cartas`, statusCartas);
+
+            // Injeta direto em system.cartas também — atalho pra fugir do bug
+            // do Foundry com hífen em nomes de flag dentro de fórmulas de Roll
+            // Data (comentário de quem escreveu esse trecho na outra frente).
+            foundry.utils.setProperty(this, `system.cartas`, statusCartas);
+        },
+        'WRAPPER'
+    );
+});
 
 /**
  * 3) Injeta a linha "Dado de Matança" no diálogo de rolagem (D20RollDialog), logo

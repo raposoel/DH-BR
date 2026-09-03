@@ -98,6 +98,12 @@ function dcInjetarBotoes(message, html) {
                     titulo: 'Aplicar Cura',
                     classe: 'dc-heal',
                     onClick: () => dcAplicarNativo(message)
+                }),
+                dcCriarBotao({
+                    texto: '2x',
+                    titulo: 'Aplicar Cura em Dobro',
+                    classe: 'dc-heal',
+                    onClick: () => dcAplicarCuraDobrada(message)
                 })
             );
         } else {
@@ -237,6 +243,73 @@ async function dcAplicarDanoMultiplicado(message, multiplicador) {
 }
 
 /**
+ * Aplica CURA em dobro. Diferente de dano, cura não usa "main"/threshold -
+ * o sistema lê os totais direto de cada entrada em "system.damage.resources"
+ * (ex: hitPoints, stress, armor, hope) e chama actor.takeHealing() com um
+ * objeto simples { chaveDoRecurso: totalJaDobrado, ... } - confirmado no
+ * próprio onApplyDamage nativo do sistema:
+ *   if (this.system.hasHealing) actor.takeHealing(this.system.damage);
+ * e no #parseDamageArgs de takeHealing, que ignora "main" e só lê
+ * "resources". Por isso aqui NUNCA usamos dcAplicarDanoMultiplicado (que é
+ * baseado em "main" + actor.takeDamage(), específico de dano).
+ */
+async function dcAplicarCuraDobrada(message) {
+    const sys = message.system;
+
+    if (!sys?._getCurrentTargets || sys._getCurrentTargets().length === 0) {
+        return ui.notifications.info(game.i18n.localize('DAGGERHEART.UI.Notifications.noTargetsSelected'));
+    }
+
+    const targets = sys.currentHitTargets;
+    if (!targets?.length) {
+        return ui.notifications.info(game.i18n.localize('DAGGERHEART.UI.Notifications.noTargetsHit'));
+    }
+
+    // Base de cálculo: os totais ORIGINAIS de cada recurso, guardados no
+    // primeiro render da mensagem - mesmo princípio do dano 2x/½.
+    const originais = dcObterTotaisOriginais(message);
+    const chaves = Object.keys(originais?.resources ?? {}).filter(
+        chave => typeof originais.resources[chave] === 'number'
+    );
+    if (!chaves.length) {
+        console.warn(`${DC_MODULE_ID} | dano-cura.js: não achei totais de cura pra dobrar.`);
+        return;
+    }
+
+    const curaDobrada = Object.fromEntries(
+        chaves.map(chave => [chave, Math.ceil(originais.resources[chave] * 2)])
+    );
+
+    const targetDamage = [];
+    const promessas = [];
+
+    for (const target of targets) {
+        const actor = foundry.utils.fromUuidSync(target.actorId);
+        if (!actor) continue;
+
+        const token = target.id
+            ? game.scenes.find(s => s.active)?.tokens.find(t => t.id === target.id)
+            : actor.prototypeToken;
+
+        promessas.push(
+            actor.takeHealing(curaDobrada).then(updates => {
+                targetDamage.push({
+                    token: {
+                        id: token?.id,
+                        name: token?.name ?? actor.name,
+                        img: token?.texture?.src ?? actor.img
+                    },
+                    updates
+                });
+            })
+        );
+    }
+
+    await Promise.all(promessas);
+    await dcCriarResumoDano(message, targetDamage);
+}
+
+/**
  * Replica o card "Dano Aplicado" que o botão nativo cria depois de
  * aplicar - usando o mesmo template (damageSummary.hbs) e a mesma
  * checagem de configuração que o sistema usa.
@@ -264,11 +337,15 @@ async function dcCriarResumoDano(message, targetDamage) {
         { targets: targetDamage, hideObserverPermissionInChat }
     );
 
+    // Mesma escolha de título que o sistema nativo faz em applyDamage():
+    // `damageSummary.${config.hasHealing ? 'healingTitle' : 'title'}`.
+    const ehCura = !!message.system?.hasHealing;
+
     await ChatMessage.create({
         type: 'systemMessage',
         user: game.user.id,
         speaker: message.speaker,
-        title: game.i18n.localize('DAGGERHEART.UI.Chat.damageSummary.title'),
+        title: game.i18n.localize(`DAGGERHEART.UI.Chat.damageSummary.${ehCura ? 'healingTitle' : 'title'}`),
         content
     });
 }
@@ -323,7 +400,8 @@ async function dcEscolherAcaoDado(message, dadoEl, pularConfirmacao) {
         buttons: [
             { action: 'reroll', label: 'Rerolar', callback: () => 'reroll' },
             { action: 'double', label: 'Dobrar', callback: () => 'double' },
-            { action: 'addOne', label: 'Rolar +1', callback: () => 'addOne' }
+            { action: 'addOne', label: 'Rolar +', callback: () => 'addOne' },
+            { action: 'remove', label: 'Remover', callback: () => 'remove' }
         ],
         rejectClose: false
     });
@@ -333,8 +411,36 @@ async function dcEscolherAcaoDado(message, dadoEl, pularConfirmacao) {
     } else if (escolha === 'double') {
         await dcDobrarDado(message, isResource, damageType, dice, result);
     } else if (escolha === 'addOne') {
-        await dcRolarMaisUm(message, isResource, damageType, dice);
+        const quantidade = await dcPerguntarQuantidade();
+        if (quantidade) {
+            await dcRolarMaisUm(message, isResource, damageType, dice, quantidade);
+        }
+    } else if (escolha === 'remove') {
+        await dcRemoverDado(message, isResource, damageType, dice, result);
     }
+}
+
+/** Pergunta quantos dados extras rolar (usado pelo "Rolar +"). Padrão: 1. */
+async function dcPerguntarQuantidade() {
+    return foundry.applications.api.DialogV2.wait({
+        window: { title: 'Rolar Mais Dados' },
+        content: `
+            <p>
+                <label for="dc-quantidade">Quantos dados rolar?</label>
+                <input type="number" id="dc-quantidade" name="dc-quantidade" value="1" min="1" step="1" />
+            </p>
+        `,
+        buttons: [
+            {
+                action: 'confirmar',
+                label: 'Rolar',
+                default: true,
+                callback: (event, button) => Number(button.form.elements['dc-quantidade'].value) || 1
+            },
+            { action: 'cancel', label: 'Cancelar', callback: () => null }
+        ],
+        rejectClose: false
+    });
 }
 
 /** Encontra os termos de dado de verdade (ignora operadores/números fixos). */
@@ -422,10 +528,11 @@ async function dcDobrarDado(message, isResource, damageType, dice, result) {
 }
 
 /**
- * Rola MAIS UM dado do mesmo tipo (não duplica um resultado existente -
- * sorteia um resultado novo de verdade) e soma no Total.
+ * Rola dados extras do mesmo tipo (não duplica um resultado existente -
+ * sorteia resultados novos de verdade) e soma no Total. `quantidade`
+ * define quantos dados extras rolar de uma vez (padrão: 1).
  */
-async function dcRolarMaisUm(message, isResource, damageType, dice) {
+async function dcRolarMaisUm(message, isResource, damageType, dice, quantidade = 1) {
     const sys = message.system;
     const rollAlvo = isResource ? sys.damage.resources[damageType] : sys.damage.main;
     if (!rollAlvo) return;
@@ -433,12 +540,41 @@ async function dcRolarMaisUm(message, isResource, damageType, dice) {
     const termos = dcObterTermosDeDado(rollAlvo);
     const termo = termos[Number(dice)];
     if (!termo) {
-        console.warn(`${DC_MODULE_ID} | dano-cura.js: dado não encontrado pra rolar mais um.`);
+        console.warn(`${DC_MODULE_ID} | dano-cura.js: dado não encontrado pra rolar mais.`);
         return;
     }
 
-    const novaFace = Math.ceil(CONFIG.Dice.randomUniform() * termo.faces);
-    termo.results.push({ result: novaFace, active: true });
+    for (let i = 0; i < quantidade; i++) {
+        const novaFace = Math.ceil(CONFIG.Dice.randomUniform() * termo.faces);
+        termo.results.push({ result: novaFace, active: true });
+    }
+
+    dcRecalcularTotal(rollAlvo);
+
+    const updatePath = isResource ? `system.damage.resources.${damageType}` : 'system.damage.main';
+    await message.update({ [updatePath]: rollAlvo });
+}
+
+/**
+ * Remove (exclui) aquele resultado específico do total - só marca
+ * `active = false`, mesma convenção que o sistema já usa pra resultados
+ * "descartados" (ex: o valor antigo de um reroll). Não apaga o dado da
+ * lista - ele continua aparecendo no card, riscado, só não soma mais.
+ */
+async function dcRemoverDado(message, isResource, damageType, dice, result) {
+    const sys = message.system;
+    const rollAlvo = isResource ? sys.damage.resources[damageType] : sys.damage.main;
+    if (!rollAlvo) return;
+
+    const termos = dcObterTermosDeDado(rollAlvo);
+    const termo = termos[Number(dice)];
+    const resultado = termo?.results?.[Number(result)];
+    if (!termo || !resultado) {
+        console.warn(`${DC_MODULE_ID} | dano-cura.js: dado/resultado não encontrado pra remover.`);
+        return;
+    }
+
+    resultado.active = false;
 
     dcRecalcularTotal(rollAlvo);
 

@@ -11,7 +11,7 @@ você me passou. Ver a lista de perguntas no final desta entrega (fora deste arq
 
 <p align="center">
   <img alt="Foundry Version" src="https://img.shields.io/badge/Foundry-v14-informational">
-  <img alt="Sistema" src="https://img.shields.io/badge/Daggerheart%20(Foundryborne)-v[2.9.1]-blue">
+  <img alt="Sistema" src="https://img.shields.io/badge/Daggerheart%20(Foundryborne)-v2.9.1-blue">
   <img alt="Requer Babele" src="https://img.shields.io/badge/requer-Babele-orange">
   <img alt="Requer libWrapper" src="https://img.shields.io/badge/requer-libWrapper-orange">
   <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-1.6.0%20Oiapoque-green">

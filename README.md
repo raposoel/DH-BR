@@ -169,3 +169,5 @@ monetizado** enquanto for conteúdo de playtest.
 "Daggerheart" é marca registrada de Critical Role, LLC — este projeto é
 **"Daggerheart™ Compatible"**, não afiliado nem endossado pela Darrington
 Press.
+<p align="center">
+  <img src="imagens/dh-cgl-logos-final-white-full-color.webp" alt="daggerheart_compatible"/></p>

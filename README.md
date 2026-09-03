@@ -146,11 +146,11 @@ manutenção depois de um update do sistema):
 
 VEM AÍ
 
-< // - `APRENDIZADOS-daggerheart-br.md` — packs, schema de itens, Homebrew, metodologia de tradução
+<!-- // - `APRENDIZADOS-daggerheart-br.md` — packs, schema de itens, Homebrew, metodologia de tradução
 // - `README-transformacao.md` — o item Transformação
 // - `README-dano-cura.md` — botões de Dano/Cura e Prestar Ajuda
 // - `README-matanza.md` — Dado de Matança e as demais flags de Active Effect
-// - `README-recursos.md` — automação de recursos vinculados (Foco/Favor/etc.) >
+// - `README-recursos.md` — automação de recursos vinculados (Foco/Favor/etc.) -->
 
 ## Créditos e licença
 

@@ -6,7 +6,7 @@ você me passou. Ver a lista de perguntas no final desta entrega (fora deste arq
 -->
 
 <p align="center">
-  <img src="[CONFIRMAR: caminho de um banner/logo do módulo, se existir]" alt="daggerheart-br" width="480"/>
+  <img src="imagens/dh-br-02.webp" alt="daggerheart-br" width="480"/>
 </p>
 
 <p align="center">

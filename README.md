@@ -55,9 +55,7 @@ prioridade é ficar o mais próximo possível do original.
 ### Interface traduzida
 
 Todo o sistema — fichas, diálogos, configurações, chat — traduzido pro
-Brasileiro. [CONFIRMAR: se quiser, uma frase sobre cobertura de % ou "sem
-strings em inglês conhecidas restantes", já que vocês validaram isso a fundo
-numa sessão anterior.]
+Brasileiro. Sem strings em inglês conhecidas restantes.
 
 ### Compêndios
 

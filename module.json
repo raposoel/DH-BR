@@ -2,7 +2,7 @@
   "id": "daggerheart-br",
   "title": "Daggerheart - Tradução Corrigida para Brasileiro",
   "description": "<p>Adiciona o idioma Brasileiro corrigido para o sistema de jogo Daggerheart. Sem Inventar, só traduzido.</p>",
-  "version": "1.5.6",
+  "version": "1.6.0",
   "compatibility": {
     "minimum": "14",
     "verified": "14"
@@ -597,6 +597,7 @@
   ],
   "styles": [
     "styles/transformacao.css",
+    "styles/recurso-ator.css",
     "styles/dano-cura.css"
   ]
 }

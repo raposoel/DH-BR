@@ -144,11 +144,13 @@ Ainda pendentes pra uma cobertura 100% do sistema:
 Pra quem quiser entender o funcionamento interno de cada script (ou dar
 manutenção depois de um update do sistema):
 
-- `APRENDIZADOS-daggerheart-br.md` — packs, schema de itens, Homebrew, metodologia de tradução
-- `README-transformacao.md` — o item Transformação
-- `README-dano-cura.md` — botões de Dano/Cura e Prestar Ajuda
-- `README-matanza.md` — Dado de Matança e as demais flags de Active Effect
-- `README-recursos.md` — automação de recursos vinculados (Foco/Favor/etc.)
+VEM AÍ
+
+// - `APRENDIZADOS-daggerheart-br.md` — packs, schema de itens, Homebrew, metodologia de tradução
+// - `README-transformacao.md` — o item Transformação
+// - `README-dano-cura.md` — botões de Dano/Cura e Prestar Ajuda
+// - `README-matanza.md` — Dado de Matança e as demais flags de Active Effect
+// - `README-recursos.md` — automação de recursos vinculados (Foco/Favor/etc.)
 
 ## Créditos e licença
 

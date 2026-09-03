@@ -70,30 +70,23 @@ numa sessão anterior.]
 
 Todos os compêndios de criação de personagem estão traduzidos:
 
-| Compêndio | Conteúdo | Itens |
+| Compêndio | Conteúdo |
 |---|---|---|
-| Ancestralidades | [CONFIRMAR quantidade] | [CONFIRMAR] |
-| Comunidades | [CONFIRMAR quantidade] | [CONFIRMAR] |
-| Classes e Subclasses | [CONFIRMAR quantidade] | [CONFIRMAR] |
-| Domínios (Cartas) | [CONFIRMAR quantidade] | [CONFIRMAR] |
-| Armas | [CONFIRMAR quantidade] | [CONFIRMAR] |
-| Armaduras | [CONFIRMAR quantidade] | [CONFIRMAR] |
-| Consumíveis / Tesouros | [CONFIRMAR quantidade] | [CONFIRMAR] |
+| Ancestralidades | COMPLETO |
+| Comunidades | COMPLETO |
+| Classes e Subclasses | COMPLETO |
+| Domínios | COMPLETO |
+| Armas | COMPLETO |
+| Armaduras | COMPLETO |
+| Consumíveis & Tesouros | COMPLETO |
 
-> Não tenho os números reais — preciso que você me passe a contagem (ou os
-> arquivos de export dos packs) pra preencher essa tabela com precisão em vez
-> de chute.
-
-### Conteúdo caseiro incluso (Homebrew)
+### Conteúdo "Homebrew"
 
 Registrado automaticamente ao carregar o mundo (não precisa configurar nada):
 
-- **Domínios extras**: Sangue, Pavor, Curinga.
+- **Domínios extras**: Sangue & Curinga.
 - **Tipo de Adversário extra**: Colosso.
-- **Fontes de atribuição**: "Hope & Fear" e "The Void" aparecem como opção no
-  dropdown de fonte de qualquer item — ambos conteúdo oficial da Darrington
-  Press (o primeiro é um suplemento coberto desde a DPCGL 2.0; o segundo é
-  material de playtest oficial do Daggerheart, "The Void").
+- **Fontes de atribuição**: "Hope & Fear" e "The Void"
 
 ### Automações e recursos extras
 
@@ -106,19 +99,15 @@ fluxo de jogo. Cada um tem documentação técnica detalhada linkada
 | **Botões rápidos de Dano/Cura** | Aplicar dano/cura em 1 clique, com variantes 2x e ½, direto no card de rolagem |
 | **Ações no dado individual** | Rerolar, Dobrar, Rolar +N ou Remover um dado específico do total, ao clicar nele |
 | **Prestar Ajuda** | Botão "Ajudar" em qualquer rolagem de Ação/Ataque/Reação — gasta 1 Esperança pra somar um dado ao resultado de um aliado |
-| **Transformação** | Novo tipo de Item, concedível a qualquer momento da campanha (não só na criação), com o mesmo comportamento de Classe/Ancestralidade |
-| **Automação de Recursos (Foco, Favor, etc.)** | Faz Actions de itens diferentes conseguirem debitar/restaurar o recurso de um item "gerador" — contorna uma limitação nativa do sistema |
+| **Transformação** | Desenvolvido antes da nova versão, mantida pra evitar quebra até revisão completa |
+| **Automação de Recursos Extras** | Faz Actions de itens diferentes conseguirem debitar/restaurar o recurso de um item "gerador" — contorna uma limitação nativa do sistema |
 | **Oculto ↔ Escondido** | Vincula automaticamente o efeito da carta "Oculto" à condição nativa "Escondido" |
-| **Dado de Matança, Dano Extra, Range Customizado, Limiar Extra e mais** | Conjunto de flags de Active Effect pra homebrew de poderes (ver tabela detalhada no link da documentação) |
+| **Mais automações e chaves customizadas** | Conjunto de flags de Active Effect pra homebrew de poderes (ver tabela detalhada no link da documentação) |
 
 ## Instalação
 
 Manifest:
-```
-[CONFIRMAR: URL do manifesto — o README anterior aponta pra
-https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json,
-mantenho essa ou mudou?]
-```
+https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json
 
 1. No Foundry, aba **Add-on Modules** → **Install Module** → cole o manifest acima.
 2. Instale também as [dependências obrigatórias](#dependências-obrigatórias).
@@ -129,38 +118,21 @@ mantenho essa ou mudou?]
 
 | Módulo | Por quê |
 |---|---|
-| [Babele](https://foundryvtt.com/packages/babele) | Traduz o conteúdo dos compêndios em tempo de execução |
-| [libWrapper](https://foundryvtt.com/packages/lib-wrapper) | Necessário para as automações extras (Dado de Matança e correlatos) |
+| [Babele](https://foundryvtt.com/packages/babele) | Traduz o conteúdo em tempo de execução |
+| [libWrapper](https://foundryvtt.com/packages/lib-wrapper) | Necessário para as automações extras |
 
 ## Compatibilidade
 
-- **Foundry VTT**: v14 [CONFIRMAR: mínimo suportado — v13 também funciona ou é v14 only?]
-- **Sistema Daggerheart (Foundryborne)**: verificado até a v[CONFIRMAR — 2.7.3 aparece nos
-  seus docs técnicos, mas confirme se é isso mesmo que quer publicar como "testado"]
+- **Foundry VTT**: v14
+- **Sistema Daggerheart (Foundryborne)**: verificado para v2.9.2
 
 ## O que NÃO está pronto nesta versão
 
 Ainda pendentes pra uma cobertura 100% do sistema:
 
-- Bestiários
+- Bestiários (Adversários e Ambientes)
 - Diários
 - Tabelas de Rolagem
-
-[CONFIRMAR: o README anterior também listava "Adversários" e "Ambientes"
-separado de "Bestiários" — isso já foi resolvido (adversários/ambientes
-prontos, só falta o conceito de "Bestiário" em si), ou continua tudo junto
-como pendência?]
-
-## Avisos de estabilidade
-
-- As features de `matanza.js` (Dado de Matança, Dano Extra, Range Customizado,
-  Tipo de Dano Forçado, Limiar Extra, Contador de Cartas de Domínio) foram
-  construídas por engenharia reversa do sistema e validadas **apenas por
-  sintaxe** — nenhuma foi confirmada numa sessão de jogo real ainda. Use com a
-  expectativa de um recurso beta; reporte qualquer comportamento estranho.
-- Os demais scripts (Dano/Cura, Transformação, Recursos, Oculto/Escondido) já
-  passaram por uso prático. [CONFIRMAR: isso é preciso, ou algum desses também
-  precisa do mesmo aviso de beta?]
 
 ## Problemas conhecidos / passos manuais
 
@@ -169,10 +141,10 @@ como pendência?]
   Mundo (não funciona direto do compêndio). Guia com prints no repositório.
 - **Invocações**: pra personalizar uma invocação, copie a pasta correspondente
   do compêndio pra aba de Atores e edite a partir daí — o sistema não permite
-  duplicar/referenciar sem esse passo.
+  duplicar/referenciar sem esse passo. Dê Ownership aos jogadores na pasta.
 - Recomendado: apague os compêndios oficiais de "Character Options" em inglês
   do seu mundo, se possível, pra evitar duplicidade na hora de criar
-  personagem.
+  personagem. Há uma macro para isso no compêndio do módulo.
 
 ## Documentação técnica
 
@@ -187,20 +159,9 @@ manutenção depois de um update do sistema):
 
 ## Créditos e licença
 
-O Daggerheart **não** usa CC-BY/OGL como o D&D 5e — usa uma licença própria,
-a **Darrington Press Community Gaming License (DPCGL)**, atualmente na
-versão 2.0. O Foundry VTT está na lista oficial de VTTs autorizados pra
-rodar conteúdo do SRD. Isso dá duas camadas de licença separadas neste
-projeto:
+- **Código deste módulo**: **MIT**.
 
-- **Código deste módulo** (os scripts `.js`, a lógica das automações): **MIT**.
-  São criação original de vocês; licenciar como MIT deixa claro que qualquer
-  pessoa pode reusar/adaptar o *código*, dando crédito.
-- **Conteúdo traduzido** (textos de compêndio, strings de interface): não é
-  propriedade de vocês nem pode ser relicenciado livremente — é "Conteúdo
-  Adaptativo" sobre o SRD da Daggerheart, sob os termos da DPCGL 2.0. Vocês
-  são donos da *tradução em si* (o texto em Brasileiro), mas não do sistema,
-  mecânica ou nomes por trás dela.
+- **Conteúdo traduzido**: "Conteúdo Adaptativo" sob os termos da DPCGL 2.0.
 
 Este produto inclui material do **Daggerheart System Reference Document
 2.0**, © Critical Role, LLC, sob os termos da Darrington Press Community
@@ -213,8 +174,3 @@ monetizado** enquanto for conteúdo de playtest.
 "Daggerheart" é marca registrada de Critical Role, LLC — este projeto é
 **"Daggerheart™ Compatible"**, não afiliado nem endossado pela Darrington
 Press.
-
-[CONFIRMAR: seu nome/usuário de crédito, e se quer baixar e incluir os
-logos oficiais de "Community Content" da Darrington Press — tem um link
-pra isso na página da licença, dá pra colocar no topo do README junto dos
-badges.]

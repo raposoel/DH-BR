@@ -6,15 +6,15 @@ você me passou. Ver a lista de perguntas no final desta entrega (fora deste arq
 -->
 
 <p align="center">
-  <img src="imagens/dh-br-02.webp" alt="daggerheart-br" width="190"/>
+  <img src="imagens/dh-br-02.webp" alt="daggerheart-br" width="190"/><br>
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-1.6.0%20Oiapoque-green">
 </p>
 
 <p align="center">
   <img alt="Foundry Version" src="https://img.shields.io/badge/Foundry-v14-informational">
-  <img alt="Sistema" src="https://img.shields.io/badge/Daggerheart%20(Foundryborne)-v2.9.1-blue">
+  <img alt="Sistema" src="https://img.shields.io/badge/Daggerheart%20(Foundryborne)-v2.9.1-blue"><br>
   <img alt="Requer Babele" src="https://img.shields.io/badge/requer-Babele-orange">
-  <img alt="Requer libWrapper" src="https://img.shields.io/badge/requer-libWrapper-orange">
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-1.6.0%20Oiapoque-green">
+  <img alt="Requer libWrapper" src="https://img.shields.io/badge/requer-libWrapper-orange"><br>
   <img alt="Licença do código" src="https://img.shields.io/badge/código-MIT-lightgrey">
   <img alt="Conteúdo" src="https://img.shields.io/badge/conteúdo-DPCGL%20(SRD%202.0)-lightgrey">
 </p>

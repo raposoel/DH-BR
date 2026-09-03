@@ -71,7 +71,7 @@ numa sessão anterior.]
 Todos os compêndios de criação de personagem estão traduzidos:
 
 | Compêndio | Conteúdo |
-|---|---|---|
+|---|---|
 | Ancestralidades | COMPLETO |
 | Comunidades | COMPLETO |
 | Classes e Subclasses | COMPLETO |

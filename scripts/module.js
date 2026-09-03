@@ -68,11 +68,6 @@ async function registrarConteudoCaseiro() {
                 "label": "Sangue",
                 "src": `modules/${MODULE_ID}/Imagens/Void/sangue-dom.webp`
             },
-            "pavor": {
-                "id": "pavor",
-                "label": "Pavor",
-                "src": `modules/${MODULE_ID}/Imagens/Void/pavor-dom.webp`
-            },
             "curinga": {
                 "id": "curinga",
                 "label": "Curinga",

@@ -31,6 +31,8 @@
  * `ALLOW_MULTIPLE_TRANSFORMATIONS` para `true` mais abaixo.
  */
 
+import { normalizarElementoRaiz } from './utils.js';
+
 const MODULE_ID = 'daggerheart-br';
 const ITEM_TYPE = `${MODULE_ID}.transformacao`;
 
@@ -244,7 +246,8 @@ Hooks.on('renderCharacterSheet', (app, element) => {
   const actor = app.document;
   if (!actor || actor.type !== 'character') return;
 
-  const root = element instanceof HTMLElement ? element : element[0];
+  const root = normalizarElementoRaiz(element);
+  if (!root) return;
 
   root
     .querySelectorAll(`[data-module="${MODULE_ID}"].dh-transformation-header`)

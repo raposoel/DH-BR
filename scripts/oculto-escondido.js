@@ -12,15 +12,13 @@
  * Active Effect.
  */
 
+import { obterIdDeOrigem as getSourceId } from './utils.js';
+
 const MODULE_ID = 'daggerheart-br';
 const OCULTO_ITEM_SOURCE = 'Compendium.daggerheart-br.classes-br.Item.5IT8wYa0m1EFw8Zp';
 const OCULTO_EFFECT_NAME = 'Oculto';
 const HIDDEN_STATUS_ID = 'hidden';
 const LINK_FLAG = 'oculttoAutoLink';
-
-function getSourceId(doc) {
-    return doc.flags?.core?.sourceId ?? doc._stats?.compendiumSource ?? null;
-}
 
 function isOcultoEffect(effect) {
     return effect.name === OCULTO_EFFECT_NAME || effect.getFlag(MODULE_ID, LINK_FLAG);

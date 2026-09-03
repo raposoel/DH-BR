@@ -63,8 +63,9 @@
  * "Favor" direto) — não é mais o script que decide por nome/ID de ação.
  */
 
+import { MODULE_ID, normalizarElementoRaiz, obterIdDeOrigem } from './utils.js';
+
 const MODULE_TAG = 'recursos.js';
-const MODULE_ID = 'daggerheart-br';
 const DEBUG = true;
 
 // -----------------------------------------------------------------------
@@ -133,7 +134,7 @@ const RESOURCE_LINKS = [
 // -----------------------------------------------------------------------
 
 function getSourceId(doc) {
-    return doc?.flags?.core?.sourceId ?? doc?._stats?.compendiumSource ?? null;
+    return obterIdDeOrigem(doc);
 }
 
 function findActorItemBySource(actor, sourceUuid) {
@@ -292,7 +293,8 @@ async function handleNotifyOnly(link, action, config) {
  * @param {HTMLElement} html O elemento raiz renderizado.
  */
 function hideDummyResources(app, html) {
-    if (!(html instanceof HTMLElement)) return;
+    html = normalizarElementoRaiz(html);
+    if (!html) return;
 
     const rows = html.querySelectorAll('[data-item-uuid]');
     for (const row of rows) {
@@ -344,7 +346,8 @@ function applyResourceVisualOverrides() {
 function filterActorResourceOptions(app, html) {
     const item = app.document;
     if (!item || item.type !== 'feature') return;
-    if (!(html instanceof HTMLElement)) return;
+    html = normalizarElementoRaiz(html);
+    if (!html) return;
 
     const select = html.querySelector('multi-select[name="system.actorResources"]');
     if (!select) return;
@@ -357,7 +360,8 @@ function filterActorResourceOptions(app, html) {
 // Desenha a seção de Favor/Foco entre Limiares e Equipamento na ficha do
 // Personagem, lendo direto de system.resources (dado nativo).
 function renderActorResourceTrackers(actor, html) {
-    if (!(html instanceof HTMLElement)) return;
+    html = normalizarElementoRaiz(html);
+    if (!html) return;
     if (!actor || actor.type !== 'character') return;
 
     html.querySelectorAll(`.br-resource-section[data-module="${MODULE_ID}"]`).forEach(el => el.remove());
@@ -433,14 +437,12 @@ Hooks.once('ready', () => {
     applyResourceVisualOverrides();
 
     Hooks.on('renderCharacterSheet', (app, html) => {
-        const root = html instanceof HTMLElement ? html : html?.[0];
-        hideDummyResources(app, root);
-        renderActorResourceTrackers(app.document, root);
+        hideDummyResources(app, html);
+        renderActorResourceTrackers(app.document, html);
     });
 
     Hooks.on('renderItemSheet', (app, html) => {
-        const root = html instanceof HTMLElement ? html : html?.[0];
-        filterActorResourceOptions(app, root);
+        filterActorResourceOptions(app, html);
     });
 
     Hooks.on('daggerheart.postUseAction', async (action, config) => {

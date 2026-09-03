@@ -42,6 +42,8 @@
  * sozinho do ator.
  */
 
+import { normalizarElementoRaiz } from './utils.js';
+
 const MODULE_ID = 'daggerheart-br';
 const MATANZA_CHANGE_KEY = `flags.${MODULE_ID}.matanzaDie`;
 
@@ -488,6 +490,90 @@ const TIPO_DANO_FORCADO_MAP = {
  */
 const LIMIAR_BONUS_KEY = `flags.${MODULE_ID}.limiarBonus`;
 
+/**
+ * "Dado de Teste do Adversário" (Ataque / Reação) — troca o dado base d20
+ * usado numa rolagem de ADVERSÁRIO (ou environment) por outro dado
+ * qualquer, em DOIS pontos independentes:
+ *
+ *   - dadoAtaqueAdversario  -> só a rolagem de ATAQUE (item usando uma
+ *     action do tipo 'attack')
+ *   - dadoReacaoAdversario  -> só a "Rolagem de Reação" (botão da própria
+ *     ficha do Adversário, DhAdversarySheet.#reactionRoll)
+ *
+ * Descoberta: quem decide qual classe de Roll um Ator usa é
+ * `DhActor#get rollClass()`:
+ *
+ *     get rollClass() {
+ *         return CONFIG.Dice.daggerheart[
+ *             ['character', 'companion'].includes(this.type) ? 'DualityRoll' : 'D20Roll'
+ *         ];
+ *     }
+ *
+ * Só 'character' e 'companion' rolam DualityRoll (Esperança/Medo). TODO o
+ * resto — inclusive 'adversary' e 'environment' — cai em D20Roll puro. E
+ * D20Roll.createBaseDice() é o ÚNICO lugar do sistema que decide a face do
+ * dado base, sempre hardcoded pra 20:
+ *
+ *     createBaseDice() {
+ *         if (this.terms[0] instanceof foundry.dice.terms.Die) { ... return; }
+ *         this.terms[0] = new foundry.dice.terms.Die({ faces: 20 });
+ *     }
+ *
+ * Não existe, nativamente, NENHUMA ficha/setting que troque isso — nem por
+ * Adversário, nem por tipo de teste. Por isso interceptamos esse método via
+ * libWrapper e, depois de deixar o wrapped() nativo criar o d20 normal,
+ * sobrescrevemos a face usando o PRÓPRIO setter `d20` que a classe já expõe
+ * (ver comentário anterior sobre D20Roll neste arquivo) — ele já resolve
+ * tanto número quanto string ("12" ou "d12") via `getFaces()`, então não
+ * precisamos reimplementar esse parsing.
+ *
+ * Como sabemos se é ATAQUE ou REAÇÃO: reaproveitamos os MESMOS campos que o
+ * próprio D20Roll já lê internamente pra outra finalidade (bônus por tipo de
+ * rolagem, linha ~44537 do sistema): `this.options.roll.type === 'attack'`
+ * pra ataque. A Rolagem de Reação não tem um `roll.type` próprio (ela usa
+ * 'trait', mesmo id do teste de atributo de personagem) — o que a distingue
+ * é `this.options.actionType === 'reaction'`, campo que o botão
+ * #reactionRoll da ficha do Adversário sempre manda.
+ *
+ * O Ator dono da rolagem é lido de `this.data?.parent` — mesma convenção já
+ * usada no restante deste arquivo (ver Dado de Matança e Hooks.on
+ * renderD20RollDialog, onde `D20RollDialog.actor` é literalmente
+ * `this.config?.data?.parent`).
+ *
+ * Valor aceito: número de faces (string ou number, ex. "12" ou 12) OU
+ * string no formato "d12" — os dois passam por getFaces() sem diferença.
+ *
+ * Se houver mais de um Active Effect com a MESMA flag ativo ao mesmo tempo,
+ * só o PRIMEIRO encontrado é aplicado (não faz sentido "somar" dois dados
+ * diferentes — mesmo espírito do Range de Arma). As duas flags (Ataque e
+ * Reação) são independentes entre si e podem conviver no mesmo Ator sem
+ * conflito, já que cada uma só é lida no ramo (attack/reaction) certo.
+ *
+ * Só se aplica a rolagens cujo Ator NÃO seja 'character' nem 'companion'
+ * (ou seja, exatamente os que caem em D20Roll — normalmente 'adversary',
+ * mas também vale pra 'environment' se algum dia ele tiver ataque/reação).
+ *
+ * NÃO é consumível — permanente enquanto o Active Effect existir na ficha,
+ * igual às outras flags "passivas" deste arquivo.
+ *
+ * Como conceder (teste rápido, no console):
+ *
+ *   const adv = game.actors.getName("Nome do Adversário");
+ *   await adv.createEmbeddedDocuments('ActiveEffect', [{
+ *       name: 'Golpe Instável',
+ *       img: 'icons/skills/melee/strike-slashes-red.webp',
+ *       changes: [{
+ *           key: 'flags.daggerheart-br.dadoAtaqueAdversario',
+ *           mode: CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+ *           value: '12' // ataque agora rola d12 em vez de d20
+ *       }]
+ *   }]);
+ *
+ * E, pra Reação, o mesmo com a chave 'flags.daggerheart-br.dadoReacaoAdversario'.
+ */
+const DADO_ATAQUE_ADVERSARIO_KEY = `flags.${MODULE_ID}.dadoAtaqueAdversario`;
+const DADO_REACAO_ADVERSARIO_KEY = `flags.${MODULE_ID}.dadoReacaoAdversario`;
+
 Hooks.once('init', () => {
     if (!game.modules.get('lib-wrapper')?.active) {
         console.error(
@@ -739,9 +825,10 @@ Hooks.once('init', () => {
     );
 
 
-    /* 4) Acrescenta nossas oito flags (Matança + os dois Danos Extras +
+    /* 4) Acrescenta nossas onze flags (Matança + os dois Danos Extras +
      *    Experiência Usa Estresse + Estresse Dobra Bônus + Range de Arma
-     *    Customizado + Tipo de Dano Forçado + Limiar Extra) na lista de
+     *    Customizado + Range de Arma Incremento + Tipo de Dano Forçado +
+     *    Limiar Extra + Dado de Ataque/Reação do Adversário) na lista de
      *    sugestões do autocomplete de "Chave do Atributo" na configuração
      *    de Active Effects, agrupadas sob "Customizado DH-BR".
      */
@@ -804,6 +891,18 @@ Hooks.once('init', () => {
                     label: 'Limiar Extra',
                     hint: 'Todo dano recebido por este Ator é calculado como se estivesse N limiares acima do valor bruto. Valor: número inteiro (ex: "1").',
                     group: 'Customizado DH-BR'
+                },
+                {
+                    value: DADO_ATAQUE_ADVERSARIO_KEY,
+                    label: 'Dado de Teste (Ataque) do Adversário',
+                    hint: 'Troca o d20 da rolagem de ATAQUE deste Adversário por outro dado. Valor: número de faces ou "dN" (ex: "12" ou "d12").',
+                    group: 'Customizado DH-BR'
+                },
+                {
+                    value: DADO_REACAO_ADVERSARIO_KEY,
+                    label: 'Dado de Teste (Reação) do Adversário',
+                    hint: 'Troca o d20 da Rolagem de Reação deste Adversário por outro dado. Valor: número de faces ou "dN" (ex: "12" ou "d12").',
+                    group: 'Customizado DH-BR'
                 }
             );
             return choices;
@@ -826,7 +925,7 @@ Hooks.once('init', () => {
 
             try {
                 const bonus = (this.appliedEffects ?? [])
-                    .flatMap(effect => effect.changes)
+                    .flatMap(effect => effect.system.changes)
                     .filter(change => change.key === LIMIAR_BONUS_KEY)
                     .reduce((total, change) => total + (Number(change.value) || 0), 0);
 
@@ -926,7 +1025,7 @@ Hooks.once('init', () => {
      *            element.value = `system.${item.value}`;
      *        }
      *
-     *    Isso deixa nossas 8 flags (todas começando com 'flags.') inutilizáveis
+     *    Isso deixa nossas 11 flags (todas começando com 'flags.') inutilizáveis
      *    quando escolhidas pela listagem — viram 'system.flags.daggerheart-br...',
      *    que não bate com nenhuma flag real (flags nunca ficam dentro de
      *    'system' em documento nenhum do Foundry).
@@ -975,7 +1074,16 @@ Hooks.once('init', () => {
     /* 7) Contador Dinâmico de Cartas de Domínio — intercepta prepareDerivedData
      *    do Ator pra calcular em tempo real a quantidade de cartas, os
      *    domínios e a matemática dos níveis. Os valores ficam disponíveis
-     *    como Roll Data (@cartas...) em qualquer fórmula.
+     *    como Roll Data (@system.cartas...) em qualquer fórmula.
+     *
+     *    CONFIRMADO na fonte real (daggerheart.js, classe DhCharacter):
+     *    `domainCards` é um getter (não campo salvo), recalculado a cada
+     *    acesso, e já entrega `loadout`, `vault` E `total` (mão+reserva)
+     *    prontos — por isso reaproveitamos `total` em vez de remontar o
+     *    array na mão. `domain` (StringField) e `level` (NumberField) já
+     *    vêm no formato certo (confirmado na classe DHDomainCard) — o
+     *    parseInt() abaixo é só uma rede de segurança extra, não a correção
+     *    de um bug confirmado nesse campo.
      */
     libWrapper.register(
         MODULE_ID,
@@ -986,12 +1094,10 @@ Hooks.once('init', () => {
             // Só nos interessa calcular isso para Personagens (Jogadores)
             if (this.type !== 'character') return;
 
-            // O HTML da build Foundryborne revelou que o sistema já separa as cartas:
-            const handCards = this.system?.domainCards?.loadout || [];
-            const vaultCards = this.system?.domainCards?.vault || [];
-
-            // Juntando as duas para termos o cálculo de TODAS as cartas
-            const allCards = [...handCards, ...vaultCards];
+            // O sistema já separa (e combina) as cartas sozinho, via getter:
+            const handCards = this.system?.domainCards?.loadout ?? [];
+            const vaultCards = this.system?.domainCards?.vault ?? [];
+            const allCards = this.system?.domainCards?.total ?? [...handCards, ...vaultCards];
 
             // Função interna para fazer a matemática do array de cartas
             function analyzeCards(cards) {
@@ -1040,13 +1146,61 @@ Hooks.once('init', () => {
                 todas: analyzeCards(allCards) // Soma de mão e reserva
             };
 
-            // Injeta na Flag (pra debug e armazenamento seguro)
+            // Injeta na flag (leitura via actor.getFlag(MODULE_ID, 'cartas') no console/macros)
             foundry.utils.setProperty(this, `flags.${MODULE_ID}.cartas`, statusCartas);
 
-            // Injeta direto em system.cartas também — atalho pra fugir do bug
-            // do Foundry com hífen em nomes de flag dentro de fórmulas de Roll
-            // Data (comentário de quem escreveu esse trecho na outra frente).
+            // INJETA DIRETO NO SYSTEM: é o que fica acessível como @system.cartas...
+            // em fórmulas de dado (Active Effects). Evita o path @flags.daggerheart-br...
+            // em fórmulas, cujo hífen o parser de dados do Foundry pode interpretar
+            // como subtração — não é um problema de setProperty em si (isso é JS puro,
+            // sem esse risco), só importa pra quem for referenciar o valor DENTRO de
+            // uma fórmula de dado.
             foundry.utils.setProperty(this, `system.cartas`, statusCartas);
+        },
+        'WRAPPER'
+    );
+
+    /* 8) "Dado de Teste do Adversário" (Ataque / Reação) — ver comentário
+     *    completo junto de DADO_ATAQUE_ADVERSARIO_KEY /
+     *    DADO_REACAO_ADVERSARIO_KEY, acima do Hooks.once('init').
+     *
+     *    Deixamos o wrapped() nativo criar o Die{faces:20} normalmente, e só
+     *    DEPOIS sobrescrevemos a face — assim continuamos compatíveis com o
+     *    guard nativo do próprio createBaseDice() (`if (this.terms[0]
+     *    instanceof Die) return;`), sem duplicar essa lógica aqui.
+     */
+    libWrapper.register(
+        MODULE_ID,
+        'game.system.api.dice.D20Roll.prototype.createBaseDice',
+        function (wrapped, ...args) {
+            wrapped(...args);
+
+            try {
+                const actor = this.data?.parent;
+                if (!actor) return;
+                // DualityRoll (character/companion) nem chega a passar por
+                // aqui na prática (rollClass diferente), mas a checagem fica
+                // como segurança extra caso algo herde D20Roll no futuro.
+                if (['character', 'companion'].includes(actor.type)) return;
+
+                const isAttack = this.options?.roll?.type === 'attack';
+                const isReaction = this.options?.actionType === 'reaction';
+                if (!isAttack && !isReaction) return;
+
+                const key = isAttack ? DADO_ATAQUE_ADVERSARIO_KEY : DADO_REACAO_ADVERSARIO_KEY;
+                const change = (actor.appliedEffects ?? [])
+                    .flatMap(effect => effect.system.changes)
+                    .find(c => c.key === key);
+                if (!change) return;
+
+                this.d20 = change.value; // setter nativo: aceita '12' ou 'd12', resolve via getFaces()
+            } catch (err) {
+                console.error(
+                    `[${MODULE_ID}] Dado de Teste do Adversário falhou — flag ignorada` +
+                    ` nesta rolagem, dado segue d20 normal. Reporte este erro:`,
+                    err
+                );
+            }
         },
         'WRAPPER'
     );
@@ -1075,7 +1229,7 @@ Hooks.on('renderD20RollDialog', (app, element) => {
 
     if (!choices.length) return;
 
-    const root = element instanceof HTMLElement ? element : element?.[0];
+    const root = normalizarElementoRaiz(element);
     if (!root) return;
 
     const fieldset = root.querySelector('fieldset.modifier-container');

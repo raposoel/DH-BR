@@ -1,13 +1,6 @@
-<!--
-PROPOSTA DE README — v1.6.0 "Oiapoque"
-Pontos marcados com [CONFIRMAR: ...] precisam da sua palavra final antes de publicar —
-não inventei número, versão ou afirmação legal que não pude confirmar nos arquivos que
-você me passou. Ver a lista de perguntas no final desta entrega (fora deste arquivo).
--->
-
 <p align="center">
-  <img src="imagens/dh-br-02.webp" alt="daggerheart-br" width="190"/><br>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-1.6.0%20Oiapoque-green">
+  <img src="imagens/dh-br-02.webp" alt="daggerheart-br" width="185"/><br>
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-1.6.0%20OIAPOQUE-green">
 </p>
 
 <p align="center">

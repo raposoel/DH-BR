@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json
 - **Foundry VTT**: v14
 - **Sistema Daggerheart (Foundryborne)**: verificado para v2.9.2
 
-## O que NÃO está pronto nesta versão
+## O que **NÃO** está pronto nesta versão
 
 Ainda pendentes pra uma cobertura 100% do sistema:
 

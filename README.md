@@ -19,12 +19,12 @@ você me passou. Ver a lista de perguntas no final desta entrega (fora deste arq
   <img alt="Conteúdo" src="https://img.shields.io/badge/conteúdo-DPCGL%20(SRD%202.0)-lightgrey">
 </p>
 
-# daggerheart-br
+# Daggerheart-BR
 
 Tradução **Brasileira** completa para o sistema **Daggerheart** (Foundryborne) no
 Foundry VTT — interface, itens de compêndio e um conjunto de automações extras
-pensadas pra deixar a mesa mais rápida de rodar. Sem inventar mecânica: a
-prioridade é ficar o mais próximo possível do texto e da matemática originais.
+pensadas pra deixar a mesa mais rápida de rodar. Sem inventar: a
+prioridade é ficar o mais próximo possível do texto original.
 
 ---
 
@@ -55,8 +55,7 @@ prioridade é ficar o mais próximo possível do texto e da matemática originai
   "limpe um Estresse" — porque é assim que o material original fala com quem
   joga.
 - Termos revisados quando a tradução oficial parecia duvidosa (ex.: "Fadiga").
-- Sem inventar, só traduzir, conforme está no original mesmo — qualquer
-  número, dado ou fórmula vem do material em inglês; só o idioma muda.
+- Sem inventar, só traduzir. Conforme está no original; só o idioma muda.
 
 ## O que vem no módulo
 

@@ -1,10 +1,10 @@
 {
   "id": "daggerheart-br",
-  "title": "Daggerheart - Tradução Corrigida para Brasileiro",
+  "title": "Daggerheart-BR - Tradução Corrigida para Brasileiro",
   "description": "<p>Adiciona o idioma Brasileiro corrigido para o sistema de jogo Daggerheart. Sem Inventar, só traduzido.</p>",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "compatibility": {
-    "minimum": "13",
+    "minimum": "14",
     "verified": "14"
   },
   "relationships": {
@@ -21,14 +21,33 @@
         "type": "module",
         "manifest": "https://gitlab.com/riccisi/foundryvtt-babele/raw/master/module/module.json",
         "compatibility": {}
+      },
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
+        "compatibility": {}
       }
     ]
   },
+  "esmodules": [
+    "scripts/module.js",
+    "scripts/recursos.js",
+    "scripts/transformacoes.js",
+    "scripts/matanza.js",
+    "scripts/oculto-escondido.js",
+    "scripts/dano-cura.js"
+  ],
+  "documentTypes": {
+    "Item": {
+      "transformacao": {}
+    }
+  },
   "authors": [
     {
-      "name": "Corrigido por Raposo El",
-      "discord": "luizrealoficial",
-      "url": "https://github.com/raposoel",
+      "name": "Raposo El",
+      "discord": "raposo_el",
+      "url": "",
       "flags": {}
     }
   ],
@@ -44,27 +63,541 @@
   "manifest": "https://raw.githubusercontent.com/raposoel/DH-BR/refs/heads/main/module.json",
   "download": "https://codeload.github.com/raposoel/DH-BR/zip/main",
   "packs": [
-    { "name": "adversarios-br", "label": "Adversários", "path": "packs/adversarios-br", "type": "Actor", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "ambientes-br", "label": "Ambientes", "path": "packs/ambientes-br", "type": "Actor", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "invoca-br", "label": "Invocações", "path": "packs/invoca-br", "type": "Actor", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "diarios-br", "label": "Diários", "path": "packs/diarios-br", "type": "JournalEntry", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "tabelas-br", "label": "Tabelas", "path": "packs/tabelas-br", "type": "RollTable", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "classes-br", "label": "Classes", "path": "packs/classes-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "subclasses-br", "label": "Subclasses", "path": "packs/subclasses-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "dominios-br", "label": "Domínios", "path": "packs/dominios-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "ancestralidades-br", "label": "Ancestralidades", "path": "packs/ancestralidades-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "comunidades-br", "label": "Comunidades", "path": "packs/comunidades-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "formas-de-fera-br", "label": "Formas de Fera", "path": "packs/formas-de-fera-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "armas-br", "label": "Armas", "path": "packs/armas-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "armaduras-br", "label": "Armaduras", "path": "packs/armaduras-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "consumiveis-br", "label": "Consumíveis", "path": "packs/consumiveis-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} },
-    { "name": "tesouro-br", "label": "Tesouro", "path": "packs/tesouro-br", "type": "Item", "system": "daggerheart", "ownership": { "PLAYER": "OBSERVER", "ASSISTANT": "OWNER" }, "flags": {} }
+    {
+      "name": "adversarios-br",
+      "label": "Adversários",
+      "path": "packs/adversarios-br",
+      "type": "Actor",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "macros-br",
+      "label": "Macros",
+      "path": "packs/macros-br",
+      "type": "Macro",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "ambientes-br",
+      "label": "Ambientes",
+      "path": "packs/ambientes-br",
+      "type": "Actor",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "invoca-br",
+      "label": "Invocações",
+      "path": "packs/invoca-br",
+      "type": "Actor",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "diarios-br",
+      "label": "Diários",
+      "path": "packs/diarios-br",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "tabelas-br",
+      "label": "Tabelas",
+      "path": "packs/tabelas-br",
+      "type": "RollTable",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "classes-br",
+      "label": "Classes",
+      "path": "packs/classes-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "subclasses-br",
+      "label": "Subclasses",
+      "path": "packs/subclasses-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "dominios-br",
+      "label": "Domínios",
+      "path": "packs/dominios-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "ancestralidades-br",
+      "label": "Ancestralidades",
+      "path": "packs/ancestralidades-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "comunidades-br",
+      "label": "Comunidades",
+      "path": "packs/comunidades-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "formas-de-fera-br",
+      "label": "Formas de Fera",
+      "path": "packs/formas-de-fera-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "armas-br",
+      "label": "Armas",
+      "path": "packs/armas-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "armaduras-br",
+      "label": "Armaduras",
+      "path": "packs/armaduras-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "consumiveis-br",
+      "label": "Consumíveis",
+      "path": "packs/consumiveis-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "tesouro-br",
+      "label": "Tesouro",
+      "path": "packs/tesouro-br",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "classes-hef",
+      "label": "Classes & Subclasses",
+      "path": "packs/classes-hef",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "heritage-hef",
+      "label": "Heranças",
+      "path": "packs/heritage-hef",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "roll-hef",
+      "label": "Tabelas",
+      "path": "packs/roll-hef",
+      "type": "RollTable",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "macros-hef",
+      "label": "Macros",
+      "path": "packs/macros-hef",
+      "type": "Macro",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "diarios-hef",
+      "label": "Diários",
+      "path": "packs/diarios-hef",
+      "type": "JournalEntry",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "dominios-hef",
+      "label": "Domínio & Mais",
+      "path": "packs/dominios-hef",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "npcs-hef",
+      "label": "NPCs",
+      "path": "packs/npcs-hef",
+      "type": "Actor",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "armas-hef",
+      "label": "Armas",
+      "path": "packs/armas-hef",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "armaduras-hef",
+      "label": "Armaduras",
+      "path": "packs/armaduras-hef",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "consumiveis-hef",
+      "label": "Consumíveis",
+      "path": "packs/consumiveis-hef",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "tesouro-hef",
+      "label": "Tesouro",
+      "path": "packs/tesouro-hef",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "adv-amb-hef",
+      "label": "Adversários & Ambientes",
+      "path": "packs/adv-amb-hef",
+      "type": "Actor",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "classes-void",
+      "label": "Classes & Subclasses",
+      "path": "packs/classes-void",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "heritage-void",
+      "label": "Heranças",
+      "path": "packs/heritage-void",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "more-void",
+      "label": "Outros",
+      "path": "packs/more-void",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "roll-void",
+      "label": "Tabelas",
+      "path": "packs/roll-void",
+      "type": "RollTable",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "macros-void",
+      "label": "Macros",
+      "path": "packs/macros-void",
+      "type": "Macro",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "hab-adv",
+      "label": "Habilidades de Adversários",
+      "path": "packs/hab-adv",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "hab-adv-hef",
+      "label": "Habilidades de Adversários",
+      "path": "packs/hab-adv-hef",
+      "type": "Item",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "adv-amb",
+      "label": "Adversários & Ambientes",
+      "path": "packs/adv-amb",
+      "type": "Actor",
+      "system": "daggerheart",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    }
   ],
   "packFolders": [
-    { "name": "DAGGERHEART BÁSICO", "sorting": "a", "color": "#08718c", "packs": ["adversarios-br", "ambientes-br", "diarios-br", "tabelas-br"], "folders": [
-    { "name": "OPÇÕES DE PERSONAGENS", "sorting": "a", "packs": ["classes-br", "subclasses-br", "dominios-br", "invoca-br", "ancestralidades-br", "comunidades-br", "formas-de-fera-br"] },
-    { "name": "ITEMS", "sorting": "a", "packs": ["armas-br", "armaduras-br", "consumiveis-br", "tesouro-br"] }
-    ]
+    {
+      "name": "Daggerheart Básico",
+      "sorting": "m",
+      "color": "#08718c",
+      "packs": [
+        "diarios-br",
+        "tabelas-br",
+        "macros-br"
+      ],
+      "folders": [
+        {
+          "name": "Opções de Personagens",
+          "sorting": "a",
+          "packs": [
+            "classes-br",
+            "subclasses-br",
+            "dominios-br",
+            "invoca-br",
+            "ancestralidades-br",
+            "comunidades-br",
+            "formas-de-fera-br"
+          ]
+        },
+        {
+          "name": "Bestiário",
+          "sorting": "a",
+          "packs": [
+            "adversarios-br",
+            "hab-adv",
+            "ambientes-br"
+          ]
+        },
+        {
+          "name": "Itens",
+          "sorting": "a",
+          "packs": [
+            "armas-br",
+            "armaduras-br",
+            "consumiveis-br",
+            "tesouro-br"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Esperança & Medo",
+      "sorting": "m",
+      "color": "#382D7A",
+      "packs": [
+        "macros-hef",
+        "diarios-hef",
+        "roll-hef"
+      ],
+      "folders": [
+        {
+          "name": "Opções de Personagens",
+          "sorting": "a",
+          "packs": [
+            "classes-hef",
+            "heritage-hef",
+            "dominios-hef"
+          ]
+        },
+        {
+          "name": "Bestiário",
+          "sorting": "a",
+          "packs": [
+            "npcs-hef",
+            "adv-amb-hef",
+            "hab-adv-hef"
+          ]
+        },
+        {
+          "name": "Itens",
+          "sorting": "a",
+          "packs": [
+            "armas-hef",
+            "armaduras-hef",
+            "consumiveis-hef",
+            "tesouro-hef"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Void",
+      "sorting": "a",
+      "color": "#351163",
+      "packs": [
+        "classes-void",
+        "heritage-void",
+        "more-void",
+        "macros-void",
+        "adv-amb",
+        "roll-void"
+      ],
+      "folders": []
     }
+  ],
+  "styles": [
+    "styles/transformacao.css",
+    "styles/recurso-ator.css",
+    "styles/dano-cura.css"
   ]
 }

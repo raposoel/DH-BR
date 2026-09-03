@@ -1,0 +1,38 @@
+<section
+    class='tab {{tabs.features.cssClass}} {{tabs.features.id}}'
+    data-tab='{{tabs.features.id}}'
+    data-group='{{tabs.features.group}}'
+>
+    <fieldset class="drop-section">
+        <legend>{{localize "DAGGERHEART.GENERAL.Tabs.features"}}</legend>
+
+        <div class="feature-list">
+            {{#each document.system.features as | feature |}}
+                <li class="feature-line">
+                    <img class="image" src="{{feature.img}}" />
+                    <span>{{feature.name}}</span>
+                    <div class="controls">
+                        <a
+                            class="effect-control"
+                            data-action="editDoc"
+                            data-item-uuid="{{feature.uuid}}"
+                            data-tooltip="{{localize 'DAGGERHEART.UI.Tooltip.openItemWorld'}}"
+                        >
+                            <i class="fa-solid fa-globe" inert></i>
+                        </a>
+                        <a
+                            class="effect-control"
+                            data-action="dhRemoveFeature"
+                            data-item-uuid="{{feature.uuid}}"
+                            data-tooltip="{{localize 'CONTROLS.CommonDelete'}}"
+                        >
+                            <i class="fa-solid fa-trash" inert></i>
+                        </a>
+                    </div>
+                </li>
+            {{else}}
+                <div class="drag-area">{{localize "DAGGERHEART.GENERAL.missingDragDropThing" thing=(localize "TYPES.Item.feature")}}</div>
+            {{/each}}
+        </div>
+    </fieldset>
+</section>

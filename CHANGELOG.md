@@ -18,3 +18,6 @@ Massiva correção de termos no básico, mais atualização da tradução de ter
 
 1.4.2
 Atualização para a versão atual do sistema.
+
+## 1.6.0 Oiapoque
+Versão revisa completamente o compendium que era em inglês, traduz tudo para o brasileiro e adiciona mais melhorias. Versão para criação de personagem pronta, sem bestiário e informações do livro.

@@ -1,0 +1,54 @@
+/* A seção da Transformação na ficha do Personagem é gerada pelo
+   próprio partial nativo do sistema (via system.sheetLists), então
+   não precisa de CSS próprio para isso. O nome clicável no cabeçalho
+   também reaproveita as classes/estilos nativos de ".character-details
+   span[data-action]". As perguntas ficam só na aba "Perguntas" da
+   própria carta de Transformação — não aparecem na ficha do Ator. */
+
+/* Aba de Perguntas do ITEM de Transformação: blocos empilhados, sem
+   numeração, cada um ocupando toda a largura disponível da seção.
+   O !important aqui é proposital: o CSS do próprio sistema define
+   largura/colunas padrão para <textarea> dentro de fichas de item,
+   com mais especificidade do que um simples ".transformation-
+   question-item textarea" — garantimos que a nossa largura vença. */
+.transformation-questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.transformation-question-item {
+    width: 100% !important;
+}
+
+.transformation-question-item textarea {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    resize: vertical;
+    box-sizing: border-box !important;
+}
+
+/* Aba de Perguntas rola internamente em vez de esticar a janela
+   infinitamente e esconder as últimas perguntas fora da tela. */
+.transformation .tab.questions {
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+/* Imagem de capa: centralizada horizontalmente, alinhada ao topo na
+   vertical (em vez do padrão do sistema, que centraliza nos dois
+   eixos e corta detalhes que costumam ficar em cima — rosto, cabeça,
+   etc). Aplicado a QUALQUER ficha de item que use essa mesma estrutura
+   de cabeçalho (".item-card-header .profile") — Transformação,
+   Ancestralidade, Comunidade, Classe e Subclasse compartilham o mesmo
+   header.hbs, então a regra alcança todas de uma vez, sem precisar
+   escopar por tipo. Domínios não foram confirmados (a carta de Domínio
+   costuma ter um layout diferente) — se não fizer efeito nelas ou
+   ficar estranho, avisa que ajusto à parte. */
+.item-card-header .profile {
+    object-fit: cover;
+    object-position: center top;
+}
+

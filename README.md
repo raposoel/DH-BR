@@ -33,7 +33,6 @@ prioridade é ficar o mais próximo possível do original.
 - [Dependências obrigatórias](#dependências-obrigatórias)
 - [Compatibilidade](#compatibilidade)
 - [O que NÃO está pronto nesta versão](#o-que-não-está-pronto-nesta-versão)
-- [Avisos de estabilidade](#avisos-de-estabilidade)
 - [Problemas conhecidos / passos manuais](#problemas-conhecidos--passos-manuais)
 - [Documentação técnica](#documentação-técnica)
 - [Créditos e licença](#créditos-e-licença)

@@ -1,6 +1,6 @@
 <p align="center">
   <img src="imagens/dh-br-02.webp" alt="daggerheart-br" width="185"/><br>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-1.6.0%20OIAPOQUE-green">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-1.6.1%20OIAPOQUE-green">
 </p>
 
 <p align="center">

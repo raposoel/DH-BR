@@ -491,70 +491,56 @@ const TIPO_DANO_FORCADO_MAP = {
 const LIMIAR_BONUS_KEY = `flags.${MODULE_ID}.limiarBonus`;
 
 /**
- * "Dado de Teste do Adversário" (Ataque / Reação) — troca o dado base d20
- * usado numa rolagem de ADVERSÁRIO (ou environment) por outro dado
- * qualquer, em DOIS pontos independentes:
+ * "Dado de Teste do Adversário" — troca o d20 usado numa rolagem de Adversário
+ * (ou environment) por outro dado, em Ataque e Reação separadamente.
  *
- *   - dadoAtaqueAdversario  -> só a rolagem de ATAQUE (item usando uma
- *     action do tipo 'attack')
- *   - dadoReacaoAdversario  -> só a "Rolagem de Reação" (botão da própria
- *     ficha do Adversário, DhAdversarySheet.#reactionRoll)
+ * flags.daggerheart-br.dadoAtaqueAdversario → só a rolagem de ATAQUE
+ * flags.daggerheart-br.dadoReacaoAdversario → só a ROLAGEM DE REAÇÃO
  *
- * Descoberta: quem decide qual classe de Roll um Ator usa é
+ * Valor aceita número de faces ("12") ou string no formato "d12" — os dois
+ * funcionam igual, porque reaproveitamos o setter nativo `d20` (que resolve
+ * isso sozinho via `getFaces()`).
+ *
+ * Descoberta (confirmada linha a linha contra o daggerheart.js real):
+ *
  * `DhActor#get rollClass()`:
+ *   return CONFIG.Dice.daggerheart[['character', 'companion'].includes(this.type)
+ *       ? 'DualityRoll' : 'D20Roll'];
+ * Só character/companion usam DualityRoll (par Esperança/Medo) — todo o resto,
+ * inclusive adversary/environment, cai em D20Roll puro (um dado só).
  *
- *     get rollClass() {
- *         return CONFIG.Dice.daggerheart[
- *             ['character', 'companion'].includes(this.type) ? 'DualityRoll' : 'D20Roll'
- *         ];
- *     }
+ * `D20Roll.prototype.createBaseDice()` é o ÚNICO lugar do sistema que decide a
+ * face desse dado base, sempre hardcoded pra 20:
+ *   createBaseDice() {
+ *       if (this.terms[0] instanceof foundry.dice.terms.Die) {
+ *           this.terms = [this.terms[0]];
+ *           return;
+ *       }
+ *       this.terms[0] = new foundry.dice.terms.Die({ faces: 20 });
+ *   }
+ * Não existe, nativamente, nenhuma ficha/setting que troque isso.
  *
- * Só 'character' e 'companion' rolam DualityRoll (Esperança/Medo). TODO o
- * resto — inclusive 'adversary' e 'environment' — cai em D20Roll puro. E
- * D20Roll.createBaseDice() é o ÚNICO lugar do sistema que decide a face do
- * dado base, sempre hardcoded pra 20:
+ * A própria classe já expõe um setter conveniente:
+ *   set d20(faces) {
+ *       if (!(this.terms[0] instanceof foundry.dice.terms.Die)) this.createBaseDice();
+ *       this.terms[0].faces = this.getFaces(faces);
+ *   }
+ * `getFaces()` resolve número ou string "dN" sem diferença — por isso usamos
+ * `this.d20 = valor` em vez de reimplementar esse parsing.
  *
- *     createBaseDice() {
- *         if (this.terms[0] instanceof foundry.dice.terms.Die) { ... return; }
- *         this.terms[0] = new foundry.dice.terms.Die({ faces: 20 });
- *     }
+ * Distinção Ataque vs Reação: `this.options.roll.type === 'attack'` identifica
+ * uma rolagem de Ataque (CONFIG.DH.GENERAL.rollTypes.attack.id === 'attack',
+ * confirmado na fonte). A Rolagem de Reação não tem um roll.type próprio — ela
+ * reaproveita 'trait' (mesmo id de um teste de atributo comum) — então o que a
+ * distingue de verdade é `this.options.actionType === 'reaction'`, campo que o
+ * botão de Rolagem de Reação da ficha do Adversário sempre manda.
  *
- * Não existe, nativamente, NENHUMA ficha/setting que troque isso — nem por
- * Adversário, nem por tipo de teste. Por isso interceptamos esse método via
- * libWrapper e, depois de deixar o wrapped() nativo criar o d20 normal,
- * sobrescrevemos a face usando o PRÓPRIO setter `d20` que a classe já expõe
- * (ver comentário anterior sobre D20Roll neste arquivo) — ele já resolve
- * tanto número quanto string ("12" ou "d12") via `getFaces()`, então não
- * precisamos reimplementar esse parsing.
+ * Se houver mais de um Active Effect com a MESMA flag ativo ao mesmo tempo, só
+ * o PRIMEIRO encontrado é aplicado — não faz sentido "somar" dois dados de
+ * faces diferentes (mesma lógica do Range de Arma Customizado). As duas flags
+ * (Ataque e Reação) são independentes e podem conviver no mesmo Ator.
  *
- * Como sabemos se é ATAQUE ou REAÇÃO: reaproveitamos os MESMOS campos que o
- * próprio D20Roll já lê internamente pra outra finalidade (bônus por tipo de
- * rolagem, linha ~44537 do sistema): `this.options.roll.type === 'attack'`
- * pra ataque. A Rolagem de Reação não tem um `roll.type` próprio (ela usa
- * 'trait', mesmo id do teste de atributo de personagem) — o que a distingue
- * é `this.options.actionType === 'reaction'`, campo que o botão
- * #reactionRoll da ficha do Adversário sempre manda.
- *
- * O Ator dono da rolagem é lido de `this.data?.parent` — mesma convenção já
- * usada no restante deste arquivo (ver Dado de Matança e Hooks.on
- * renderD20RollDialog, onde `D20RollDialog.actor` é literalmente
- * `this.config?.data?.parent`).
- *
- * Valor aceito: número de faces (string ou number, ex. "12" ou 12) OU
- * string no formato "d12" — os dois passam por getFaces() sem diferença.
- *
- * Se houver mais de um Active Effect com a MESMA flag ativo ao mesmo tempo,
- * só o PRIMEIRO encontrado é aplicado (não faz sentido "somar" dois dados
- * diferentes — mesmo espírito do Range de Arma). As duas flags (Ataque e
- * Reação) são independentes entre si e podem conviver no mesmo Ator sem
- * conflito, já que cada uma só é lida no ramo (attack/reaction) certo.
- *
- * Só se aplica a rolagens cujo Ator NÃO seja 'character' nem 'companion'
- * (ou seja, exatamente os que caem em D20Roll — normalmente 'adversary',
- * mas também vale pra 'environment' se algum dia ele tiver ataque/reação).
- *
- * NÃO é consumível — permanente enquanto o Active Effect existir na ficha,
- * igual às outras flags "passivas" deste arquivo.
+ * NÃO é consumível — permanente enquanto o efeito existir na ficha.
  *
  * Como conceder (teste rápido, no console):
  *
@@ -568,8 +554,6 @@ const LIMIAR_BONUS_KEY = `flags.${MODULE_ID}.limiarBonus`;
  *           value: '12' // ataque agora rola d12 em vez de d20
  *       }]
  *   }]);
- *
- * E, pra Reação, o mesmo com a chave 'flags.daggerheart-br.dadoReacaoAdversario'.
  */
 const DADO_ATAQUE_ADVERSARIO_KEY = `flags.${MODULE_ID}.dadoAtaqueAdversario`;
 const DADO_REACAO_ADVERSARIO_KEY = `flags.${MODULE_ID}.dadoReacaoAdversario`;
@@ -826,11 +810,27 @@ Hooks.once('init', () => {
 
 
     /* 4) Acrescenta nossas onze flags (Matança + os dois Danos Extras +
-     *    Experiência Usa Estresse + Estresse Dobra Bônus + Range de Arma
-     *    Customizado + Range de Arma Incremento + Tipo de Dano Forçado +
-     *    Limiar Extra + Dado de Ataque/Reação do Adversário) na lista de
-     *    sugestões do autocomplete de "Chave do Atributo" na configuração
-     *    de Active Effects, agrupadas sob "Customizado DH-BR".
+     *    Experiência Usa Estresse + Estresse Dobra Bônus + os dois Range de
+     *    Arma + Tipo de Dano Forçado + Limiar Extra + Dado de Teste do
+     *    Adversário Ataque/Reação) na lista de sugestões do autocomplete de
+     *    "Chave do Atributo" na configuração de Active Effects, agrupadas
+     *    sob "Customizado DH-BR".
+     *
+     *    `isFullPath: true` é essencial em cada uma: essa é a MESMA lista
+     *    que alimenta o "Active Effect Path Viewer" nativo (o botão que
+     *    mostra todos os caminhos disponíveis) — e o código dele decide o
+     *    que copiar pro clipboard assim:
+     *
+     *        value: curr.isFullPath ? curr.value : `@system.${curr.value}`
+     *
+     *    Sem a flag, ele gruda um "@system." bugado na frente de todas as
+     *    nossas chaves (que já são caminho completo, tipo
+     *    'flags.daggerheart-br.rangeArma' — não vivem debaixo de "system.").
+     *    Isso é um problema DIFERENTE do bug do "system." no autocomplete
+     *    (seção 12): aquela correção intercepta o setter de `.value` de um
+     *    `<input>`, e o botão "Copiar Caminho" do Path Viewer não passa por
+     *    nenhum input — ele lê direto de um `dataset` e escreve no
+     *    clipboard, então a correção antiga não alcança esse caso.
      */
     libWrapper.register(
         MODULE_ID,
@@ -842,67 +842,78 @@ Hooks.once('init', () => {
                     value: MATANZA_CHANGE_KEY,
                     label: 'Dado de Matança',
                     hint: 'Concede 1d6 extra, consumido ao ser usado numa rolagem de ataque/ação ou de dano.',
-                    group: 'Customizado DH-BR'
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: EXTRA_MAGIC_KEY,
                     label: 'Dano Extra Mágico',
                     hint: 'Número, dado ou fórmula somado como dano mágico extra em qualquer rolagem de dano (chip na seção Efeitos).',
-                    group: 'Customizado DH-BR'
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: EXTRA_PHYSICAL_KEY,
                     label: 'Dano Extra Físico',
                     hint: 'Número, dado ou fórmula somado como dano físico extra em qualquer rolagem de dano (chip na seção Efeitos).',
-                    group: 'Customizado DH-BR'
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: EXP_STRESS_KEY,
                     label: 'Experiência Usa Estresse',
                     hint: 'Acrescenta um custo em Estresse ao marcar uma Experiência (rolagem de ataque/ação), somado ao custo nativo de Esperança/Medo.',
-                    group: 'Customizado DH-BR'
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: EXP_STRESS_DOUBLE_KEY,
                     label: 'Estresse Dobra Bônus da Experiência',
                     hint: 'Só tem efeito junto com Experiência Usa Estresse: dobra o bônus da Experiência quando ela é paga com Estresse.',
-                    group: 'Customizado DH-BR'
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: RANGE_ARMA_KEY,
                     label: 'Range de Arma Customizado',
                     hint: 'Sobrescreve o alcance da arma equipada. Valor: 1=Adjacente 2=Muito Próximo 3=Próximo 4=Distante 5=Muito Distante.',
-                    group: 'Customizado DH-BR'
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: RANGE_ARMA_BONUS_KEY,
                     label: 'Range de Arma - Incremento',
                     hint: 'Soma N passos ao alcance que a arma já tem, sem travar num valor fixo (positivo sobe, negativo desce). Valor: número inteiro (ex: "1").',
-                    group: 'Customizado DH-BR'
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: TIPO_DANO_FORCADO_KEY,
                     label: 'Tipo de Dano Forçado',
                     hint: 'Sobrescreve o tipo do dano principal, independente do que estiver marcado na arma/ação. Valor: "f" (Físico) ou "m" (Mágico).',
-                    group: 'Customizado DH-BR'
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: LIMIAR_BONUS_KEY,
                     label: 'Limiar Extra',
                     hint: 'Todo dano recebido por este Ator é calculado como se estivesse N limiares acima do valor bruto. Valor: número inteiro (ex: "1").',
-                    group: 'Customizado DH-BR'
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: DADO_ATAQUE_ADVERSARIO_KEY,
-                    label: 'Dado de Teste (Ataque) do Adversário',
-                    hint: 'Troca o d20 da rolagem de ATAQUE deste Adversário por outro dado. Valor: número de faces ou "dN" (ex: "12" ou "d12").',
-                    group: 'Customizado DH-BR'
+                    label: 'Dado de Teste do Adversário (Ataque)',
+                    hint: 'Troca o d20 desse Adversário/Environment na rolagem de Ataque. Valor: número de faces ou "dN" (ex: "12" ou "d12").',
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 },
                 {
                     value: DADO_REACAO_ADVERSARIO_KEY,
-                    label: 'Dado de Teste (Reação) do Adversário',
-                    hint: 'Troca o d20 da Rolagem de Reação deste Adversário por outro dado. Valor: número de faces ou "dN" (ex: "12" ou "d12").',
-                    group: 'Customizado DH-BR'
+                    label: 'Dado de Teste do Adversário (Reação)',
+                    hint: 'Troca o d20 desse Adversário/Environment na Rolagem de Reação. Valor: número de faces ou "dN" (ex: "12" ou "d12").',
+                    group: 'Customizado DH-BR',
+                    isFullPath: true
                 }
             );
             return choices;
@@ -1160,14 +1171,17 @@ Hooks.once('init', () => {
         'WRAPPER'
     );
 
-    /* 8) "Dado de Teste do Adversário" (Ataque / Reação) — ver comentário
-     *    completo junto de DADO_ATAQUE_ADVERSARIO_KEY /
+    /* 8) "Dado de Teste do Adversário" — troca a face do d20 usado por
+     *    Adversários/Environments (tudo que não é character/companion) numa
+     *    rolagem de Ataque e/ou Reação, reaproveitando o setter nativo `d20`
+     *    (que já resolve número ou string "dN" via getFaces()).
+     *    Ver comentário completo junto de DADO_ATAQUE_ADVERSARIO_KEY /
      *    DADO_REACAO_ADVERSARIO_KEY, acima do Hooks.once('init').
      *
-     *    Deixamos o wrapped() nativo criar o Die{faces:20} normalmente, e só
-     *    DEPOIS sobrescrevemos a face — assim continuamos compatíveis com o
-     *    guard nativo do próprio createBaseDice() (`if (this.terms[0]
-     *    instanceof Die) return;`), sem duplicar essa lógica aqui.
+     *    Rodamos wrapped(...args) PRIMEIRO — isso preserva o guard nativo do
+     *    próprio createBaseDice() (`if (this.terms[0] instanceof Die) {
+     *    this.terms = [this.terms[0]]; return; }`), então só trocamos a face
+     *    depois que o dado já existe.
      */
     libWrapper.register(
         MODULE_ID,
@@ -1177,29 +1191,22 @@ Hooks.once('init', () => {
 
             try {
                 const actor = this.data?.parent;
-                if (!actor) return;
-                // DualityRoll (character/companion) nem chega a passar por
-                // aqui na prática (rollClass diferente), mas a checagem fica
-                // como segurança extra caso algo herde D20Roll no futuro.
-                if (['character', 'companion'].includes(actor.type)) return;
+                if (!actor || ['character', 'companion'].includes(actor.type)) return;
 
                 const isAttack = this.options?.roll?.type === 'attack';
                 const isReaction = this.options?.actionType === 'reaction';
                 if (!isAttack && !isReaction) return;
 
                 const key = isAttack ? DADO_ATAQUE_ADVERSARIO_KEY : DADO_REACAO_ADVERSARIO_KEY;
+
                 const change = (actor.appliedEffects ?? [])
                     .flatMap(effect => effect.system.changes)
                     .find(c => c.key === key);
                 if (!change) return;
 
-                this.d20 = change.value; // setter nativo: aceita '12' ou 'd12', resolve via getFaces()
+                this.d20 = String(change.value).trim(); // aceita "12" ou "d12"
             } catch (err) {
-                console.error(
-                    `[${MODULE_ID}] Dado de Teste do Adversário falhou — flag ignorada` +
-                    ` nesta rolagem, dado segue d20 normal. Reporte este erro:`,
-                    err
-                );
+                console.error(`[${MODULE_ID}] Dado de Teste do Adversário falhou.`, err);
             }
         },
         'WRAPPER'

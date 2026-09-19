@@ -1,11 +1,11 @@
 <p align="center">
   <img src="imagens/dh-br-02.webp" alt="daggerheart-br" width="185"/><br>
-  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-1.6.1%20OIAPOQUE-green">
+  <img alt="Versão" src="https://img.shields.io/badge/vers%C3%A3o-1.6.3%20TUPI-green">
 </p>
 
 <p align="center">
   <img alt="Foundry Version" src="https://img.shields.io/badge/Foundry-v14-informational">
-  <img alt="Sistema" src="https://img.shields.io/badge/Daggerheart%20(Foundryborne)-v2.9.1-blue"><br>
+  <img alt="Sistema" src="https://img.shields.io/badge/Daggerheart%20(Foundryborne)-v2.9.1+-blue"><br>
   <img alt="Requer Babele" src="https://img.shields.io/badge/requer-Babele-orange">
   <img alt="Requer libWrapper" src="https://img.shields.io/badge/requer-libWrapper-orange"><br>
   <img alt="Licença do código" src="https://img.shields.io/badge/código-MIT-lightgrey">

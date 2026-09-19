@@ -5,7 +5,7 @@
 
 <p align="center">
   <img alt="Foundry Version" src="https://img.shields.io/badge/Foundry-v14-informational">
-  <img alt="Sistema" src="https://img.shields.io/badge/Daggerheart%20(Foundryborne)-v2.9.1+-blue"><br>
+  <img alt="Sistema" src="https://img.shields.io/badge/Daggerheart%20(Foundryborne)-v2.9+-blue"><br>
   <img alt="Requer Babele" src="https://img.shields.io/badge/requer-Babele-orange">
   <img alt="Requer libWrapper" src="https://img.shields.io/badge/requer-libWrapper-orange"><br>
   <img alt="Licença do código" src="https://img.shields.io/badge/código-MIT-lightgrey">
